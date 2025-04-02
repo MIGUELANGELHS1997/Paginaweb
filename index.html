@@ -1578,6 +1578,323 @@
                 grid-template-columns: 1fr;
             }
         }
+        .leadership-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 5%;
+        }
+        
+        .leadership-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .leadership-header h2 {
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .leadership-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .director-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 3rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .director-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .director-image img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--accent-color);
+        }
+        
+        .director-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .director-name {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .director-title {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .director-bio {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .director-qualifications {
+            margin-top: 2rem;
+        }
+        
+        .qualification-item {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        
+        .qualification-icon {
+            color: var(--accent-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            margin-top: 0.3rem;
+        }
+        
+        /* Estilos para el organigrama */
+        .org-chart {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            margin-top: 3rem;
+        }
+        
+        .org-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .org-header h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .org-level {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        
+        .org-node {
+            text-align: center;
+            margin: 0 1.5rem;
+            position: relative;
+        }
+        
+        .node-content {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            width: 220px;
+            transition: var(--transition);
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .node-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .node-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin: 0 auto 1rem;
+        }
+        
+        .node-name {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .node-position {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .node-department {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .node-connector {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background-color: var(--accent-color);
+        }
+        
+        .org-sublevel {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .org-sublevel .org-node {
+            margin: 0;
+        }
+        
+        .org-sublevel .node-content {
+            width: 200px;
+        }
+        
+        .org-sublevel .node-image {
+            width: 80px;
+            height: 80px;
+        }
+        
+        /* Estilos para el equipo completo */
+        .team-section {
+            background-color: var(--section-bg);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            margin-top: 3rem;
+        }
+        
+        .team-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .team-header h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 3px solid var(--accent-color);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin: 0 auto 1rem;
+        }
+        
+        .team-name {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .team-position {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-department {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-qualifications {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .org-node {
+                margin: 1rem 0;
+            }
+            
+            .node-connector {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .director-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .qualification-item {
+                justify-content: center;
+            }
+            
+            .org-sublevel {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .leadership-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .director-name {
+                font-size: 1.8rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1695,28 +2012,263 @@
     
       <!-- Sección de Director -->
       <section id="director" class="section section-bg">
-        <div class="director-container">
-            <div class="section-title">
-                <h2>Director General</h2>
+        <div class="leadership-section">
+            <div class="leadership-header">
+                <h2>Nuestro Equipo Directivo</h2>
                 <div class="underline"></div>
+                <p>Profesionales comprometidos con la excelencia en rehabilitación y educación especial</p>
             </div>
             
-            <div class="testimonial-director">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dr. Juan Pérez García">
+            <!-- Director General -->
+            <div class="director-container">
+                <div class="director-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dr. Juan Pérez García">
+                </div>
+                
+                <div class="director-info">
+                    <h3 class="director-name">Dr. Carlos Quiroga</h3>
+                    <p class="director-title">Director General de CEREFE</p>
+                    
+                    <div class="director-bio">
+                        <p>El Dr. Carlos Quiroga es un destacado especialista en rehabilitación con más de 25 años de experiencia en el campo de la discapacidad y educación especial. Graduado con honores de la Universidad Mayor de San Andrés, ha dedicado su carrera profesional al servicio de las personas con discapacidad en Bolivia.</p>
+                        
+                        <p>Bajo su dirección, CEREFE ha experimentado un crecimiento significativo, expandiendo sus servicios y mejorando la calidad de atención a los pacientes. Su visión estratégica ha permitido la implementación de nuevas tecnologías y metodologías innovadoras en el campo de la rehabilitación.</p>
+                    </div>
+                    
+                    <div class="director-qualifications">
+                        <div class="qualification-item">
+                            <div class="qualification-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <strong>Formación Académica:</strong> Doctor en Medicina, Especialista en Rehabilitación, Maestría en Educación Especial
+                            </div>
+                        </div>
+                        
+                        <div class="qualification-item">
+                            <div class="qualification-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div>
+                                <strong>Reconocimientos:</strong> Premio Nacional de Medicina 2018, Distinción por Servicios a la Comunidad 2020
+                            </div>
+                        </div>
+                        
+                        <div class="qualification-item">
+                            <div class="qualification-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <strong>Experiencia:</strong> 25 años en rehabilitación, 15 años en cargos directivos
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <h3 class="director-name">Dr. Quiroga</h3>
-            <p class="director-title">Director General de CEREFE</p>
+            <!-- Organigrama -->
+            <div class="org-chart">
+                <div class="org-header">
+                    <h3>Estructura Organizacional</h3>
+                    <div class="underline"></div>
+                    <p>Nuestro modelo de gestión garantiza una atención integral y coordinada</p>
+                </div>
+                
+                <!-- Nivel 1 - Director -->
+                <div class="org-level">
+                    <div class="org-node">
+                        <div class="node-content">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Director" class="node-image">
+                            <h4 class="node-name">Dr. Carlos Quiroga</h4>
+                            <p class="node-position">Director General</p>
+                            <p class="node-department">Dirección Ejecutiva</p>
+                        </div>
+                        <div class="node-connector"></div>
+                    </div>
+                </div>
+                
+                <!-- Nivel 2 - Subdirectores -->
+                <div class="org-level">
+                    <div class="org-sublevel">
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Médica" class="node-image">
+                                <h4 class="node-name">Dra. María Fernández</h4>
+                                <p class="node-position">Subdirectora Médica</p>
+                                <p class="node-department">Área Clínica</p>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirector Académico" class="node-image">
+                                <h4 class="node-name">Lic. Jorge Morales</h4>
+                                <p class="node-position">Subdirector Académico</p>
+                                <p class="node-department">Área Educativa</p>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Administrativa" class="node-image">
+                                <h4 class="node-name">Lic. Ana Martínez</h4>
+                                <p class="node-position">Subdirectora Administrativa</p>
+                                <p class="node-department">Gestión y Operaciones</p>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nivel 3 - Coordinadores -->
+                <div class="org-level">
+                    <div class="org-sublevel">
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinador Médico" class="node-image">
+                                <h4 class="node-name">Dr. Luis Rojas</h4>
+                                <p class="node-position">Coordinador Médico</p>
+                                <p class="node-department">Servicios Clínicos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora Terapias" class="node-image">
+                                <h4 class="node-name">Lic. Carla Vargas</h4>
+                                <p class="node-position">Coordinadora de Terapias</p>
+                                <p class="node-department">Rehabilitación</p>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinador Educación" class="node-image">
+                                <h4 class="node-name">Lic. Pedro Sánchez</h4>
+                                <p class="node-position">Coordinador de Educación</p>
+                                <p class="node-department">Programas Educativos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora Social" class="node-image">
+                                <h4 class="node-name">Lic. Daniela Castro</h4>
+                                <p class="node-position">Coordinadora Social</p>
+                                <p class="node-department">Trabajo Social</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            <div class="director-bio">
-                <p>El Dr. Juan Pérez García cuenta con más de 20 años de experiencia en el campo de la rehabilitación y educación especial. Graduado con honores de la Universidad Mayor de San Andrés, ha dedicado su carrera profesional al servicio de las personas con discapacidad.</p>
+            <!-- Equipo completo -->
+            <div class="team-section">
+                <div class="team-header">
+                    <h3>Nuestro Equipo Profesional</h3>
+                    <div class="underline"></div>
+                    <p>Contamos con un equipo multidisciplinario de especialistas en diferentes áreas</p>
+                </div>
                 
-                <p>Bajo su dirección, CEREFE ha experimentado un crecimiento significativo, expandiendo sus servicios y mejorando la calidad de atención a los pacientes. Su liderazgo ha permitido la implementación de nuevas tecnologías y metodologías innovadoras en el campo de la rehabilitación.</p>
-                
-                <p>El Dr. Pérez es miembro activo de varias asociaciones profesionales nacionales e internacionales relacionadas con la discapacidad y la rehabilitación, y ha sido reconocido con múltiples premios por su labor en favor de la inclusión social.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Pediatra" class="team-image">
+                        <h4 class="team-name">Dra. Laura Gutiérrez</h4>
+                        <p class="team-position">Médica Pediatra</p>
+                        <p class="team-department">Servicios Médicos</p>
+                        <p class="team-qualifications">Especialista en desarrollo infantil y atención temprana. 15 años de experiencia.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicólogo" class="team-image">
+                        <h4 class="team-name">Lic. Roberto Paz</h4>
+                        <p class="team-position">Psicólogo Clínico</p>
+                        <p class="team-department">Salud Mental</p>
+                        <p class="team-qualifications">Especialista en terapia cognitivo-conductual y apoyo familiar.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Fisioterapeuta" class="team-image">
+                        <h4 class="team-name">Lic. Marcela Ríos</h4>
+                        <p class="team-position">Fisioterapeuta</p>
+                        <p class="team-department">Rehabilitación Física</p>
+                        <p class="team-qualifications">Especialista en neurorehabilitación y terapia psicomotriz.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Pedagoga" class="team-image">
+                        <h4 class="team-name">Lic. Valeria Mendez</h4>
+                        <p class="team-position">Pedagoga Especial</p>
+                        <p class="team-department">Educación</p>
+                        <p class="team-qualifications">Especialista en diseño curricular adaptado y metodologías inclusivas.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Terapeuta Ocupacional" class="team-image">
+                        <h4 class="team-name">Lic. Gabriela Torrez</h4>
+                        <p class="team-position">Terapeuta Ocupacional</p>
+                        <p class="team-department">Rehabilitación</p>
+                        <p class="team-qualifications">Especialista en integración sensorial y actividades de la vida diaria.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Logopeda" class="team-image">
+                        <h4 class="team-name">Lic. Fernando Rojas</h4>
+                        <p class="team-position">Logopeda</p>
+                        <p class="team-department">Comunicación</p>
+                        <p class="team-qualifications">Especialista en comunicación aumentativa y alternativa.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Trabajadora Social" class="team-image">
+                        <h4 class="team-name">Lic. Patricia Arce</h4>
+                        <p class="team-position">Trabajadora Social</p>
+                        <p class="team-department">Servicios Sociales</p>
+                        <p class="team-qualifications">Especialista en inclusión social y gestión de ayudas técnicas.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicopedagoga" class="team-image">
+                        <h4 class="team-name">Lic. Andrea Cabrera</h4>
+                        <p class="team-position">Psicopedagoga</p>
+                        <p class="team-department">Educación Especial</p>
+                        <p class="team-qualifications">Especialista en dificultades de aprendizaje y adaptaciones curriculares.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Resto de las secciones del sitio... -->
+
+    <script>
+        // Scripts anteriores...
+        
+        // Animación para los miembros del equipo
+        document.addEventListener('DOMContentLoaded', function() {
+            const teamMembers = document.querySelectorAll('.team-member, .org-node');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = 1;
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 150 * index);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            teamMembers.forEach(member => {
+                member.style.opacity = 0;
+                member.style.transform = 'translateY(20px)';
+                member.style.transition = 'all 0.5s ease';
+                observer.observe(member);
+            });
+        });
+    </script>
     
     <!-- Sección de Guía para Familia -->
     <section id="guia-familia" class="section">

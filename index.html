@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEREFE - Centro de Rehabilitación y Educación Especial</title>
+    <meta name="description" content="CEREFE brinda atención integral a personas con discapacidad, promoviendo su inclusión social y desarrollo humano en Bolivia.">
+    <meta name="keywords" content="rehabilitación, educación especial, discapacidad, inclusión, terapia, Bolivia, TDAH, autismo, discapacidad intelectual">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #003366;
+            --accent-color: #00a0e9;
+            --light-color: #ffffff;
+            --dark-color: #001a33;
+            --text-color: #333333;
+            --text-light: #ffffff;
+            --section-bg: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Barra de navegación */
+        .navbar {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    font-size: 0.85rem; /* Tamaño original */
+}
+
+.navbar.scrolled {
+    padding: 0.5rem 5%;
+    background-color: rgba(0, 86, 179, 0.95);
+    backdrop-filter: blur(10px);
+    font-size: 0.75rem; /* Tamaño reducido pero legible */
+}
+
+        .menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            margin: 0 0.2rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            font-size: 0.85rem;
+        }
+
+        .dropdown-content a {
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem; /* Más espacio interno */
+    display: block;
+    text-decoration: none; /* Elimina subrayado predeterminado */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borde más suave */
+    transition: var(--transition);
+    font-size: 0.85rem; /* Tamaño de fuente ligeramente mayor */
+    white-space: nowrap; /* Evita saltos de línea no deseados */
+    background-color: white; /* Fondo blanco para mejor legibilidad */
+}
+
+.dropdown-content a:hover {
+    background-color: #f8f9fa; /* Color de hover suave */
+    color: var(--primary-color-dark); /* Oscurece el color al pasar el mouse */
+    transform: translateX(2px); /* Efecto sutil de movimiento */
+}
+
+        .logo img {
+            height: 50px;
+            transition: var(--transition);
+        }
+        
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            margin: 0 0.3rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            font-size: 0.95rem;
+        }
+        
+        .menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+        
+       /* Contenedor principal del dropdown (relativo para posicionar el contenido) */
+.dropdown {
+    position: relative;
+    display: inline-block; /* Evita que ocupe todo el ancho */
+}
+
+/* Botón que activa el dropdown */
+/* Estilo base del botón del dropdown */
+.dropdown-btn {
+    display: inline-flex;  /* Usa flexbox para alinear ícono y texto */
+    align-items: center;   /* Centra verticalmente */
+    gap: 0.3rem;          /* Espacio entre texto e ícono */
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Asegura que el ícono no se desplace */
+.dropdown-btn i {
+    font-size: 0.7em;     /* Reduce ligeramente el ícono */
+    vertical-align: middle; /* Alinea con el texto */
+    margin-left: 0.2rem;  /* Espacio opcional */
+}
+
+/* Contenido desplegable (sin cambios) */
+.dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilos para los enlaces del dropdown */
+.dropdown-content a {
+    color: var(--primary-color);
+    padding: 0.75rem 1rem;
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: background 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background: #f8f9fa;
+}
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--light-color);
+            min-width: 220px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+            border-radius: var(--border-radius);
+            top: 100%;
+            left: 0;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            animation: fadeInDown 0.3s ease;
+        }
+        
+        .dropdown-content a {
+            color: var(--primary-color);
+            padding: 12px 16px;
+            display: block;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            padding-left: 20px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .menu-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 86, 179, 0.85) 0%, rgba(0, 51, 102, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 850px;
+            animation: fadeIn 1s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2.2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 160, 233, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background-color: #0088cc;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 160, 233, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Secciones principales */
+        .section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+        
+        .section-bg {
+            background-color: var(--section-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+        
+        .underline {
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Tarjetas */
+        .card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card i {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .card:hover i {
+            transform: scale(1.1);
+        }
+        
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card p {
+            color: var(--text-color);
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        /* Panel de inicio mejorado */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Servicios destacados */
+        .services-highlight {
+            background-color: var(--section-bg);
+            padding: 6rem 5%;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .service-content p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .service-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
+        }
+        
+        .service-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 86, 179, 0.3);
+        }
+        
+        /* Sección de Guía para Familia */
+        .guide-section {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .guide-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .guide-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .guide-header h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .guide-header p {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+        
+        .faq-section h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-question {
+            background-color: var(--section-bg);
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(0, 86, 179, 0.1);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .faq-question.active::after {
+            content: '-';
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .condition-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .condition-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .condition-card ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .condition-card ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .resources-section {
+            margin-top: 3rem;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            border-top: 4px solid var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .resource-card a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        
+        .resource-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Galería */
+        .gallery-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            gap: 1rem;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background-color: var(--light-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            aspect-ratio: 4/3;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 86, 179, 0.9) 0%, rgba(0, 86, 179, 0.5) 100%);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .gallery-item:hover .img-overlay {
+            opacity: 1;
+        }
+        
+        .overlay-content {
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .overlay-content {
+            transform: translateY(0);
+        }
+        
+        .overlay-content h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .overlay-content p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .zoom-icon {
+            font-size: 1.2rem;
+            color: white;
+            background-color: var(--accent-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: var(--transition);
+        }
+        
+        .zoom-icon:hover {
+            transform: scale(1.1);
+            background-color: #0088cc;
+        }
+        
+        /* Estadísticas */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+        
+        .stats-grid {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat-card {
+            padding: 2.5rem 1rem;
+            position: relative;
+        }
+        
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60%;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-card:last-child::after {
+            display: none;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        /* Director */
+        .director-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .director-name {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .director-title {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+        
+        .director-bio {
+            text-align: left;
+            margin-top: 2rem;
+            line-height: 1.8;
+        }
+        
+        .director-bio p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-director {
+            display: table;
+            margin: 2rem auto;
+            text-align: center;
+        }
+        
+        .testimonial-director img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contacto */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 160, 233, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 160, 233, 0.3);
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0088cc;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 160, 233, 0.4);
+        }
+        
+        #horarios-box {
+            display: none;
+            background-color: var(--primary-color);
+            border-left: 4px solid white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: white;
+        }
+        
+        #horarios-box h4 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        
+        #horarios-box ul {
+            color: #f0f0f0;
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+        
+        .contact-info-container {
+            background: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .contact-info-container h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.8rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+        
+        .contact-text {
+            flex: 1;
+        }
+        
+        .contact-text strong {
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 400px;
+            margin-top: 2rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%) contrast(90%);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 5% 2rem;
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            text-align: left;
+        }
+        
+        .footer-logo img {
+            height: 70px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-links h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: block;
+            padding: 0.3rem 0;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 8px;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            margin-right: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .stat-card::after {
+                display: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                animation: fadeInDown 0.3s ease;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu a {
+                width: 90%;
+                text-align: center;
+                margin: 0.3rem auto;
+                padding: 1rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 90%;
+                margin: 0.5rem auto;
+                box-shadow: none;
+                border: none;
+                animation: none;
+            }
+            
+            .menu-icon {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+            
+            .guide-container {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 3rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .guide-header h2 {
+                font-size: 2rem;
+            }
+        }
+        #docencia {
+            background-color: var(--section-bg);
+        }
+
+        .workshop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .workshop-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .workshop-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .workshop-card:hover .workshop-image {
+            transform: scale(1.05);
+        }
+
+        .workshop-content {
+            padding: 2rem;
+        }
+
+        .workshop-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .workshop-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .workshop-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Sección de Servicios Destacados */
+        .services-highlight {
+            background-color: var(--section-bg);
+            padding: 6rem 5%;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .service-content p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .service-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            text-decoration: none;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
+        }
+        
+        .service-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        /* Resto de tus estilos existentes... */
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                animation: fadeInDown 0.3s ease;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu a {
+                width: 90%;
+                text-align: center;
+                margin: 0.3rem auto;
+                padding: 1rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 90%;
+                margin: 0.5rem auto;
+                box-shadow: none;
+                border: none;
+                animation: none;
+            }
+            
+            .menu-icon {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .btn {
+                padding: 0.9rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                min-height: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .workshop-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar" id="navbar">
+        <div class="logo">
+            <img src="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" alt="Logo CEREFE">
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <div class="menu" id="mainMenu">
+            <a href="#inicio">Inicio</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-btn">Conócenos <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#mision-vision">Misión y Visión</a>
+                    <a href="#historia">Historia</a>
+                    <a href="#director">Director General</a>
+                </div>
+            </div>
+            <a href="#guia-familia">Guía para Familia</a>
+            <a href="#docencia">Docencia e Investigación</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#galeria">Galería</a>
+            <a href="#donacion">Donaciones</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Centro de Rehabilitación y Educación Especial</h1>
+            <p>Brindamos atención integral a personas con dificultades en el aprendizaje, discapacidades y talento superior, promoviendo su inclusión educativa, social y desarrollo humano con más de 37 años de experiencia en Bolivia.</p>
+            <div class="hero-buttons">
+                <a href="#servicios" class="btn">Nuestros Servicios</a>
+                <a href="#contacto" class="btn btn-secondary">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Panel de inicio mejorado -->
+    <section class="section">
+        <div class="section-title">
+            <h2>¿Por qué elegir CEREFE?</h2>
+            <div class="underline"></div>
+            <p>Ofrecemos una atención integral y personalizada para cada uno de nuestros pacientes</p>
+        </div>
+        
+        <div class="features-container">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>Profesionales Especializados</h3>
+                <p>Contamos con un equipo multidisciplinario de profesionales altamente capacitados en diferentes áreas de la rehabilitación.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Atención Personalizada</h3>
+                <p>Cada paciente recibe un plan de tratamiento individualizado según sus necesidades y capacidades.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3>Enfoque Integral</h3>
+                <p>Trabajamos con el paciente y su familia para lograr una rehabilitación completa y sostenible.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Educación Especial</h3>
+                <p>Programas educativos adaptados a las capacidades de cada estudiante para maximizar su desarrollo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Misión y Visión -->
+    <section id="mision-vision" class="section section-bg">
+        <div class="section-title">
+            <h2>Nuestra Razón de Ser</h2>
+            <div class="underline"></div>
+            <p>Comprometidos con la excelencia en la atención a personas con discapacidad</p>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-bullseye"></i>
+                <h3>Misión</h3>
+                <p>Brindar servicios de rehabilitación integral y educación especial de calidad  personas con dificultades en el aprendizaje, discapacidades y talento superior, promoviendo su desarrollo físico, intelectual y emocional para lograr su máxima independencia e inclusión social.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-eye"></i>
+                <h3>Visión</h3>
+                <p>Ser el centro de referencia nacional en rehabilitación y educación especial, reconocido por su excelencia en la atención integral, innovación tecnológica y compromiso con la inclusión social de las personas con discapacidad.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-heart"></i>
+                <h3>Valores</h3>
+                <p>
+                    <strong>Compromiso:</strong> Con nuestros pacientes y sus familias<br>
+                    <strong>Ética:</strong> En todas nuestras acciones<br>
+                    <strong>Solidaridad:</strong> Con los más necesitados<br>
+                    <strong>Innovación:</strong> En nuestros métodos de atención<br>
+                    <strong>Calidad:</strong> En todos nuestros servicios
+                </p>
+            </div>
+        </div>
+    </section>
+    
+      <!-- Sección de Director -->
+      <section id="director" class="section section-bg">
+        <div class="director-container">
+            <div class="section-title">
+                <h2>Director General</h2>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="testimonial-director">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dr. Juan Pérez García">
+            </div>
+            
+            <h3 class="director-name">Dr. Quiroga</h3>
+            <p class="director-title">Director General de CEREFE</p>
+            
+            <div class="director-bio">
+                <p>El Dr. Juan Pérez García cuenta con más de 20 años de experiencia en el campo de la rehabilitación y educación especial. Graduado con honores de la Universidad Mayor de San Andrés, ha dedicado su carrera profesional al servicio de las personas con discapacidad.</p>
+                
+                <p>Bajo su dirección, CEREFE ha experimentado un crecimiento significativo, expandiendo sus servicios y mejorando la calidad de atención a los pacientes. Su liderazgo ha permitido la implementación de nuevas tecnologías y metodologías innovadoras en el campo de la rehabilitación.</p>
+                
+                <p>El Dr. Pérez es miembro activo de varias asociaciones profesionales nacionales e internacionales relacionadas con la discapacidad y la rehabilitación, y ha sido reconocido con múltiples premios por su labor en favor de la inclusión social.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de Guía para Familia -->
+    <section id="guia-familia" class="section">
+        <div class="guide-section">
+            <div class="guide-container">
+                <div class="guide-header">
+                    <h2>Guía para Familia</h2>
+                    <div class="underline"></div>
+                    <p>Recursos y orientación para familias que tienen un miembro con discapacidad</p>
+                </div>
+                
+                <div class="faq-section">
+                    <h3>Dificultades Comunes y Cómo Apoyar</h3>
+                    
+                    <div class="condition-card">
+                        <h4>Trastorno por Déficit de Atención e Hiperactividad (TDAH)</h4>
+                        <p>El TDAH es un trastorno del neurodesarrollo caracterizado por dificultades para mantener la atención, hiperactividad e impulsividad.</p>
+                        
+                        <p><strong>Señales comunes:</strong></p>
+                        <ul>
+                            <li>Dificultad para concentrarse en tareas</li>
+                            <li>Actividad motora excesiva</li>
+                            <li>Impulsividad en acciones y decisiones</li>
+                            <li>Dificultad para seguir instrucciones</li>
+                            <li>Problemas de organización</li>
+                        </ul>
+                        
+                        <p><strong>Cómo apoyar:</strong></p>
+                        <ul>
+                            <li>Establecer rutinas estructuradas y predecibles</li>
+                            <li>Dividir tareas en pasos pequeños</li>
+                            <li>Usar recordatorios visuales</li>
+                            <li>Proporcionar actividad física regular</li>
+                            <li>Reforzar positivamente los comportamientos adecuados</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="condition-card">
+                        <h4>Trastorno del Espectro Autista (TEA)</h4>
+                        <p>El autismo es una condición del neurodesarrollo que afecta la comunicación, interacción social y el comportamiento.</p>
+                        
+                        <p><strong>Señales comunes:</strong></p>
+                        <ul>
+                            <li>Dificultades en la interacción social</li>
+                            <li>Patrones repetitivos de comportamiento</li>
+                            <li>Intereses restringidos e intensos</li>
+                            <li>Sensibilidad sensorial</li>
+                            <li>Dificultades en la comunicación verbal y no verbal</li>
+                        </ul>
+                        
+                        <p><strong>Cómo apoyar:</strong></p>
+                        <ul>
+                            <li>Usar comunicación clara y directa</li>
+                            <li>Respetar sus rutinas y espacios</li>
+                            <li>Anticipar cambios con apoyos visuales</li>
+                            <li>Identificar y manejar estímulos sensoriales problemáticos</li>
+                            <li>Fomentar intereses que puedan convertirse en habilidades</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="condition-card">
+                        <h4>Discapacidad Intelectual</h4>
+                        <p>La discapacidad intelectual se caracteriza por limitaciones significativas en el funcionamiento intelectual y en la conducta adaptativa.</p>
+                        
+                        <p><strong>Señales comunes:</strong></p>
+                        <ul>
+                            <li>Dificultad para aprender y resolver problemas</li>
+                            <li>Retraso en el desarrollo de habilidades</li>
+                            <li>Problemas en la comunicación</li>
+                            <li>Dificultad para las actividades de la vida diaria</li>
+                            <li>Necesidad de apoyo en entornos sociales</li>
+                        </ul>
+                        
+                        <p><strong>Cómo apoyar:</strong></p>
+                        <ul>
+                            <li>Enseñar habilidades paso a paso</li>
+                            <li>Usar materiales concretos y ejemplos prácticos</li>
+                            <li>Reforzar la independencia en actividades cotidianas</li>
+                            <li>Fomentar la participación en actividades sociales</li>
+                            <li>Establecer expectativas realistas y celebrar logros</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="condition-card">
+                        <h4>Parálisis Cerebral</h4>
+                        <p>La parálisis cerebral es un grupo de trastornos que afectan el movimiento y la postura debido a una lesión en el cerebro en desarrollo.</p>
+                        
+                        <p><strong>Señales comunes:</strong></p>
+                        <ul>
+                            <li>Alteraciones en el tono muscular</li>
+                            <li>Dificultades en el movimiento y coordinación</li>
+                            <li>Problemas de equilibrio y postura</li>
+                            <li>En algunos casos, dificultades en el habla y alimentación</li>
+                            <li>Posible presencia de trastornos asociados</li>
+                        </ul>
+                        
+                        <p><strong>Cómo apoyar:</strong></p>
+                        <ul>
+                            <li>Adaptar el entorno para facilitar la movilidad</li>
+                            <li>Realizar ejercicios de estimulación según indicación profesional</li>
+                            <li>Usar ayudas técnicas cuando sean necesarias</li>
+                            <li>Fomentar la participación en actividades adecuadas</li>
+                            <li>Brindar apoyo emocional y social</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Preguntas frecuentes</h3>
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            ¿Cómo puedo saber si mi familiar necesita atención especializada?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Si observas que tu familiar tiene dificultades significativas en áreas como movilidad, comunicación, aprendizaje o interacción social que afectan su vida diaria, es recomendable buscar una evaluación profesional. En CEREFE ofrecemos evaluaciones integrales para determinar las necesidades específicas de cada persona.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            ¿Qué documentos necesito para iniciar el proceso de atención?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Para iniciar el proceso necesitarás:</p>
+                            <ul>
+                                <li>Carnet de identidad o certificado de nacimiento</li>
+                                <li>Informes médicos o psicológicos previos (si los tiene)</li>
+                                <li>Carnet de vacunas (para niños)</li>
+                                <li>Fotografía tamaño carnet</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            ¿Existen programas de apoyo económico para el tratamiento?
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, contamos con programas de apoyo y becas según la situación socioeconómica de la familia. Nuestro departamento de Trabajo Social puede orientarte sobre las opciones disponibles y los requisitos para acceder a estos beneficios.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resources-section">
+                    <h3>Recursos Útiles</h3>
+                    
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <h4>Guía de Primeros Pasos</h4>
+                            <p>Descarga nuestra guía con información básica para familias que recién inician el proceso de rehabilitación.</p>
+                            <a href="#" download>Descargar Guía <i class="fas fa-download"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>Directorio de Instituciones</h4>
+                            <p>Listado de organizaciones y entidades que ofrecen apoyo a personas con discapacidad en Bolivia.</p>
+                            <a href="#">Ver Directorio <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>Talleres para Familias</h4>
+                            <p>Información sobre nuestros talleres mensuales donde aprenderás estrategias para apoyar a tu familiar.</p>
+                            <a href="#contacto">Inscribirse <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <h4>Casos atendidos</h4>
+                            <p>Historias de éxito y testimonios de familias que han pasado por nuestro centro.</p>
+                            <a href="#">Ver casos <i class="fas fa-book-open"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  <!-- Sección de Docencia e Investigación -->
+  <section id="docencia" class="section section-bg">
+    <div class="section-title">
+        <h2>Docencia e Investigación</h2>
+        <div class="underline"></div>
+        <p>Talleres y programas de formación para profesionales y familias</p>
+    </div>
+    
+    <div class="workshop-container">
+        <div class="workshop-card">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Taller de inclusión educativa" class="workshop-image">
+            <div class="workshop-content">
+                <h3>Taller de Inclusión Educativa</h3>
+                <p>Capacitación para docentes y educadores sobre estrategias pedagógicas inclusivas para estudiantes con necesidades especiales.</p>
+                <div class="workshop-meta">
+                    <span><i class="fas fa-calendar-alt"></i> 15 de Julio, 2023</span>
+                    <span><i class="fas fa-users"></i> 25 participantes</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workshop-card">
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Terapias innovadoras" class="workshop-image">
+            <div class="workshop-content">
+                <h3>Terapias Innovadoras en Rehabilitación</h3>
+                <p>Presentación de nuevas metodologías y tecnologías aplicadas a la rehabilitación de personas con discapacidad.</p>
+                <div class="workshop-meta">
+                    <span><i class="fas fa-calendar-alt"></i> 22 de Agosto, 2023</span>
+                    <span><i class="fas fa-users"></i> 18 participantes</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workshop-card">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Apoyo familiar" class="workshop-image">
+            <div class="workshop-content">
+                <h3>Taller de Apoyo para Familias</h3>
+                <p>Espacio de aprendizaje e intercambio de experiencias para familias de personas con discapacidad.</p>
+                <div class="workshop-meta">
+                    <span><i class="fas fa-calendar-alt"></i> 10 de Septiembre, 2023</span>
+                    <span><i class="fas fa-users"></i> 30 participantes</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workshop-card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJBsbN2cIp0wBzhW755yhuvfOjOpXaVCR4leaK6C-G-EAWXeWRBOkEiyh0WNpv9MsUHA&usqp=CAU" alt="Investigación en discapacidad" class="workshop-image">
+            <div class="workshop-content">
+                <h3>Seminario de Investigación en Discapacidad</h3>
+                <p>Presentación de estudios recientes y avances en el campo de la discapacidad y rehabilitación.</p>
+                <div class="workshop-meta">
+                    <span><i class="fas fa-calendar-alt"></i> 20 de Octubre, 2025</span>
+                    <span><i class="fas fa-users"></i> 40 participantes </span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workshop-card">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Taller de comunicación" class="workshop-image">
+            <div class="workshop-content">
+                <h3>Taller de Comunicación Alternativa</h3>
+                <p>Enseñanza de sistemas de comunicación aumentativa y alternativa para personas con dificultades en el habla.</p>
+                <div class="workshop-meta">
+                    <span><i class="fas fa-calendar-alt"></i> 18 de Noviembre, 2025</span>
+                    <span><i class="fas fa-users"></i> 15 participantes</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="workshop-card">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Educación especial" class="workshop-image">
+            <div class="workshop-content">
+                <h3>Diplomado en Educación Especial</h3>
+                <p>Programa de formación intensiva para profesionales que trabajan con personas con necesidades educativas especiales.</p>
+                <div class="workshop-meta">
+                    <span><i class="fas fa-calendar-alt"></i> Enero - Marzo 2024</span>
+                    <span><i class="fas fa-users"></i> 20 participantes</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Sección de Servicios Destacados -->
+    <section id="servicios" class="section services-highlight">
+        <div class="section-title">
+            <h2>Nuestros Servicios</h2>
+            <div class="underline"></div>
+            <p>Ofrecemos una amplia gama de servicios especializados para atender las necesidades de nuestros pacientes</p>
+        </div>
+        <div class="grid">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Medicina">
+                <div class="service-content">
+                    <h3>Medicina General y Pediatría </h3>
+                    <p>Atención médica gernal y pediatría.</p>
+                    <a href="#medicina" class="service-btn">Más información</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Odontología">
+                <div class="service-content">
+                    <h3>Odontología Especializada</h3>
+                    <p>Atención odontológica adaptada a pacientes con discapacidad, con equipos especiales y personal capacitado. Realizamos tratamientos preventivos, restaurativos y de ortodoncia.</p>
+                    <a href="#odontologia" class="service-btn">Más información</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Psicología">
+                <div class="service-content">
+                    <h3>Psicología y Orientación</h3>
+                    <p>Evaluación, diagnóstico e intervención psicológica individual y familiar para el desarrollo emocional. Trabajamos en el fortalecimiento de habilidades sociales y adaptativas.</p>
+                    <a href="#psicologia" class="service-btn">Más información</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Pedagogía">
+                <div class="service-content">
+                    <h3>Pedagogía y Educación Especial</h3>
+                    <p>Programas educativos personalizados según las necesidades y capacidades de cada estudiante. Implementamos metodologías innovadoras para el aprendizaje significativo.</p>
+                    <a href="#pedagogia" class="service-btn">Más información</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Fisioterapia">
+                <div class="service-content">
+                    <h3>Fisioterapia y Rehabilitación</h3>
+                    <p>Terapias físicas para mejorar movilidad, fuerza y coordinación con equipos especializados. Desarrollamos planes de rehabilitación integral para cada paciente.</p>
+                    <a href="#fisioterapia" class="service-btn">Más información</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Trabajo Social">
+                <div class="service-content">
+                    <h3>Trabajo Social y Orientación</h3>
+                    <p>Apoyo social, gestión de ayudas técnicas y acompañamiento en procesos de inclusión. Brindamos asesoramiento legal y gestionamos redes de apoyo familiar.</p>
+                    <a href="#trabajo-social" class="service-btn">Más información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Estadísticas -->
+    <section class="section stats-section">
+        <div class="section-title" style="color: white;">
+            <h2 style="color: inherit;">Nuestro Impacto</h2>
+            <div class="underline" style="background-color: var(--accent-color);"></div>
+            <p style="color: rgba(255, 255, 255, 0.9);">Más de tres décadas transformando vidas a través de la rehabilitación y educación especial</p>
+        </div>
+        <div class="grid stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-count="600">0</div>
+                <div class="stat-label">Pacientes atendidos anualmente</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="37">0</div>
+                <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Profesionales especializados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="40">0</div>
+                <div class="stat-label">Profesores capacitados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-count="15">0</div>
+                <div class="stat-label">Programas de Apoyo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Galería -->
+    <section id="galeria" class="section">
+        <div class="section-title">
+            <h2>Galería CEREFE</h2>
+            <div class="underline"></div>
+            <p>Conoce nuestro trabajo a través de estas imágenes que muestran nuestras actividades, instalaciones y eventos especiales</p>
+        </div>
+        
+        <div class="gallery-container">
+            <div class="gallery-controls">
+                <button class="filter-btn active" data-filter="all">Todas</button>
+                <button class="filter-btn" data-filter="actividades">Actividades</button>
+                <button class="filter-btn" data-filter="terapias">Terapias</button>
+                <button class="filter-btn" data-filter="instalaciones">Instalaciones</button>
+                <button class="filter-btn" data-filter="eventos">Eventos</button>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item actividades" data-category="actividades">
+                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Actividades educativas en CEREFE" class="gallery-img">
+                    <div class="img-overlay">
+                        <div class="overlay-content">
+                            <h3>Actividades Educativas</h3>
+                            <p>Nuestros estudiantes participando en actividades de aprendizaje interactivo</p>
+                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item terapias" data-category="terapias">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapias en CEREFE" class="gallery-img">
+                    <div class="img-overlay">
+                        <div class="overlay-content">
+                            <h3>Sesiones de Terapia</h3>
+                            <p>Profesionales trabajando con nuestros pacientes en sesiones personalizadas</p>
+                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item instalaciones" data-category="instalaciones">
+                    <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instalaciones de CEREFE" class="gallery-img">
+                    <div class="img-overlay">
+                        <div class="overlay-content">
+                            <h3>Nuestras Instalaciones</h3>
+                            <p>Espacios diseñados para la comodidad y accesibilidad de nuestros pacientes</p>
+                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item eventos" data-category="eventos">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Eventos en CEREFE" class="gallery-img">
+                    <div class="img-overlay">
+                        <div class="overlay-content">
+                            <h3>Eventos Especiales</h3>
+                            <p>Celebraciones y actividades comunitarias para promover la inclusión</p>
+                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item terapias" data-category="terapias">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapia física en CEREFE" class="gallery-img">
+                    <div class="img-overlay">
+                        <div class="overlay-content">
+                            <h3>Terapia Física</h3>
+                            <p>Sesiones personalizadas para mejorar la movilidad y autonomía</p>
+                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item actividades" data-category="actividades">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Talleres educativos" class="gallery-img">
+                    <div class="img-overlay">
+                        <div class="overlay-content">
+                            <h3>Talleres Educativos</h3>
+                            <p>Programas diseñados para el desarrollo de habilidades cognitivas</p>
+                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+
+    <!-- Sección de Donaciones -->
+    <section id="donacion" class="section">
+        <div class="section-title">
+            <h2>Apoya Nuestra Labor</h2>
+            <div class="underline"></div>
+            <p>Tu contribución nos permite seguir brindando servicios de calidad a quienes más lo necesitan</p>
+        </div>
+        <div class="grid">
+            <div class="donation-card card">
+                <i class="fas fa-qrcode"></i>
+                <h3>Donación Rápida</h3>
+                <p>Escanea nuestro código QR para realizar tu donación de manera inmediata a través de cualquier aplicación de banca móvil</p>
+                <div class="donation-qr">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cerefe.org.bo/donaciones" alt="Código QR de donación">
+                </div>
+            </div>
+            <div class="donation-card card">
+                <i class="fas fa-university"></i>
+                <h3>Transferencia Bancaria</h3>
+                <p>Realiza tu donación directamente a nuestra cuenta bancaria con los siguientes datos:</p>
+                <div class="bank-info">
+                    <p><strong>Banco:</strong> Banco Nacional de Bolivia</p>
+                    <p><strong>Tipo de cuenta:</strong> Cuenta Corriente</p>
+                    <p><strong>Número de cuenta:</strong> 150-456789-1</p>
+                    <p><strong>Nombre:</strong> CEREFE</p>
+                    <p><strong>CI/NIT:</strong> 123456789</p>
+                </div>
+            </div>
+            <div class="donation-card card">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Donación en Especie</h3>
+                <p>Aceptamos donaciones de equipos médicos, materiales educativos, suministros y otros recursos que apoyen nuestra labor</p>
+                <a href="#contacto" class="service-btn">Contáctanos para coordinar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="section section-bg">
+        <div class="section-title">
+            <h2>Contáctanos</h2>
+            <div class="underline"></div>
+            <p>Estamos aquí para responder tus preguntas y brindarte la información que necesites</p>
+        </div>
+        
+        <div class="contact-container">
+            <!-- Formulario de contacto -->
+            <div class="contact-form-container">
+                <h3>Envíanos un Mensaje</h3>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Teléfono">
+                    </div>
+                    <div class="form-group">
+                        <select id="tema-select" class="form-control" required onchange="mostrarHorarios(this.value)">
+                            <option value="" disabled selected>Selecciona un tema</option>
+                            <option>Información sobre servicios</option>
+                            <option value="citas">Citas y horarios</option>
+                            <option>Donaciones y apoyo</option>
+                            <option>Trabajo y voluntariado</option>
+                            <option>Otros</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Cuadro de horarios (oculto inicialmente) -->
+                    <div id="horarios-box">
+                        <h4>Horario de atención para citas:</h4>
+                        <ul>
+                            <li>Lunes a Viernes:
+                                <ul>
+                                    <li>Mañana: 8:00 - 12:30</li>
+                                    <li>Tarde: 13:30 - 16:00</li>
+                                </ul>
+                            </li>
+                            <li>Sábados: Cerrado</li>
+                            <li>Domingo: Cerrado</li>
+                        </ul>
+                    </div>
+            
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Tu mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+            
+            <!-- Información de contacto -->
+            <div class="contact-info-container">
+                <h3>Información de Contacto</h3>
+                
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-text">
+                        <strong>Dirección:</strong>
+                        <span>Calle Junín #1234, Zona Central, Cochabamba, Bolivia</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-text">
+                        <strong>Teléfonos:</strong>
+                        <span>+591 4 4256789<br>+591 76543210</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-text">
+                        <strong>Correo electrónico:</strong>
+                        <span>info@cerefe.org.bo</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div class="contact-text">
+                        <strong>Horario de atención:</strong>
+                        <span>Lunes a Viernes: 8:00 - 16:00</span>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.041486674013!2d-68.1604205!3d-16.510224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edf9b79065b99%3A0xc44a82dbc1532796!2sFundaci%C3%B3n%20Cerefe!5e0!3m2!1ses!2sbo!4v1719523456789" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" alt="Logo CEREFE">
+                </div>
+                <p>CEREFE es un centro especializado en rehabilitación y educación especial con más de 37 años de experiencia atendiendo a personas con discapacidad en Bolivia.</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+          
+            
+            <div class="footer-links">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="#medicina">Medicina General</a></li>
+                    <li><a href="#odontologia">Odontología</a></li>
+                    <li><a href="#psicologia">Psicología</a></li>
+                    <li><a href="#pedagogia">Pedagogía</a></li>
+                    <li><a href="#fisioterapia">Fisioterapia</a></li>
+                    <li><a href="#trabajo-social">Trabajo Social</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-text">Calle Junín #1234, Zona Central, Cochabamba</div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="contact-text">+591 4 4256789</div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-text">info@cerefe.org.bo</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 CEREFE - Centro de Rehabilitación y Educación Especial. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/59112345678" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Menú responsive
+        function toggleMenu() {
+            const menu = document.getElementById('mainMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Efecto scroll en navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Filtro de galería
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Agregar clase active al botón clickeado
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Animación de contadores
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const speed = 200;
+            
+            function animateCounters() {
+                statNumbers.forEach(statNumber => {
+                    const target = parseInt(statNumber.getAttribute('data-count'));
+                    const count = parseInt(statNumber.innerText);
+                    const increment = Math.ceil(target / speed);
+                    
+                    if (count < target) {
+                        statNumber.innerText = count + increment;
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        statNumber.innerText = target + '+';
+                    }
+                });
+            }
+            
+            // Activar contadores cuando la sección es visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+
+        // Smooth scrolling para anclas
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Cerrar menú móvil si está abierto
+                    const menu = document.getElementById('mainMenu');
+                    if (menu.classList.contains('active')) {
+                        menu.classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Mostrar/ocultar horarios en formulario de contacto
+        function mostrarHorarios(valor) {
+            const horariosBox = document.getElementById('horarios-box');
+            if (valor === 'citas') {
+                horariosBox.style.display = 'block';
+            } else {
+                horariosBox.style.display = 'none';
+            }
+        }
+        
+        // Funcionalidad para preguntas frecuentes
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = element.nextElementSibling;
+            
+            // Cerrar todas las demás preguntas
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.querySelector('.faq-question').classList.remove('active');
+                    item.querySelector('.faq-answer').classList.remove('show');
+                }
+            });
+            
+            // Alternar la pregunta actual
+            element.classList.toggle('active');
+            answer.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

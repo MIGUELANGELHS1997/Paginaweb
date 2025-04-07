@@ -6,270 +6,417 @@
     <title>CEREFE - Centro de Rehabilitación y Educación Especial</title>
     <meta name="description" content="CEREFE brinda atención integral a personas con discapacidad, promoviendo su inclusión social y desarrollo humano en Bolivia.">
     <meta name="keywords" content="rehabilitación, educación especial, discapacidad, inclusión, terapia, Bolivia, TDAH, autismo, discapacidad intelectual">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Preconexión para mejorar el rendimiento -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fuentes optimizadas -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos optimizados -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://cerefe.org.bo/wp-content/uploads/2018/01/favicon.png" type="image/png">
+    
+    <!-- Preload para imágenes críticas -->
+    <link rel="preload" href="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" as="image">
+    <link rel="preload" href="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" as="image">
+    
     <style>
         :root {
             --primary-color: #0056b3;
+            --primary-dark: #003d82;
             --secondary-color: #003366;
             --accent-color: #00a0e9;
+            --accent-dark: #0088cc;
             --light-color: #ffffff;
             --dark-color: #001a33;
             --text-color: #333333;
             --text-light: #ffffff;
+            --text-muted: #6c757d;
             --section-bg: #f8f9fa;
             --border-radius: 8px;
             --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s ease;
+            --header-height: 70px;
         }
       
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
         
         body {
+            font-family: 'Poppins', sans-serif;
             background-color: var(--light-color);
             color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
+            padding-top: var(--header-height);
         }
         
-        /* Barra de navegación */
+        /* Optimización de tipografía */
+        h1 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        a:hover {
+            color: var(--accent-dark);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Barra de navegación optimizada */
         .navbar {
     background-color: var(--primary-color);
     color: var(--text-light);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 5%;
+    padding: 0.5rem 5%; /* Reducido para mejor proporción */
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-    font-size: 0.85rem; /* Tamaño original */
+    transition: all 0.4s ease;
+    height: var(--header-height, 70px); /* Valor por defecto */
 }
 
 .navbar.scrolled {
-    padding: 0.5rem 5%;
-    background-color: rgba(0, 86, 179, 0.95);
-    backdrop-filter: blur(10px);
-    font-size: 0.75rem; /* Tamaño reducido pero legible */
+    padding: 0.3rem 5%; /* Más compacto al hacer scroll */
+    background-color: rgba(0, 86, 179, 0.98); /* Más opaco */
+    backdrop-filter: blur(8px);
+    height: calc(var(--header-height, 70px) - 10px); /* Reduce altura */
 }
 
-        .menu a {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 0.5rem 0.8rem;
-            margin: 0 0.2rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border-radius: var(--border-radius);
-            font-size: 0.85rem;
-        }
-
-        .dropdown-content a {
-    color: var(--primary-color);
-    padding: 0.75rem 1.5rem; /* Más espacio interno */
-    display: block;
-    text-decoration: none; /* Elimina subrayado predeterminado */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Borde más suave */
-    transition: var(--transition);
-    font-size: 0.85rem; /* Tamaño de fuente ligeramente mayor */
-    white-space: nowrap; /* Evita saltos de línea no deseados */
-    background-color: white; /* Fondo blanco para mejor legibilidad */
+.logo img {
+    height: clamp(40px, 4vw, 50px); /* Responsivo basado en ancho de vista */
+    transition: transform 0.3s ease;
+    width: auto;
+    object-fit: contain;
 }
 
-.dropdown-content a:hover {
-    background-color: #f8f9fa; /* Color de hover suave */
-    color: var(--primary-color-dark); /* Oscurece el color al pasar el mouse */
-    transform: translateX(2px); /* Efecto sutil de movimiento */
+/* Ajustes para el menú con espaciado proporcional */
+.menu {
+    gap: min(1vw, 1rem); /* Espaciado responsivo */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
 }
 
-        .logo img {
-            height: 50px;
-            transition: var(--transition);
-        }
-        
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-        
-        .menu {
-            display: flex;
-            align-items: center;
-        }
-        
-        .menu a {
-            color: var(--text-light);
-            text-decoration: none;
-            padding: 0.8rem 1.2rem;
-            margin: 0 0.3rem;
-            font-weight: 500;
-            transition: var(--transition);
-            border-radius: var(--border-radius);
-            font-size: 0.95rem;
-        }
-        
-        .menu a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            color: white;
-        }
-        
-       /* Contenedor principal del dropdown (relativo para posicionar el contenido) */
-.dropdown {
+.menu a {
+    
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 0.7rem 1.2rem;
+    margin: 0 0.2rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
     position: relative;
-    display: inline-block; /* Evita que ocupe todo el ancho */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 2px 5px rgba(0, 0, 0, 0.1),
+        inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Botón que activa el dropdown */
-/* Estilo base del botón del dropdown */
-.dropdown-btn {
-    display: inline-flex;  /* Usa flexbox para alinear ícono y texto */
-    align-items: center;   /* Centra verticalmente */
-    gap: 0.3rem;          /* Espacio entre texto e ícono */
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 2px 2px rgba(255, 255, 255, 0.2),
+        0 0 0 3px rgba(255, 255, 255, 0.1);
     color: white;
-    text-decoration: none;
-    font-size: 0.85rem;
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.4),
+        0 0 8px rgba(255, 255, 255, 0.3);
 }
 
-/* Asegura que el ícono no se desplace */
-.dropdown-btn i {
-    font-size: 0.7em;     /* Reduce ligeramente el ícono */
-    vertical-align: middle; /* Alinea con el texto */
-    margin-left: 0.2rem;  /* Espacio opcional */
-}
-
-/* Contenido desplegable (sin cambios) */
-.dropdown-content {
+.menu a::before {
+    content: '';
     position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1000;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid var(--accent-color);
+    border-radius: calc(var(--border-radius) + 3px);
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: -1;
 }
 
-.dropdown:hover .dropdown-content {
-    opacity: 1;
-    visibility: visible;
+.menu a:hover::before {
+    opacity: 0.4;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
 }
 
-/* Estilos para los enlaces del dropdown */
-.dropdown-content a {
-    color: var(--primary-color);
-    padding: 0.75rem 1rem;
-    display: block;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: background 0.2s ease;
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+    border-radius: 50%;
 }
 
-.dropdown-content a:hover {
-    background: #f8f9fa;
+.menu a:hover::after {
+    width: 80%;
+    height: 3px;
+    box-shadow: 0 0 10px var(--accent-color);
 }
-        
+        /* Dropdown optimizado */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .dropdown-btn i {
+            font-size: 0.7em;
+            transition: var(--transition);
+        }
+
+        .dropdown:hover .dropdown-btn i {
+            transform: rotate(180deg);
+        }
+
         .dropdown-content {
-            display: none;
             position: absolute;
-            background-color: var(--light-color);
-            min-width: 220px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            z-index: 1;
-            border-radius: var(--border-radius);
             top: 100%;
             left: 0;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            animation: fadeInDown 0.3s ease;
+            background: white;
+            min-width: 220px;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            border-radius: var(--border-radius);
+            transform: translateY(10px);
         }
-        
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
         .dropdown-content a {
             color: var(--primary-color);
-            padding: 12px 16px;
+            padding: 0.75rem 1.5rem;
             display: block;
+            text-decoration: none;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: var(--transition);
             font-size: 0.9rem;
         }
-        
+
         .dropdown-content a:hover {
-            background-color: var(--primary-color);
-            color: white;
-            padding-left: 20px;
+            background-color: var(--section-bg);
+            padding-left: 1.75rem;
+            color: var(--primary-dark);
         }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
+
+        /* Menú móvil */
         .menu-icon {
             display: none;
             font-size: 1.8rem;
             cursor: pointer;
             color: white;
             transition: var(--transition);
+            padding: 0.5rem;
         }
         
         .menu-icon:hover {
             transform: scale(1.1);
         }
         
-        /* Hero Section */
+        /* Hero Section optimizada */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.85) 0%, rgba(0, 51, 102, 0.85) 100%), 
-                        url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
-            height: 100vh;
-            min-height: 700px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 70px;
-            padding: 0 20px;
-            position: relative;
-            overflow: hidden;
-        }
+    background: linear-gradient(135deg, rgba(0, 86, 179, 0.85) 0%, rgba(0, 51, 102, 0.85) 100%), 
+                url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+    height: calc(100vh - var(--header-height));
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 5%;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 
+        2px 2px 0px rgba(0, 40, 80, 0.6),
+        4px 4px 0px rgba(0, 20, 40, 0.4),
+        6px 6px 8px rgba(0, 0, 0, 0.3),
+        0 0 12px rgba(255, 255, 255, 0.4);
+    line-height: 1.2;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 
+        1px 1px 2px rgba(0, 30, 60, 0.7),
+        2px 2px 4px rgba(0, 0, 0, 0.4),
+        0 0 6px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1px);
+    padding: 0 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* Botón principal (Nuestros Servicios) */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: #FF6B00;
+    color: white !important; /* Forzamos color blanco */
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    background-color: #FF8C00;
+    color: white !important; /* Aseguramos que siga blanco en hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Botón secundario (Contáctanos) */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    backdrop-filter: blur(5px);
+    color: white !important; /* Forzamos color blanco */
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white !important; /* Aseguramos que siga blanco */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    backdrop-filter: blur(5px);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+    }
+}
         
-        .hero-content {
-            max-width: 850px;
-            animation: fadeIn 1s ease;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.7;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
+        /* Botones optimizados */
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -277,18 +424,18 @@
             padding: 1rem 2.2rem;
             border: none;
             border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: var(--transition);
             cursor: pointer;
             font-size: 1.1rem;
             box-shadow: 0 4px 15px rgba(0, 160, 233, 0.3);
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            text-align: center;
         }
         
         .btn:hover {
-            background-color: #0088cc;
+            background-color: var(--accent-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 160, 233, 0.4);
         }
@@ -303,9 +450,16 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
         
-        /* Secciones principales */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        /* Secciones principales optimizadas */
         .section {
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             position: relative;
         }
         
@@ -315,21 +469,18 @@
         
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
         
         .section-title h2 {
-            color: var(--primary-color);
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
             margin-bottom: 1.2rem;
-            font-weight: 600;
         }
         
         .section-title p {
             max-width: 700px;
             margin: 0 auto;
-            color: var(--text-color);
-            opacity: 0.8;
+            color: var(--text-muted);
             font-size: 1.1rem;
         }
         
@@ -341,25 +492,27 @@
             border-radius: 2px;
         }
         
+        /* Grid system mejorado */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        /* Tarjetas */
+        /* Tarjetas optimizadas */
         .card {
             background-color: var(--light-color);
             border-radius: var(--border-radius);
-            padding: 2.5rem;
+            padding: 2rem;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.05);
             text-align: center;
             position: relative;
             overflow: hidden;
+            height: 100%;
         }
         
         .card:hover {
@@ -379,16 +532,8 @@
         }
         
         .card h3 {
-            color: var(--primary-color);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .card p {
-            color: var(--text-color);
-            line-height: 1.7;
-            opacity: 0.9;
         }
         
         /* Panel de inicio mejorado */
@@ -421,15 +566,9 @@
             margin-bottom: 1.5rem;
         }
         
-        .feature-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
         /* Servicios destacados */
         .services-highlight {
             background-color: var(--section-bg);
-            padding: 6rem 5%;
         }
         
         .service-card {
@@ -439,6 +578,7 @@
             box-shadow: var(--box-shadow);
             transition: var(--transition);
             border: 1px solid rgba(0, 0, 0, 0.05);
+            height: 100%;
         }
         
         .service-card:hover {
@@ -462,17 +602,14 @@
         }
         
         .service-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
             font-size: 1.4rem;
-            font-weight: 600;
+            margin-bottom: 1rem;
         }
         
         .service-content p {
-            color: var(--text-color);
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
             line-height: 1.6;
-            opacity: 0.9;
             font-size: 0.95rem;
         }
         
@@ -496,7 +633,7 @@
             box-shadow: 0 6px 15px rgba(0, 86, 179, 0.3);
         }
         
-        /* Sección de Guía para Familia */
+        /* Sección de Guía para Familia optimizada */
         .guide-section {
             max-width: 1000px;
             margin: 0 auto;
@@ -515,16 +652,8 @@
         }
         
         .guide-header h2 {
-            color: var(--primary-color);
             font-size: 2.5rem;
             margin-bottom: 1rem;
-        }
-        
-        .guide-header p {
-            color: var(--text-color);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
         }
         
         .faq-section {
@@ -532,7 +661,6 @@
         }
         
         .faq-section h3 {
-            color: var(--primary-color);
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
@@ -556,6 +684,7 @@
             justify-content: space-between;
             align-items: center;
             transition: var(--transition);
+            user-select: none;
         }
         
         .faq-question:hover {
@@ -576,12 +705,12 @@
             padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.3s ease, padding 0.3s ease;
         }
         
         .faq-answer.show {
             padding: 1.5rem;
-            max-height: 500px;
+            max-height: 1000px;
         }
         
         .condition-card {
@@ -593,7 +722,6 @@
         }
         
         .condition-card h4 {
-            color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.3rem;
         }
@@ -631,7 +759,6 @@
         }
         
         .resource-card h4 {
-            color: var(--primary-color);
             margin-bottom: 1rem;
         }
         
@@ -639,7 +766,9 @@
             color: var(--accent-color);
             text-decoration: none;
             font-weight: 600;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-top: 1rem;
         }
         
@@ -647,7 +776,7 @@
             text-decoration: underline;
         }
         
-        /* Galería */
+        /* Galería optimizada */
         .gallery-container {
             max-width: 1300px;
             margin: 0 auto;
@@ -745,7 +874,6 @@
             margin-bottom: 0.8rem;
             font-size: 1.4rem;
             color: white;
-            font-weight: 600;
         }
         
         .overlay-content p {
@@ -770,10 +898,10 @@
         
         .zoom-icon:hover {
             transform: scale(1.1);
-            background-color: #0088cc;
+            background-color: var(--accent-dark);
         }
         
-        /* Estadísticas */
+        /* Estadísticas optimizadas */
         .stats-section {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
@@ -800,6 +928,7 @@
         .stat-card {
             padding: 2.5rem 1rem;
             position: relative;
+            text-align: center;
         }
         
         .stat-card::after {
@@ -818,7 +947,7 @@
         }
         
         .stat-number {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 0.5rem;
             color: white;
@@ -831,7 +960,7 @@
             font-weight: 500;
         }
         
-        /* Director */
+        /* Director optimizado */
         .director-container {
             max-width: 900px;
             margin: 0 auto;
@@ -839,16 +968,14 @@
         }
         
         .director-name {
-            color: var(--primary-color);
             font-size: 2rem;
             margin-bottom: 0.5rem;
         }
         
         .director-title {
-            color: var(--text-color);
+            color: var(--text-muted);
             font-size: 1.2rem;
             margin-bottom: 2rem;
-            opacity: 0.8;
         }
         
         .director-bio {
@@ -876,13 +1003,19 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
-        /* Contacto */
+        /* Contacto optimizado */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+        
+        @media (min-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
         }
         
         .contact-form-container {
@@ -893,7 +1026,6 @@
         }
         
         .contact-form h3 {
-            color: var(--primary-color);
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
@@ -909,6 +1041,7 @@
             border-radius: var(--border-radius);
             font-size: 1rem;
             transition: var(--transition);
+            font-family: inherit;
         }
         
         .form-control:focus {
@@ -937,7 +1070,7 @@
         }
         
         .submit-btn:hover {
-            background-color: #0088cc;
+            background-color: var(--accent-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0, 160, 233, 0.4);
         }
@@ -1004,11 +1137,17 @@
         
         .map-container {
             width: 100%;
-            height: 400px;
+            height: 300px;
             margin-top: 2rem;
             border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--box-shadow);
+        }
+        
+        @media (min-width: 768px) {
+            .map-container {
+                height: 350px;
+            }
         }
         
         .map-container iframe {
@@ -1018,7 +1157,7 @@
             filter: grayscale(20%) contrast(90%);
         }
         
-        /* Footer */
+        /* Footer optimizado */
         .footer {
             background-color: var(--dark-color);
             color: white;
@@ -1048,6 +1187,7 @@
         .footer-logo img {
             height: 70px;
             margin-bottom: 1.5rem;
+            width: auto;
         }
         
         .footer-about p {
@@ -1099,6 +1239,8 @@
         }
         
         .social-links {
+            display: flex;
+            gap: 0.8rem;
             margin-top: 2rem;
         }
         
@@ -1112,7 +1254,6 @@
             height: 40px;
             border-radius: 50%;
             text-align: center;
-            margin-right: 0.8rem;
             transition: var(--transition);
         }
         
@@ -1154,185 +1295,7 @@
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
         }
         
-        /* Animaciones */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-            
-            .stat-card::after {
-                display: none;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-color);
-                flex-direction: column;
-                padding: 1.5rem 0;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                animation: fadeInDown 0.3s ease;
-            }
-            
-            .menu.active {
-                display: flex;
-            }
-            
-            .menu a {
-                width: 90%;
-                text-align: center;
-                margin: 0.3rem auto;
-                padding: 1rem;
-            }
-            
-            .dropdown-content {
-                position: static;
-                width: 90%;
-                margin: 0.5rem auto;
-                box-shadow: none;
-                border: none;
-                animation: none;
-            }
-            
-            .menu-icon {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .btn {
-                padding: 0.9rem 1.8rem;
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .map-container {
-                height: 350px;
-            }
-            
-            .guide-container {
-                padding: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                min-height: 600px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .btn-secondary {
-                margin-left: 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 3rem;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .map-container {
-                height: 300px;
-            }
-            
-            .guide-header h2 {
-                font-size: 2rem;
-            }
-        }
-        #docencia {
-            background-color: var(--section-bg);
-        }
-
+        /* Sección de Docencia e Investigación */
         .workshop-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -1370,14 +1333,13 @@
         }
 
         .workshop-content h3 {
-            color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.4rem;
         }
 
         .workshop-content p {
             margin-bottom: 1.5rem;
-            color: var(--text-color);
+            color: var(--text-muted);
             line-height: 1.6;
         }
 
@@ -1388,196 +1350,8 @@
             font-size: 0.9rem;
             font-weight: 500;
         }
-
-        /* Sección de Servicios Destacados */
-        .services-highlight {
-            background-color: var(--section-bg);
-            padding: 6rem 5%;
-        }
         
-        .service-card {
-            background-color: var(--light-color);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .service-card:hover img {
-            transform: scale(1.05);
-        }
-        
-        .service-content {
-            padding: 2rem;
-        }
-        
-        .service-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            font-weight: 600;
-        }
-        
-        .service-content p {
-            color: var(--text-color);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-        
-        .service-btn {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: var(--transition);
-            display: inline-block;
-            text-decoration: none;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(0, 86, 179, 0.2);
-        }
-        
-        .service-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 86, 179, 0.3);
-        }
-
-        /* Resto de tus estilos existentes... */
-        
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 3.2rem;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-color);
-                flex-direction: column;
-                padding: 1.5rem 0;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-                animation: fadeInDown 0.3s ease;
-            }
-            
-            .menu.active {
-                display: flex;
-            }
-            
-            .menu a {
-                width: 90%;
-                text-align: center;
-                margin: 0.3rem auto;
-                padding: 1rem;
-            }
-            
-            .dropdown-content {
-                position: static;
-                width: 90%;
-                margin: 0.5rem auto;
-                box-shadow: none;
-                border: none;
-                animation: none;
-            }
-            
-            .menu-icon {
-                display: flex;
-            }
-            
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .btn {
-                padding: 0.9rem 1.8rem;
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.2rem;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .hero {
-                min-height: 600px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .btn-secondary {
-                margin-left: 0;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .workshop-container {
-                grid-template-columns: 1fr;
-            }
-        }
+        /* Sección de Equipo Directivo */
         .leadership-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -1587,19 +1361,6 @@
         .leadership-header {
             text-align: center;
             margin-bottom: 4rem;
-        }
-        
-        .leadership-header h2 {
-            color: var(--primary-color);
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-        }
-        
-        .leadership-header p {
-            max-width: 700px;
-            margin: 0 auto;
-            color: var(--text-color);
-            font-size: 1.1rem;
         }
         
         .director-container {
@@ -1635,7 +1396,6 @@
         }
         
         .director-name {
-            color: var(--primary-color);
             font-size: 2.2rem;
             margin-bottom: 0.5rem;
         }
@@ -1669,207 +1429,389 @@
             margin-top: 0.3rem;
         }
         
-        /* Estilos para el organigrama */
-        .org-chart {
+        /* Organigrama optimizado */
+        .org-advanced {
             background: white;
             border-radius: var(--border-radius);
             padding: 3rem;
             box-shadow: var(--box-shadow);
-            margin-top: 3rem;
+            margin: 3rem auto;
+            max-width: 1400px;
         }
-        
-        .org-header {
+
+        .org-advanced-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
-        
-        .org-header h3 {
-            color: var(--primary-color);
-            font-size: 2rem;
+
+        .org-departments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .org-department {
+            background: var(--section-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            border-top: 5px solid var(--accent-color);
+        }
+
+        .department-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .department-header h3 {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .department-header .department-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
             margin-bottom: 1rem;
         }
-        
+
+        .department-leader {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .leader-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-right: 1.5rem;
+        }
+
+        .leader-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .leader-info p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .department-team {
+            margin-top: 2rem;
+        }
+
+        .team-member-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .team-member-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .member-image-sm {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+            margin-right: 1rem;
+        }
+
+        .member-info h5 {
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+            font-size: 1rem;
+        }
+
+        .member-info p {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .member-specialty {
+            display: inline-block;
+            background-color: rgba(0, 160, 233, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-top: 0.3rem;
+        }
+
+        /* Diagrama jerárquico optimizado */
+        .org-hierarchy {
+            width: 100%;
+            overflow: auto;
+            margin: 3rem 0;
+            padding: 2rem 0;
+        }
+
         .org-level {
             display: flex;
             justify-content: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
+            min-width: 1000px;
         }
-        
+
         .org-node {
             text-align: center;
-            margin: 0 1.5rem;
+            margin: 0 1rem;
             position: relative;
         }
-        
+
         .node-content {
             background: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
+            padding: 1.2rem;
             box-shadow: var(--box-shadow);
-            width: 220px;
+            width: 180px;
             transition: var(--transition);
-            border-top: 4px solid var(--accent-color);
+            border-top: 3px solid var(--accent-color);
         }
-        
-        .node-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        .node-content.director {
+            border-top: 3px solid var(--secondary-color);
+            background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
         }
-        
+
+        .node-content.subdirector {
+            border-top: 3px solid var(--primary-color);
+        }
+
         .node-image {
-            width: 100px;
-            height: 100px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-color);
-            margin: 0 auto 1rem;
+            border: 2px solid var(--accent-color);
+            margin: 0 auto 0.8rem;
         }
-        
-        .node-name {
-            color: var(--primary-color);
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-        
-        .node-position {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-        
-        .node-department {
-            color: var(--text-color);
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .node-connector {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 30px;
-            background-color: var(--accent-color);
-        }
-        
-        .org-sublevel {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        
-        .org-sublevel .org-node {
-            margin: 0;
-        }
-        
-        .org-sublevel .node-content {
-            width: 200px;
-        }
-        
-        .org-sublevel .node-image {
+
+        .node-image.director {
+            border: 2px solid var(--secondary-color);
             width: 80px;
             height: 80px;
         }
-        
-        /* Estilos para el equipo completo */
-        .team-section {
-            background-color: var(--section-bg);
-            border-radius: var(--border-radius);
-            padding: 3rem;
-            box-shadow: var(--box-shadow);
-            margin-top: 3rem;
-        }
-        
-        .team-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .team-header h3 {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .team-member {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            text-align: center;
-            border-top: 3px solid var(--accent-color);
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .team-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-            margin: 0 auto 1rem;
-        }
-        
-        .team-name {
+
+        .node-name {
             color: var(--primary-color);
             font-weight: 600;
+            margin-bottom: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .node-position {
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            font-weight: 500;
             margin-bottom: 0.3rem;
         }
-        
-        .team-position {
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            font-weight: 500;
+
+        .node-department {
+            color: var(--text-color);
+            font-size: 0.75rem;
             margin-bottom: 0.5rem;
         }
-        
-        .team-department {
-            color: var(--text-color);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        .node-connector {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 20px;
+            background-color: var(--accent-color);
+        }
+
+        .connector-horizontal {
+            position: absolute;
+            height: 1px;
+            background-color: var(--accent-color);
+            top: 50%;
+        }
+
+        /* Sección de Donaciones */
+        .donation-card {
+            height: 100%;
         }
         
-        .team-qualifications {
-            font-size: 0.85rem;
-            color: var(--text-color);
-            line-height: 1.6;
+        .donation-qr {
+            margin: 1.5rem auto;
+            text-align: center;
         }
         
-        /* Responsive */
+        .donation-qr img {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .bank-info {
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+        
+        .bank-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        /* Animaciones optimizadas */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mejoras de accesibilidad */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* Focus styles para accesibilidad */
+        a:focus, button:focus, input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+        
+        /* Responsive Design optimizado */
+        @media (max-width: 1200px) {
+            .org-department {
+                min-width: 300px;
+            }
+        }
+        
         @media (max-width: 992px) {
-            .org-level {
-                flex-direction: column;
-                align-items: center;
+            .section {
+                padding: 4rem 5%;
             }
             
-            .org-node {
-                margin: 1rem 0;
-            }
-            
-            .node-connector {
+            .stat-card::after {
                 display: none;
             }
         }
         
         @media (max-width: 768px) {
+            .menu {
+                display: none;
+                position: absolute;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1.5rem 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                animation: fadeInDown 0.3s ease;
+            }
+            
+            .menu.active {
+                display: flex;
+            }
+            
+            .menu a {
+                width: 90%;
+                text-align: center;
+                margin: 0.3rem auto;
+                padding: 1rem;
+            }
+            
+            .dropdown-content {
+                position: static;
+                width: 90%;
+                margin: 0.5rem auto;
+                box-shadow: none;
+                border: none;
+                animation: none;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+            
+            .dropdown-content a {
+                color: white;
+            }
+            
+            .dropdown-content a:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+            
+            .menu-icon {
+                display: flex;
+            }
+            
             .director-container {
                 flex-direction: column;
+                text-align: center;
+            }
+            
+            .director-bio {
                 text-align: center;
             }
             
@@ -1877,54 +1819,74 @@
                 justify-content: center;
             }
             
-            .org-sublevel {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+                min-width: auto;
+            }
+            
+            .org-node {
+                margin: 1rem 0;
+            }
+            
+            .node-connector, .connector-horizontal {
+                display: none;
             }
         }
         
         @media (max-width: 576px) {
-            .leadership-header h2 {
-                font-size: 2.2rem;
+            .hero {
+                min-height: 500px;
             }
             
-            .director-name {
-                font-size: 1.8rem;
+            .hero-buttons {
+                flex-direction: column;
             }
             
-            .team-grid {
+            .btn-secondary {
+                margin-left: 0;
+            }
+            
+            .workshop-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .org-department {
+                min-width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <!-- Barra de navegación -->
-    <div class="navbar" id="navbar">
+    <header class="navbar" id="navbar">
         <div class="logo">
-            <img src="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" alt="Logo CEREFE">
+            <img src="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" alt="Logo CEREFE" width="150" height="50">
         </div>
-        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <div class="menu" id="mainMenu">
+        <button class="menu-icon" onclick="toggleMenu()" aria-label="Menú de navegación">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="menu" id="mainMenu" aria-label="Navegación principal">
             <a href="#inicio">Inicio</a>
             <div class="dropdown">
-                <a href="#" class="dropdown-btn">Conócenos <i class="fas fa-chevron-down"></i></a>
-                <div class="dropdown-content">
+                <button class="dropdown-btn">Conócenos <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content" aria-label="Submenú de Conócenos">
                     <a href="#mision-vision">Misión y Visión</a>
                     <a href="#historia">Historia</a>
-                    <a href="#director">Director General</a>
+                    <a href="#director">Nuestro Equipo Directivo</a>
                 </div>
             </div>
-            <a href="#guia-familia">Guía para Familia</a>
+            <a href="#guia-familia">Guía Familiar</a>
             <a href="#docencia">Docencia e Investigación</a>
             <a href="#servicios">Servicios</a>
             <a href="#galeria">Galería</a>
             <a href="#donacion">Donaciones</a>
             <a href="#contacto">Contacto</a>
-        </div>
-    </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <div class="hero" id="inicio">
+    <section class="hero" id="inicio">
         <div class="hero-content">
             <h1>Centro de Rehabilitación y Educación Especial</h1>
             <p>Brindamos atención integral a personas con dificultades en el aprendizaje, discapacidades y talento superior, promoviendo su inclusión educativa, social y desarrollo humano con más de 37 años de experiencia en Bolivia.</p>
@@ -1933,7 +1895,7 @@
                 <a href="#contacto" class="btn btn-secondary">Contáctanos</a>
             </div>
         </div>
-    </div>
+    </section>
     
     <!-- Panel de inicio mejorado -->
     <section class="section">
@@ -1988,17 +1950,24 @@
         <div class="grid">
             <div class="card">
                 <i class="fas fa-bullseye"></i>
+                <img src="https://ceb.bo/wp-content/uploads/2023/11/08.11.23-CEREFE-.jpg" alt="Dr. Carlos Quiroga, Director General de CEREFE" width="350" height="150"><br>
+               
                 <h3>Misión</h3>
-                <p>Brindar servicios de rehabilitación integral y educación especial de calidad  personas con dificultades en el aprendizaje, discapacidades y talento superior, promoviendo su desarrollo físico, intelectual y emocional para lograr su máxima independencia e inclusión social.</p>
+                <p>Brindar servicios de rehabilitación integral y educación especial de calidad a personas con dificultades en el aprendizaje, discapacidades y talento superior, promoviendo su desarrollo físico, intelectual y emocional para lograr su máxima independencia e inclusión social.</p>
             </div>
             <div class="card">
                 <i class="fas fa-eye"></i>
+                <img src="https://fment.umsa.bo/image/journal/article?img_id=855306&t=1570544202353" alt="Dr. Carlos Quiroga, Director General de CEREFE" width="300" height="150"><br>
+               
                 <h3>Visión</h3>
                 <p>Ser el centro de referencia nacional en rehabilitación y educación especial, reconocido por su excelencia en la atención integral, innovación tecnológica y compromiso con la inclusión social de las personas con discapacidad.</p>
             </div>
             <div class="card">
                 <i class="fas fa-heart"></i>
+                <img src="https://fment.umsa.bo/image/journal/article?img_id=855306&t=1570544202353" alt="Dr. Carlos Quiroga, Director General de CEREFE" width="300" height="150"><br>
+               
                 <h3>Valores</h3>
+                
                 <p>
                     <strong>Compromiso:</strong> Con nuestros pacientes y sus familias<br>
                     <strong>Ética:</strong> En todas nuestras acciones<br>
@@ -2010,8 +1979,8 @@
         </div>
     </section>
     
-      <!-- Sección de Director -->
-      <section id="director" class="section section-bg">
+    <!-- Sección de Director -->
+    <section id="director" class="section section-bg">
         <div class="leadership-section">
             <div class="leadership-header">
                 <h2>Nuestro Equipo Directivo</h2>
@@ -2022,15 +1991,15 @@
             <!-- Director General -->
             <div class="director-container">
                 <div class="director-image">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dr. Juan Pérez García">
+                    <img src="https://dremtaban.com/wp-content/uploads/2021/08/Dr-Emmanuel-Taban-BBC1a.png" alt="Dr. Carlos Quiroga, Director General de CEREFE" width="350" height="350">
                 </div>
                 
                 <div class="director-info">
-                    <h3 class="director-name">Dr. Carlos Quiroga</h3>
+                    <h3 class="director-name">DR. RICARDO QUIROGA UGARTE</h3>
                     <p class="director-title">Director General de CEREFE</p>
                     
                     <div class="director-bio">
-                        <p>El Dr. Carlos Quiroga es un destacado especialista en rehabilitación con más de 25 años de experiencia en el campo de la discapacidad y educación especial. Graduado con honores de la Universidad Mayor de San Andrés, ha dedicado su carrera profesional al servicio de las personas con discapacidad en Bolivia.</p>
+                        <p>El DR. Quiroga con 50 años de médico y 45 dedicado a la atención de las personas con discapacidad, ha sido Director de los principales centros de Rehabilitación de la ciudad de La Paz y El alto.  Instituto Nacional de adaptación Infantil en la ciudad de la Paz y Centro de Rehabilitación y educación especial de la ciudad de El Alto.</p>
                         
                         <p>Bajo su dirección, CEREFE ha experimentado un crecimiento significativo, expandiendo sus servicios y mejorando la calidad de atención a los pacientes. Su visión estratégica ha permitido la implementación de nuevas tecnologías y metodologías innovadoras en el campo de la rehabilitación.</p>
                     </div>
@@ -2041,7 +2010,7 @@
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
                             <div>
-                                <strong>Formación Académica:</strong> Doctor en Medicina, Especialista en Rehabilitación, Maestría en Educación Especial
+                                <strong>Formación Académica:</strong> Médico Cirujano de la UMSA, Especialista en Pediatria, cursos breves en neurología, psiquiatria, educación especial.
                             </div>
                         </div>
                         
@@ -2050,7 +2019,7 @@
                                 <i class="fas fa-award"></i>
                             </div>
                             <div>
-                                <strong>Reconocimientos:</strong> Premio Nacional de Medicina 2018, Distinción por Servicios a la Comunidad 2020
+                                <strong>Reconocimientos:</strong> Varios: Abopane. Asociación Boliviana para el estudio científico de la deficiencia mental, alcaldías de la Paz y el Alto, UMSA. Universidad católica.
                             </div>
                         </div>
                         
@@ -2059,7 +2028,7 @@
                                 <i class="fas fa-briefcase"></i>
                             </div>
                             <div>
-                                <strong>Experiencia:</strong> 25 años en rehabilitación, 15 años en cargos directivos
+                                <strong>Experiencia:</strong>  45 años de Medico - Pediatra, 40 años en cargos directivos
                             </div>
                         </div>
                     </div>
@@ -2067,215 +2036,337 @@
             </div>
             
             <!-- Organigrama -->
-            <div class="org-chart">
-                <div class="org-header">
-                    <h3>Estructura Organizacional</h3>
+            <div class="org-advanced">
+                <div class="org-advanced-header">
+                    <h2>Estructura Organizacional</h2>
                     <div class="underline"></div>
-                    <p>Nuestro modelo de gestión garantiza una atención integral y coordinada</p>
+                    <p>Nuestro equipo multidisciplinario organizado por áreas de especialización</p>
                 </div>
-                
-                <!-- Nivel 1 - Director -->
-                <div class="org-level">
-                    <div class="org-node">
-                        <div class="node-content">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Director" class="node-image">
-                            <h4 class="node-name">Dr. Carlos Quiroga</h4>
-                            <p class="node-position">Director General</p>
-                            <p class="node-department">Dirección Ejecutiva</p>
-                        </div>
-                        <div class="node-connector"></div>
-                    </div>
-                </div>
-                
-                <!-- Nivel 2 - Subdirectores -->
-                <div class="org-level">
-                    <div class="org-sublevel">
+
+                <!-- Diagrama jerárquico -->
+                <div class="org-hierarchy">
+                    <div class="org-level">
                         <div class="org-node">
-                            <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Médica" class="node-image">
-                                <h4 class="node-name">Dra. María Fernández</h4>
-                                <p class="node-position">Subdirectora Médica</p>
-                                <p class="node-department">Área Clínica</p>
+                            <div class="node-content director">
+                                <img src="https://www.noticiasfides.com/images/news/2016/08/el-padre-sebastian-obermaier-conocido-por-su-carisma-y-su-servicio-a-los-mas-pobres-fallece-a-los-82-anos_368699.jpg" alt="Director" class="node-image director" width="80" height="80">
+                                <h4 class="node-name">Padre Sebastián Obermaier</h4>
+                                <p class="node-position">Presidente</p>
+                                <p class="node-department">Cerefe</p>
+                            </div>
+                            <div class="node-content director">
+                                <img src="https://i0.wp.com/www.kenteringen.nl/wp-content/uploads/2022/08/H.-Dulce-Lopes-Pontes.jpg?ssl=1" alt="Director" class="node-image director" width="80" height="80">
+                                <h4 class="node-name">Hermana Dalba</h4>
+                                <p class="node-position">Vicepresidente</p>
+                                <p class="node-department">Cerefe</p>
+                            </div>
+                            <div class="node-content director">
+                                <img src="https://medicinasalud.com.bo/wp-content/uploads/Dr.-Yakov-Lopez-Arancibia-Otorrinolaringologo-La-Paz1.jpg" alt="Director" class="node-image director" width="80" height="80">
+                                <h4 class="node-name">Dr. RICARDO QUIROGA UGARTE</h4>
+                                <p class="node-position">Director General</p>
+                                <p class="node-department">Dirección Ejecutiva</p>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-node">
+                           
+                      
+                            <div class="node-content subdirector">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Médica" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Dr. Milton Villca.</h4>
+                                <p class="node-position">Jefe médico</p>
+                                <p class="node-department">Área Médica</p>
+                            </div>
+                           
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content subdirector">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirector Académico" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Lic. Wendy Coronel.</h4>
+                                <p class="node-position">Jefe del departamento de psicología</p>
+                                <p class="node-department">Área Psicologíca</p>
                             </div>
                             <div class="node-connector"></div>
                         </div>
                         
                         <div class="org-node">
-                            <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirector Académico" class="node-image">
-                                <h4 class="node-name">Lic. Jorge Morales</h4>
-                                <p class="node-position">Subdirector Académico</p>
-                                <p class="node-department">Área Educativa</p>
+                            <div class="node-content subdirector">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Administrativa" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Lic. Carlos Challapa</h4>
+                                <p class="node-position"> Administrativo</p>
+                                <p class="node-department">Area Administrativa</p>
                             </div>
                             <div class="node-connector"></div>
                         </div>
-                        
                         <div class="org-node">
-                            <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Administrativa" class="node-image">
-                                <h4 class="node-name">Lic. Ana Martínez</h4>
-                                <p class="node-position">Subdirectora Administrativa</p>
-                                <p class="node-department">Gestión y Operaciones</p>
+                            <div class="node-content subdirector">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Administrativa" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Lic. Angela Flores.</h4>
+                                <p class="node-position">Jefe del departamento de fonoaudiología</p>
+                                <p class="node-department">Area Fonoaudilogia</p>
                             </div>
                             <div class="node-connector"></div>
                         </div>
+                        <div class="org-node">
+                            <div class="node-content subdirector">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Administrativa" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Lic. Otilia Condori.</h4>
+                                <p class="node-position"> Jefe del departamento de fisioterapia</p>
+                                <p class="node-department">Area Fisioterapia</p>
+                            </div>
+                            
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Nivel 3 - Coordinadores -->
-                <div class="org-level">
-                    <div class="org-sublevel">
+                    
+                    <div class="org-level">
                         <div class="org-node">
                             <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinador Médico" class="node-image">
-                                <h4 class="node-name">Dr. Luis Rojas</h4>
-                                <p class="node-position">Coordinador Médico</p>
-                                <p class="node-department">Servicios Clínicos</p>
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinador Médico" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Lic. Daniela Corani </h4>
+                                <p class="node-position">Coordinador General</p>
+                                <p class="node-department">Area Administrativa </p>
                             </div>
                         </div>
                         
                         <div class="org-node">
                             <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora Terapias" class="node-image">
-                                <h4 class="node-name">Lic. Carla Vargas</h4>
-                                <p class="node-position">Coordinadora de Terapias</p>
-                                <p class="node-department">Rehabilitación</p>
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora Terapias" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Dra. Marivel </h4>
+                                <p class="node-position">Odontología</p>
+                                <p class="node-department">Area Médica</p>
                             </div>
                         </div>
                         
                         <div class="org-node">
                             <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinador Educación" class="node-image">
-                                <h4 class="node-name">Lic. Pedro Sánchez</h4>
-                                <p class="node-position">Coordinador de Educación</p>
-                                <p class="node-department">Programas Educativos</p>
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinador Educación" class="node-image" width="70" height="70">
+                                <h4 class="node-name">Lic. Mirella </h4>
+                                <p class="node-position">Psicopedagoga</p>
+                                <p class="node-department">Área Psicologíca</p>
                             </div>
                         </div>
                         
-                        <div class="org-node">
-                            <div class="node-content">
-                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora Social" class="node-image">
-                                <h4 class="node-name">Lic. Daniela Castro</h4>
-                                <p class="node-position">Coordinadora Social</p>
-                                <p class="node-department">Trabajo Social</p>
-                            </div>
+                    
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Equipo completo -->
-            <div class="team-section">
-                <div class="team-header">
-                    <h3>Nuestro Equipo Profesional</h3>
-                    <div class="underline"></div>
-                    <p>Contamos con un equipo multidisciplinario de especialistas en diferentes áreas</p>
-                </div>
-                
-                <div class="team-grid">
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Pediatra" class="team-image">
-                        <h4 class="team-name">Dra. Laura Gutiérrez</h4>
-                        <p class="team-position">Médica Pediatra</p>
-                        <p class="team-department">Servicios Médicos</p>
-                        <p class="team-qualifications">Especialista en desarrollo infantil y atención temprana. 15 años de experiencia.</p>
+
+                <!-- Departamentos por servicios -->
+                <div class="org-departments">
+                    <!-- Departamento Médico -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Área Médica</h3>
+                            <p>Servicios clínicos y terapéuticos</p>
+                        </div>
+                        
+                        <div class="department-leader">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dra. María Fernández" class="leader-image" width="80" height="80">
+                            <div class="leader-info">
+                                <h4>Dra. María Fernández</h4>
+                                <p>Subdirectora Médica</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dr. Luis Rojas" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Dr. Luis Rojas</h5>
+                                    <p>Médico Fisiatra</p>
+                                    <span class="member-specialty">Rehabilitación física</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dra. Laura Gutiérrez" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Dra. Laura Gutiérrez</h5>
+                                    <p>Pediatra Especialista</p>
+                                    <span class="member-specialty">Desarrollo infantil</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Dr. Javier Méndez" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Dr. Javier Méndez</h5>
+                                    <p>Neurólogo Infantil</p>
+                                    <span class="member-specialty">Trastornos neurológicos</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicólogo" class="team-image">
-                        <h4 class="team-name">Lic. Roberto Paz</h4>
-                        <p class="team-position">Psicólogo Clínico</p>
-                        <p class="team-department">Salud Mental</p>
-                        <p class="team-qualifications">Especialista en terapia cognitivo-conductual y apoyo familiar.</p>
+                    <!-- Departamento de Terapias -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Área de Terapias</h3>
+                            <p>Rehabilitación integral</p>
+                        </div>
+                        
+                        <div class="department-leader">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Carla Vargas" class="leader-image" width="80" height="80">
+                            <div class="leader-info">
+                                <h4>Lic. Carla Vargas</h4>
+                                <p>Coordinadora de Terapias</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Marcela Ríos" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Marcela Ríos</h5>
+                                    <p>Fisioterapeuta</p>
+                                    <span class="member-specialty">Neurorehabilitación</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Gabriela Torrez" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Gabriela Torrez</h5>
+                                    <p>Terapeuta Ocupacional</p>
+                                    <span class="member-specialty">Integración sensorial</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Fernando Rojas" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Fernando Rojas</h5>
+                                    <p>Logopeda</p>
+                                    <span class="member-specialty">Comunicación alternativa</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Roberto Paz" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Roberto Paz</h5>
+                                    <p>Psicólogo Clínico</p>
+                                    <span class="member-specialty">Terapia cognitivo-conductual</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Fisioterapeuta" class="team-image">
-                        <h4 class="team-name">Lic. Marcela Ríos</h4>
-                        <p class="team-position">Fisioterapeuta</p>
-                        <p class="team-department">Rehabilitación Física</p>
-                        <p class="team-qualifications">Especialista en neurorehabilitación y terapia psicomotriz.</p>
+                    <!-- Departamento Educativo -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Área Educativa</h3>
+                            <p>Programas de educación especial</p>
+                        </div>
+                        
+                        <div class="department-leader">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Jorge Morales" class="leader-image" width="80" height="80">
+                            <div class="leader-info">
+                                <h4>Lic. Jorge Morales</h4>
+                                <p>Subdirector Académico</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Valeria Mendez" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Valeria Mendez</h5>
+                                    <p>Pedagoga Especial</p>
+                                    <span class="member-specialty">Diseño curricular</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Andrea Cabrera" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Andrea Cabrera</h5>
+                                    <p>Psicopedagoga</p>
+                                    <span class="member-specialty">Dificultades de aprendizaje</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Pedro Sánchez" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Pedro Sánchez</h5>
+                                    <p>Educador Especial</p>
+                                    <span class="member-specialty">Autismo</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Pedagoga" class="team-image">
-                        <h4 class="team-name">Lic. Valeria Mendez</h4>
-                        <p class="team-position">Pedagoga Especial</p>
-                        <p class="team-department">Educación</p>
-                        <p class="team-qualifications">Especialista en diseño curricular adaptado y metodologías inclusivas.</p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Terapeuta Ocupacional" class="team-image">
-                        <h4 class="team-name">Lic. Gabriela Torrez</h4>
-                        <p class="team-position">Terapeuta Ocupacional</p>
-                        <p class="team-department">Rehabilitación</p>
-                        <p class="team-qualifications">Especialista en integración sensorial y actividades de la vida diaria.</p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Logopeda" class="team-image">
-                        <h4 class="team-name">Lic. Fernando Rojas</h4>
-                        <p class="team-position">Logopeda</p>
-                        <p class="team-department">Comunicación</p>
-                        <p class="team-qualifications">Especialista en comunicación aumentativa y alternativa.</p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Trabajadora Social" class="team-image">
-                        <h4 class="team-name">Lic. Patricia Arce</h4>
-                        <p class="team-position">Trabajadora Social</p>
-                        <p class="team-department">Servicios Sociales</p>
-                        <p class="team-qualifications">Especialista en inclusión social y gestión de ayudas técnicas.</p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicopedagoga" class="team-image">
-                        <h4 class="team-name">Lic. Andrea Cabrera</h4>
-                        <p class="team-position">Psicopedagoga</p>
-                        <p class="team-department">Educación Especial</p>
-                        <p class="team-qualifications">Especialista en dificultades de aprendizaje y adaptaciones curriculares.</p>
+                    <!-- Departamento Social -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3>Área Social</h3>
+                            <p>Apoyo familiar e inclusión</p>
+                        </div>
+                        
+                        <div class="department-leader">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Daniela Castro" class="leader-image" width="80" height="80">
+                            <div class="leader-info">
+                                <h4>Lic. Daniela Castro</h4>
+                                <p>Coordinadora Social</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Patricia Arce" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Patricia Arce</h5>
+                                    <p>Trabajadora Social</p>
+                                    <span class="member-specialty">Inclusión social</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Mauricio Flores" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Mauricio Flores</h5>
+                                    <p>Orientador Familiar</p>
+                                    <span class="member-specialty">Apoyo a familias</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Sandra Vargas" class="member-image-sm" width="60" height="60">
+                                <div class="member-info">
+                                    <h5>Lic. Sandra Vargas</h5>
+                                    <p>Especialista en Inclusión</p>
+                                    <span class="member-specialty">Accesibilidad</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resto de las secciones del sitio... -->
-
-    <script>
-        // Scripts anteriores...
-        
-        // Animación para los miembros del equipo
-        document.addEventListener('DOMContentLoaded', function() {
-            const teamMembers = document.querySelectorAll('.team-member, .org-node');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.style.opacity = 1;
-                            entry.target.style.transform = 'translateY(0)';
-                        }, 150 * index);
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            teamMembers.forEach(member => {
-                member.style.opacity = 0;
-                member.style.transform = 'translateY(20px)';
-                member.style.transition = 'all 0.5s ease';
-                observer.observe(member);
-            });
-        });
-    </script>
-    
     <!-- Sección de Guía para Familia -->
     <section id="guia-familia" class="section">
         <div class="guide-section">
             <div class="guide-container">
                 <div class="guide-header">
-                    <h2>Guía para Familia</h2>
+                    <h2>Guía para la Familia</h2>
                     <div class="underline"></div>
                     <p>Recursos y orientación para familias que tienen un miembro con discapacidad</p>
                 </div>
@@ -2377,7 +2468,7 @@
                     
                     <div class="faq-item">
                         <h3>Preguntas frecuentes</h3>
-                        <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-question" onclick="toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
                             ¿Cómo puedo saber si mi familiar necesita atención especializada?
                         </div>
                         <div class="faq-answer">
@@ -2386,7 +2477,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-question" onclick="toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
                             ¿Qué documentos necesito para iniciar el proceso de atención?
                         </div>
                         <div class="faq-answer">
@@ -2401,7 +2492,7 @@
                     </div>
                     
                     <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
+                        <div class="faq-question" onclick="toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
                             ¿Existen programas de apoyo económico para el tratamiento?
                         </div>
                         <div class="faq-answer">
@@ -2442,88 +2533,89 @@
             </div>
         </div>
     </section>
-  <!-- Sección de Docencia e Investigación -->
-  <section id="docencia" class="section section-bg">
-    <div class="section-title">
-        <h2>Docencia e Investigación</h2>
-        <div class="underline"></div>
-        <p>Talleres y programas de formación para profesionales y familias</p>
-    </div>
-    
-    <div class="workshop-container">
-        <div class="workshop-card">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Taller de inclusión educativa" class="workshop-image">
-            <div class="workshop-content">
-                <h3>Taller de Inclusión Educativa</h3>
-                <p>Capacitación para docentes y educadores sobre estrategias pedagógicas inclusivas para estudiantes con necesidades especiales.</p>
-                <div class="workshop-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 15 de Julio, 2023</span>
-                    <span><i class="fas fa-users"></i> 25 participantes</span>
-                </div>
-            </div>
+
+    <!-- Sección de Docencia e Investigación -->
+    <section id="docencia" class="section section-bg">
+        <div class="section-title">
+            <h2>Docencia e Investigación</h2>
+            <div class="underline"></div>
+            <p>Talleres y programas de formación para profesionales y familias</p>
         </div>
         
-        <div class="workshop-card">
-            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Terapias innovadoras" class="workshop-image">
-            <div class="workshop-content">
-                <h3>Terapias Innovadoras en Rehabilitación</h3>
-                <p>Presentación de nuevas metodologías y tecnologías aplicadas a la rehabilitación de personas con discapacidad.</p>
-                <div class="workshop-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 22 de Agosto, 2023</span>
-                    <span><i class="fas fa-users"></i> 18 participantes</span>
+        <div class="workshop-container">
+            <div class="workshop-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Taller de inclusión educativa" class="workshop-image" width="400" height="250">
+                <div class="workshop-content">
+                    <h3>Taller de Inclusión Educativa</h3>
+                    <p>Capacitación para docentes y educadores sobre estrategias pedagógicas inclusivas para estudiantes con necesidades especiales.</p>
+                    <div class="workshop-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 15 de Julio, 2023</span>
+                        <span><i class="fas fa-users"></i> 25 participantes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workshop-card">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Terapias innovadoras" class="workshop-image" width="400" height="250">
+                <div class="workshop-content">
+                    <h3>Terapias Innovadoras en Rehabilitación</h3>
+                    <p>Presentación de nuevas metodologías y tecnologías aplicadas a la rehabilitación de personas con discapacidad.</p>
+                    <div class="workshop-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 22 de Agosto, 2023</span>
+                        <span><i class="fas fa-users"></i> 18 participantes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workshop-card">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Apoyo familiar" class="workshop-image" width="400" height="250">
+                <div class="workshop-content">
+                    <h3>Taller de Apoyo para Familias</h3>
+                    <p>Espacio de aprendizaje e intercambio de experiencias para familias de personas con discapacidad.</p>
+                    <div class="workshop-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 10 de Septiembre, 2023</span>
+                        <span><i class="fas fa-users"></i> 30 participantes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workshop-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJBsbN2cIp0wBzhW755yhuvfOjOpXaVCR4leaK6C-G-EAWXeWRBOkEiyh0WNpv9MsUHA&usqp=CAU" alt="Investigación en discapacidad" class="workshop-image" width="400" height="250">
+                <div class="workshop-content">
+                    <h3>Seminario de Investigación en Discapacidad</h3>
+                    <p>Presentación de estudios recientes y avances en el campo de la discapacidad y rehabilitación.</p>
+                    <div class="workshop-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 20 de Octubre, 2025</span>
+                        <span><i class="fas fa-users"></i> 40 participantes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workshop-card">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Taller de comunicación" class="workshop-image" width="400" height="250">
+                <div class="workshop-content">
+                    <h3>Taller de Comunicación Alternativa</h3>
+                    <p>Enseñanza de sistemas de comunicación aumentativa y alternativa para personas con dificultades en el habla.</p>
+                    <div class="workshop-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 18 de Noviembre, 2025</span>
+                        <span><i class="fas fa-users"></i> 15 participantes</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="workshop-card">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Educación especial" class="workshop-image" width="400" height="250">
+                <div class="workshop-content">
+                    <h3>Diplomado en Educación Especial</h3>
+                    <p>Programa de formación intensiva para profesionales que trabajan con personas con necesidades educativas especiales.</p>
+                    <div class="workshop-meta">
+                        <span><i class="fas fa-calendar-alt"></i> Enero - Marzo 2024</span>
+                        <span><i class="fas fa-users"></i> 20 participantes</span>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="workshop-card">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Apoyo familiar" class="workshop-image">
-            <div class="workshop-content">
-                <h3>Taller de Apoyo para Familias</h3>
-                <p>Espacio de aprendizaje e intercambio de experiencias para familias de personas con discapacidad.</p>
-                <div class="workshop-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 10 de Septiembre, 2023</span>
-                    <span><i class="fas fa-users"></i> 30 participantes</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="workshop-card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoJBsbN2cIp0wBzhW755yhuvfOjOpXaVCR4leaK6C-G-EAWXeWRBOkEiyh0WNpv9MsUHA&usqp=CAU" alt="Investigación en discapacidad" class="workshop-image">
-            <div class="workshop-content">
-                <h3>Seminario de Investigación en Discapacidad</h3>
-                <p>Presentación de estudios recientes y avances en el campo de la discapacidad y rehabilitación.</p>
-                <div class="workshop-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 20 de Octubre, 2025</span>
-                    <span><i class="fas fa-users"></i> 40 participantes </span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="workshop-card">
-            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Taller de comunicación" class="workshop-image">
-            <div class="workshop-content">
-                <h3>Taller de Comunicación Alternativa</h3>
-                <p>Enseñanza de sistemas de comunicación aumentativa y alternativa para personas con dificultades en el habla.</p>
-                <div class="workshop-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 18 de Noviembre, 2025</span>
-                    <span><i class="fas fa-users"></i> 15 participantes</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="workshop-card">
-            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Educación especial" class="workshop-image">
-            <div class="workshop-content">
-                <h3>Diplomado en Educación Especial</h3>
-                <p>Programa de formación intensiva para profesionales que trabajan con personas con necesidades educativas especiales.</p>
-                <div class="workshop-meta">
-                    <span><i class="fas fa-calendar-alt"></i> Enero - Marzo 2024</span>
-                    <span><i class="fas fa-users"></i> 20 participantes</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Sección de Servicios Destacados -->
     <section id="servicios" class="section services-highlight">
@@ -2534,15 +2626,15 @@
         </div>
         <div class="grid">
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Medicina">
+                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Medicina" class="service-image" width="400" height="220">
                 <div class="service-content">
-                    <h3>Medicina General y Pediatría </h3>
-                    <p>Atención médica gernal y pediatría.</p>
+                    <h3>Medicina General y Pediatría</h3>
+                    <p>Atención médica general y pediatría especializada en el diagnóstico y tratamiento de condiciones asociadas a discapacidades.</p>
                     <a href="#medicina" class="service-btn">Más información</a>
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Odontología">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Odontología" class="service-image" width="400" height="220">
                 <div class="service-content">
                     <h3>Odontología Especializada</h3>
                     <p>Atención odontológica adaptada a pacientes con discapacidad, con equipos especiales y personal capacitado. Realizamos tratamientos preventivos, restaurativos y de ortodoncia.</p>
@@ -2550,7 +2642,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Psicología">
+                <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Psicología" class="service-image" width="400" height="220">
                 <div class="service-content">
                     <h3>Psicología y Orientación</h3>
                     <p>Evaluación, diagnóstico e intervención psicológica individual y familiar para el desarrollo emocional. Trabajamos en el fortalecimiento de habilidades sociales y adaptativas.</p>
@@ -2558,7 +2650,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Pedagogía">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Pedagogía" class="service-image" width="400" height="220">
                 <div class="service-content">
                     <h3>Pedagogía y Educación Especial</h3>
                     <p>Programas educativos personalizados según las necesidades y capacidades de cada estudiante. Implementamos metodologías innovadoras para el aprendizaje significativo.</p>
@@ -2566,7 +2658,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Fisioterapia">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Fisioterapia" class="service-image" width="400" height="220">
                 <div class="service-content">
                     <h3>Fisioterapia y Rehabilitación</h3>
                     <p>Terapias físicas para mejorar movilidad, fuerza y coordinación con equipos especializados. Desarrollamos planes de rehabilitación integral para cada paciente.</p>
@@ -2574,7 +2666,7 @@
                 </div>
             </div>
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Trabajo Social">
+                <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Trabajo Social" class="service-image" width="400" height="220">
                 <div class="service-content">
                     <h3>Trabajo Social y Orientación</h3>
                     <p>Apoyo social, gestión de ayudas técnicas y acompañamiento en procesos de inclusión. Brindamos asesoramiento legal y gestionamos redes de apoyo familiar.</p>
@@ -2634,75 +2726,73 @@
             
             <div class="gallery-grid">
                 <div class="gallery-item actividades" data-category="actividades">
-                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Actividades educativas en CEREFE" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Actividades educativas en CEREFE" class="gallery-img" width="400" height="300">
                     <div class="img-overlay">
                         <div class="overlay-content">
                             <h3>Actividades Educativas</h3>
                             <p>Nuestros estudiantes participando en actividades de aprendizaje interactivo</p>
-                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="gallery-item terapias" data-category="terapias">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapias en CEREFE" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapias en CEREFE" class="gallery-img" width="400" height="300">
                     <div class="img-overlay">
                         <div class="overlay-content">
                             <h3>Sesiones de Terapia</h3>
                             <p>Profesionales trabajando con nuestros pacientes en sesiones personalizadas</p>
-                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="gallery-item instalaciones" data-category="instalaciones">
-                    <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instalaciones de CEREFE" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instalaciones de CEREFE" class="gallery-img" width="400" height="300">
                     <div class="img-overlay">
                         <div class="overlay-content">
                             <h3>Nuestras Instalaciones</h3>
                             <p>Espacios diseñados para la comodidad y accesibilidad de nuestros pacientes</p>
-                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="gallery-item eventos" data-category="eventos">
-                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Eventos en CEREFE" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Eventos en CEREFE" class="gallery-img" width="400" height="300">
                     <div class="img-overlay">
                         <div class="overlay-content">
                             <h3>Eventos Especiales</h3>
                             <p>Celebraciones y actividades comunitarias para promover la inclusión</p>
-                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="gallery-item terapias" data-category="terapias">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapia física en CEREFE" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapia física en CEREFE" class="gallery-img" width="400" height="300">
                     <div class="img-overlay">
                         <div class="overlay-content">
                             <h3>Terapia Física</h3>
                             <p>Sesiones personalizadas para mejorar la movilidad y autonomía</p>
-                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                         </div>
                     </div>
                 </div>
                 
                 <div class="gallery-item actividades" data-category="actividades">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Talleres educativos" class="gallery-img">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Talleres educativos" class="gallery-img" width="400" height="300">
                     <div class="img-overlay">
                         <div class="overlay-content">
                             <h3>Talleres Educativos</h3>
                             <p>Programas diseñados para el desarrollo de habilidades cognitivas</p>
-                            <a href="#" class="zoom-icon"><i class="fas fa-search-plus"></i></a>
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-  
 
     <!-- Sección de Donaciones -->
     <section id="donacion" class="section">
@@ -2717,7 +2807,7 @@
                 <h3>Donación Rápida</h3>
                 <p>Escanea nuestro código QR para realizar tu donación de manera inmediata a través de cualquier aplicación de banca móvil</p>
                 <div class="donation-qr">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cerefe.org.bo/donaciones" alt="Código QR de donación">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cerefe.org.bo/donaciones" alt="Código QR de donación" width="150" height="150">
                 </div>
             </div>
             <div class="donation-card card">
@@ -2753,18 +2843,22 @@
             <!-- Formulario de contacto -->
             <div class="contact-form-container">
                 <h3>Envíanos un Mensaje</h3>
-                <form class="contact-form">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nombre completo" required>
+                        <label for="nombre" class="sr-only">Nombre completo</label>
+                        <input type="text" id="nombre" class="form-control" placeholder="Nombre completo" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Correo electrónico" required>
+                        <label for="email" class="sr-only">Correo electrónico</label>
+                        <input type="email" id="email" class="form-control" placeholder="Correo electrónico" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Teléfono">
+                        <label for="telefono" class="sr-only">Teléfono</label>
+                        <input type="tel" id="telefono" class="form-control" placeholder="Teléfono">
                     </div>
                     <div class="form-group">
-                        <select id="tema-select" class="form-control" required onchange="mostrarHorarios(this.value)">
+                        <label for="tema" class="sr-only">Selecciona un tema</label>
+                        <select id="tema" class="form-control" required onchange="mostrarHorarios(this.value)">
                             <option value="" disabled selected>Selecciona un tema</option>
                             <option>Información sobre servicios</option>
                             <option value="citas">Citas y horarios</option>
@@ -2790,7 +2884,8 @@
                     </div>
             
                     <div class="form-group">
-                        <textarea class="form-control" placeholder="Tu mensaje" required></textarea>
+                        <label for="mensaje" class="sr-only">Tu mensaje</label>
+                        <textarea id="mensaje" class="form-control" placeholder="Tu mensaje" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Enviar Mensaje</button>
                 </form>
@@ -2836,7 +2931,8 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3820.041486674013!2d-68.1604205!3d-16.510224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915edf9b79065b99%3A0xc44a82dbc1532796!2sFundaci%C3%B3n%20Cerefe!5e0!3m2!1ses!2sbo!4v1719523456789" 
                             allowfullscreen="" 
                             loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
+                            referrerpolicy="no-referrer-when-downgrade"
+                            aria-label="Mapa de ubicación de CEREFE">
                     </iframe>
                 </div>
             </div>
@@ -2848,19 +2944,29 @@
         <div class="footer-grid">
             <div class="footer-about">
                 <div class="footer-logo">
-                    <img src="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" alt="Logo CEREFE">
+                    <img src="https://cerefe.org.bo/wp-content/uploads/2018/01/logoBlanco300.png" alt="Logo CEREFE" width="150" height="70">
                 </div>
                 <p>CEREFE es un centro especializado en rehabilitación y educación especial con más de 37 años de experiencia atendiendo a personas con discapacidad en Bolivia.</p>
                 
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             
-          
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#mision-vision">Misión y Visión</a></li>
+                    <li><a href="#director">Equipo Directivo</a></li>
+                    <li><a href="#guia-familia">Guía para Familia</a></li>
+                    <li><a href="#docencia">Docencia</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                </ul>
+            </div>
             
             <div class="footer-links">
                 <h3>Servicios</h3>
@@ -2897,7 +3003,7 @@
     </footer>
 
     <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/59112345678" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/59112345678" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -2906,6 +3012,14 @@
         function toggleMenu() {
             const menu = document.getElementById('mainMenu');
             menu.classList.toggle('active');
+            
+            // Cambiar ícono
+            const icon = document.querySelector('.menu-icon i');
+            if (menu.classList.contains('active')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
         }
 
         // Efecto scroll en navbar
@@ -2975,19 +3089,37 @@
             if (statsSection) {
                 observer.observe(statsSection);
             }
+            
+            // Animación para los miembros del equipo
+            const teamCards = document.querySelectorAll('.team-member-card');
+            const teamObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, 100 * index);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            teamCards.forEach(card => {
+                teamObserver.observe(card);
+            });
         });
 
         // Smooth scrolling para anclas
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - document.querySelector('.navbar').offsetHeight,
                         behavior: 'smooth'
                     });
                     
@@ -2995,6 +3127,14 @@
                     const menu = document.getElementById('mainMenu');
                     if (menu.classList.contains('active')) {
                         menu.classList.remove('active');
+                        document.querySelector('.menu-icon i').classList.replace('fa-times', 'fa-bars');
+                    }
+                    
+                    // Actualizar URL sin recargar la página
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        location.hash = targetId;
                     }
                 }
             });
@@ -3015,18 +3155,34 @@
             const faqItem = element.parentElement;
             const answer = element.nextElementSibling;
             
-            // Cerrar todas las demás preguntas
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.querySelector('.faq-question').classList.remove('active');
-                    item.querySelector('.faq-answer').classList.remove('show');
-                }
-            });
-            
             // Alternar la pregunta actual
             element.classList.toggle('active');
             answer.classList.toggle('show');
+            
+            // Actualizar atributo ARIA
+            const isExpanded = element.classList.contains('active');
+            element.setAttribute('aria-expanded', isExpanded);
         }
+        
+        // Manejar el formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí iría la lógica para enviar el formulario
+            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
+        
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                const menu = document.getElementById('mainMenu');
+                if (menu.classList.contains('active')) {
+                    menu.classList.remove('active');
+                    document.querySelector('.menu-icon i').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        });
     </script>
 </body>
 </html>

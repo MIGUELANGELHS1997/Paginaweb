@@ -1855,6 +1855,277 @@
                 min-width: 100%;
             }
         }
+           /* Agregar estos estilos CORREGIDOS para la línea de tiempo */
+           .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            opacity: 1; /* Cambiado de 0 a 1 para que sea visible */
+            transform: translateY(0); /* Cambiado de 20px a 0 */
+            transition: all 0.5s ease;
+        }
+
+        .timeline-content {
+            position: relative;
+            max-width: 600px;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 0 auto; /* Centrar el contenido */
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline-media {
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .timeline-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .timeline-media:hover .timeline-img {
+            transform: scale(1.05);
+        }
+
+        .media-caption {
+            padding: 0.8rem;
+            background: var(--section-bg);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .timeline-comments {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 1.5rem;
+        }
+
+        .comment {
+            background: var(--section-bg);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .comment-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .comment-text {
+            font-style: italic;
+            color: var(--text-color);
+        }
+
+        .timeline-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .nav-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 1rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .years-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 1rem 0;
+            max-width: 80%;
+            gap: 0.5rem;
+        }
+
+        .year-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .year-btn.active, .year-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .visitor-comments {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 4rem;
+        }
+
+        .visitor-comments h3 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .comment-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .comments-list {
+            margin-top: 3rem;
+        }
+
+        .comments-list h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .visitor-comment {
+            background: var(--section-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .visitor-comment::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid var(--section-bg);
+        }
+
+        .visitor-comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .visitor-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .visitor-year {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .visitor-text {
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                margin-left: 70px !important;
+                padding-left: 2rem;
+                padding-right: 1rem;
+                text-align: left !important;
+            }
+
+            .years-container {
+                max-width: 70%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .timeline-container {
+                padding: 1rem;
+            }
+
+            .years-container {
+                max-width: 60%;
+            }
+
+            .visitor-comments {
+                padding: 2rem 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1978,7 +2249,120 @@
             </div>
         </div>
     </section>
-    
+
+    <section id="historia" class="section">
+        <div class="section-title">
+            <h2>Nuestra Historia</h2>
+            <div class="underline"></div>
+            <p>37 años de trayectoria en rehabilitación y educación especial en Bolivia</p>
+        </div>
+
+        <div class="timeline-container">
+            <!-- Línea de tiempo -->
+            <div class="timeline">
+                <!-- Año 1986 - Fundación -->
+                <div class="timeline-item" data-year="1986">
+                    <div class="timeline-content">
+                        <h3>1986: Fundación de CEREFE</h3>
+                        <div class="timeline-media">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fundación de CEREFE" class="timeline-img">
+                            <div class="media-caption">Primeras instalaciones de CEREFE en La Paz</div>
+                        </div>
+                        <p>El Centro de Rehabilitación y Educación Especial fue fundado por un grupo de profesionales comprometidos con la atención a personas con discapacidad, iniciando operaciones con un pequeño equipo multidisciplinario.</p>
+                        <div class="timeline-comments">
+                            <div class="comment">
+                                <div class="comment-author">Dr. Ricardo Quiroga</div>
+                                <div class="comment-text">"Empezamos con apenas 5 profesionales y la convicción de que podíamos hacer una diferencia en la vida de las personas con discapacidad."</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Año 1992 - Primera expansión -->
+                <div class="timeline-item" data-year="1992">
+                    <div class="timeline-content">
+                        <h3>1992: Primera Expansión</h3>
+                        <div class="timeline-media">
+                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80" alt="Expansión de CEREFE" class="timeline-img">
+                            <div class="media-caption">Nuevas instalaciones en la Zona Villa Dolores</div>
+                        </div>
+                        <p>Tras 6 años de crecimiento constante, CEREFE se traslada a instalaciones más amplias en la Zona Villa Dolores, permitiendo atender a más pacientes y ofrecer nuevos servicios.</p>
+                        <div class="timeline-comments">
+                            <div class="comment">
+                                <div class="comment-author">Lic. Angela Flores</div>
+                                <div class="comment-text">"El cambio de locación marcó un antes y después. Pudimos implementar terapias que antes no eran posibles por falta de espacio."</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Año 1998 - Programa de Educación Especial -->
+                <div class="timeline-item" data-year="1998">
+                    <div class="timeline-content">
+                        <h3>1998: Programa de Educación Especial</h3>
+                        <div class="timeline-media">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Programa de Educación Especial CEREFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="media-caption">Video documental del primer año del programa educativo</div>
+                        </div>
+                        <p>Implementación del programa formal de educación especial, reconocido por el Ministerio de Educación, para niños y jóvenes con necesidades educativas especiales.</p>
+                        <div class="timeline-comments">
+                            <div class="comment">
+                                <div class="comment-author">Familia Pérez</div>
+                                <div class="comment-text">"Nuestro hijo encontró en CEREFE un lugar donde aprender a su ritmo. Los profesores entendían sus necesidades como nadie."</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navegación de la línea de tiempo -->
+            <div class="timeline-nav">
+                <button class="nav-btn prev-btn" aria-label="Año anterior"><i class="fas fa-chevron-left"></i></button>
+                <div class="years-container">
+                    <button class="year-btn active" data-year="1986" data-index="0">1986</button>
+                    <button class="year-btn" data-year="1992" data-index="1">1992</button>
+                    <button class="year-btn" data-year="1998" data-index="2">1998</button>
+                </div>
+                <button class="nav-btn next-btn" aria-label="Año siguiente"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- Área para comentarios de visitantes -->
+            <div class="visitor-comments">
+                <h3>Comparte tu experiencia con CEREFE</h3>
+                <form id="commentForm" class="comment-form">
+                    <div class="form-group">
+                        <input type="text" id="commentName" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="commentText" class="form-control" placeholder="Tu comentario o recuerdo sobre CEREFE" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <select id="commentYear" class="form-control">
+                            <option value="">¿En qué año nos conociste?</option>
+                            <option value="1986">1986-1990</option>
+                            <option value="1991">1991-1995</option>
+                            <option value="1996">1996-2000</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Enviar Comentario</button>
+                </form>
+
+                <div class="comments-list">
+                    <h4>Comentarios de nuestra comunidad</h4>
+                    <div class="visitor-comment">
+                        <div class="visitor-comment-header">
+                            <span class="visitor-name">Familia Rodríguez</span>
+                            <span class="visitor-year">Año: 2015</span>
+                        </div>
+                        <p class="visitor-text">CEREFE cambió nuestra vida. Nuestra hija con parálisis cerebral ha logrado avances increíbles gracias a su equipo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Sección de Director -->
     <section id="director" class="section section-bg">
         <div class="leadership-section">
@@ -2074,7 +2458,7 @@
                            
                       
                             <div class="node-content subdirector">
-                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirectora Médica" class="node-image" width="70" height="70">
+                                <img src="https://www.ladogmami.com/wp-content/uploads/2021/03/11.-Feb-10-cosas-que-no-sabias-sobre-los-perros-salchichas.jpg" alt="Subdirectora Médica" class="node-image" width="70" height="70">
                                 <h4 class="node-name">Dr. Milton Villca.</h4>
                                 <p class="node-position">Jefe médico</p>
                                 <p class="node-department">Área Médica</p>
@@ -2272,7 +2656,7 @@
                         </div>
                         
                         <div class="department-leader">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Lic. Jorge Morales" class="leader-image" width="80" height="80">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/MiniDachshund1_wb.jpg/320px-MiniDachshund1_wb.jpg" alt="Lic. Jorge Morales" class="leader-image" width="80" height="80">
                             <div class="leader-info">
                                 <h4>Lic. Jorge Morales</h4>
                                 <p>Subdirector Académico</p>
@@ -2899,7 +3283,8 @@
                     <i class="fas fa-map-marker-alt"></i>
                     <div class="contact-text">
                         <strong>Dirección:</strong>
-                        <span>Calle Junín #1234, Zona Central, Cochabamba, Bolivia</span>
+                        <span>Fundación Cerefe, Calle 6 esq. C. D. Medina, N° 50</span><br>
+                        <span>Zona Villa Dolores</span><br>
                     </div>
                 </div>
                 
@@ -2907,7 +3292,7 @@
                     <i class="fas fa-phone-alt"></i>
                     <div class="contact-text">
                         <strong>Teléfonos:</strong>
-                        <span>+591 4 4256789<br>+591 76543210</span>
+                        <span>+591 22813638<br>+591 76543210</span>
                     </div>
                 </div>
                 
@@ -2915,7 +3300,7 @@
                     <i class="fas fa-envelope"></i>
                     <div class="contact-text">
                         <strong>Correo electrónico:</strong>
-                        <span>info@cerefe.org.bo</span>
+                        <span>informaciones@cerefe.org</span>
                     </div>
                 </div>
                 
@@ -2984,15 +3369,15 @@
                 <h3>Contacto</h3>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <div class="contact-text">Calle Junín #1234, Zona Central, Cochabamba</div>
+                    <div class="contact-text">Fundación Cerefe, Calle 6 esq. C. D. Medina, N° 50</div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
-                    <div class="contact-text">+591 4 4256789</div>
+                    <div class="contact-text">+591 22813638</div>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <div class="contact-text">info@cerefe.org.bo</div>
+                    <div class="contact-text">informaciones@cerefe.org</div>
                 </div>
             </div>
         </div>
@@ -3003,11 +3388,96 @@
     </footer>
 
     <!-- Botón de WhatsApp -->
-    <a href="https://wa.me/59112345678" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+    <a href="https://wa.me/591-22813638" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
+            // Script simplificado para la línea de tiempo
+            document.addEventListener('DOMContentLoaded', function() {
+            const yearBtns = document.querySelectorAll('.year-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentIndex = 0;
+            
+            // Navegación con botones de año
+            yearBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    yearBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentIndex = parseInt(this.getAttribute('data-index'));
+                });
+            });
+            
+            // Navegación con flechas
+            prevBtn.addEventListener('click', function() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateActiveYear();
+                }
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                if (currentIndex < yearBtns.length - 1) {
+                    currentIndex++;
+                    updateActiveYear();
+                }
+            });
+            
+            function updateActiveYear() {
+                yearBtns.forEach(b => b.classList.remove('active'));
+                yearBtns[currentIndex].classList.add('active');
+                
+                // Centrar el botón activo
+                yearBtns[currentIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+            
+            // Manejar el formulario de comentarios
+            document.getElementById('commentForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('commentName').value;
+                const text = document.getElementById('commentText').value;
+                const year = document.getElementById('commentYear').value;
+                
+                if (name && text) {
+                    addComment(name, text, year);
+                    this.reset();
+                }
+            });
+            
+            function addComment(name, text, year = '') {
+                const commentsList = document.querySelector('.comments-list');
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'visitor-comment';
+                
+                commentDiv.innerHTML = `
+                    <div class="visitor-comment-header">
+                        <span class="visitor-name">${name}</span>
+                        <span class="visitor-year">${year ? 'Año: ' + year : ''}</span>
+                    </div>
+                    <p class="visitor-text">${text}</p>
+                `;
+                
+                // Insertar después del título h4
+                if (commentsList.children.length > 1) {
+                    commentsList.insertBefore(commentDiv, commentsList.children[1]);
+                } else {
+                    commentsList.appendChild(commentDiv);
+                }
+                
+                // Animación
+                commentDiv.style.opacity = '0';
+                setTimeout(() => {
+                    commentDiv.style.transition = 'opacity 0.5s ease';
+                    commentDiv.style.opacity = '1';
+                }, 10);
+            }
+        });
         // Menú responsive
         function toggleMenu() {
             const menu = document.getElementById('mainMenu');

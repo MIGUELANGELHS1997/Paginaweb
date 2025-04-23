@@ -148,7 +148,584 @@
         </div>
     </div>
 </section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia - CEREFE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --primary-dark: #003d82;
+            --accent-color: #00a0e9;
+            --accent-dark: #0088cc;
+            --light-color: #ffffff;
+            --text-color: #333333;
+            --text-muted: #6c757d;
+            --section-bg: #f8f9fa;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .section {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .underline {
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 0 auto 1.5rem;
+            border-radius: 2px;
+        }
+
+        /* Estructura de la línea de tiempo */
+        .timeline-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            z-index: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-content {
+            position: relative;
+            max-width: 600px;
+            padding: 1.8rem;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .year-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 160, 233, 0.3);
+            z-index: 2;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+        }
+
+        /* Elementos multimedia */
+        .media-container {
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .media-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .media-container:hover .media-image {
+            transform: scale(1.03);
+        }
+
+        .media-caption {
+            padding: 0.8rem;
+            background: var(--section-bg);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Elementos de contenido */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 0.8rem;
+            background: rgba(0, 160, 233, 0.05);
+            border-radius: var(--border-radius);
+        }
+
+        .stat-number {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-list {
+            list-style-type: none;
+            margin: 1.5rem 0;
+        }
+
+        .timeline-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .timeline-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 0.5em;
+            height: 0.5em;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .highlight-box {
+            background-color: rgba(0, 160, 233, 0.1);
+            border-left: 4px solid var(--accent-color);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .highlight-box i {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Navegación */
+        .timeline-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2.5rem 0;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .years-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 0.5rem 0;
+            max-width: 80%;
+            gap: 0.5rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) rgba(0, 160, 233, 0.1);
+        }
+
+        .years-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .years-container::-webkit-scrollbar-track {
+            background: rgba(0, 160, 233, 0.1);
+            border-radius: 10px;
+        }
+
+        .years-container::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .year-btn {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+        }
+
+        .year-btn.active, .year-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Comentarios de visitantes */
+        .comments-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 3.5rem;
+        }
+
+        .comments-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .comment-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(0, 160, 233, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 160, 233, 0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 160, 233, 0.4);
+        }
+
+        .comments-list {
+            margin-top: 2.5rem;
+        }
+
+        .comments-list h4 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--accent-color);
+            font-size: 1.3rem;
+        }
+
+        .comment-card {
+            background: var(--section-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .comment-card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid var(--section-bg);
+        }
+
+        .comment-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .comment-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .comment-year {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .comment-text {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Marcadores de década */
+        .decade-marker {
+            position: relative;
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: linear-gradient(90deg, rgba(0, 160, 233, 0.1), rgba(0, 160, 233, 0.3), rgba(0, 160, 233, 0.1));
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 1;
+        }
+
+        .decade-marker::before,
+        .decade-marker::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .decade-marker::before {
+            left: 0;
+        }
+
+        .decade-marker::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--accent-color), transparent);
+        }
+
+        /* Efectos adicionales */
+        .media-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 86, 179, 0.1);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .media-container:hover::after {
+            opacity: 1;
+        }
+
+        .year-badge::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-color);
+            border-radius: 50px;
+            z-index: -1;
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.3;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-content {
+                margin-left: 70px !important;
+                max-width: calc(100% - 70px);
+                padding: 1.5rem;
+            }
+
+            .years-container {
+                max-width: 70%;
+            }
+
+            .decade-marker {
+                width: 100%;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 3rem 5%;
+            }
+
+            .years-container {
+                max-width: 60%;
+            }
+
+            .comments-section {
+                padding: 1.8rem;
+            }
+            
+            .timeline-content {
+                padding: 1.2rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .decade-marker {
+                font-size: 1.1rem;
+                padding: 0.8rem;
+            }
+
+            .decade-marker::before,
+            .decade-marker::after {
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+<body>
     <section id="historia" class="section">
         <div class="section-title">
             <h2>Nuestra Historia</h2>
@@ -157,60 +734,388 @@
         </div>
 
         <div class="timeline-container">
-            <!-- Línea de tiempo -->
             <div class="timeline">
-                <!-- Año 1986 - Fundación -->
+                <!-- Década de 1980 -->
+                <div class="decade-marker">Década de 1980</div>
+                
+                <!-- 1986 - Fundación -->
                 <div class="timeline-item" data-year="1986">
                     <div class="timeline-content">
-                        <h3>1986: Fundación de CEREFE</h3>
-                        <div class="timeline-media">
-                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Fundación de CEREFE" class="timeline-img">
+                        <div class="year-badge">1986</div>
+                        <h3>Fundación de CEREFE</h3>
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Fundación de CEREFE" class="media-image">
                             <div class="media-caption">Primeras instalaciones de CEREFE en La Paz</div>
                         </div>
-                        <p>El Centro de Rehabilitación y Educación Especial fue fundado por un grupo de profesionales comprometidos con la atención a personas con discapacidad, iniciando operaciones con un pequeño equipo multidisciplinario.</p>
-                        <div class="timeline-comments">
-                            <div class="comment">
-                                <div class="comment-author">Dr. Ricardo Quiroga</div>
-                                <div class="comment-text">"Empezamos con apenas 5 profesionales y la convicción de que podíamos hacer una diferencia en la vida de las personas con discapacidad."</div>
+                        <p>El Centro de Rehabilitación y Educación Especial fue fundado por un grupo de profesionales comprometidos con la atención a personas con discapacidad, iniciando operaciones con un pequeño equipo multidisciplinario en un modesto local del centro de La Paz.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Profesionales</div>
                             </div>
+                            <div class="stat-item">
+                                <div class="stat-number">1</div>
+                                <div class="stat-label">Sala de terapia</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Pacientes semanales</div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <i class="fas fa-trophy"></i>
+                            <p>Primer centro privado de rehabilitación en Bolivia con enfoque integral</p>
+                        </div>
+                        
+                        <div class="comment-card" style="margin-top: 1.5rem;">
+                            <div class="comment-header">
+                                <span class="comment-name">Dr. Ricardo Quiroga - Fundador</span>
+                            </div>
+                            <p class="comment-text">"Empezamos con apenas 5 profesionales y la convicción de que podíamos hacer una diferencia en la vida de las personas con discapacidad. Cada pequeño avance de nuestros pacientes era nuestra mayor victoria."</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Año 1992 - Primera expansión -->
+                <!-- 1988 - Primeros reconocimientos -->
+                <div class="timeline-item" data-year="1988">
+                    <div class="timeline-content">
+                        <div class="year-badge">1988</div>
+                        <h3>Primeros Reconocimientos</h3>
+                        
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Reconocimiento municipal" class="media-image">
+                            <div class="media-caption">Reconocimiento del Municipio de La Paz</div>
+                        </div>
+                        
+                        <p>CEREFE recibe su primer reconocimiento oficial por parte del gobierno municipal por su labor en rehabilitación. Este año también marcó el inicio de nuestra participación en eventos públicos de concientización sobre discapacidad.</p>
+                        
+                        <ul class="timeline-list">
+                            <li>Premio "Innovación en Salud" del Municipio de La Paz</li>
+                            <li>Primera participación en la Feria Nacional de Salud</li>
+                            <li>Publicación de nuestro primer folleto informativo</li>
+                            <li>Equipo crece a 8 profesionales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Década de 1990 -->
+                <div class="decade-marker">Década de 1990</div>
+                
+                <!-- 1992 - Primera expansión -->
                 <div class="timeline-item" data-year="1992">
                     <div class="timeline-content">
-                        <h3>1992: Primera Expansión</h3>
-                        <div class="timeline-media">
-                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2065&q=80" alt="Expansión de CEREFE" class="timeline-img">
+                        <div class="year-badge">1992</div>
+                        <h3>Primera Expansión</h3>
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Expansión de CEREFE" class="media-image">
                             <div class="media-caption">Nuevas instalaciones en la Zona Villa Dolores</div>
                         </div>
-                        <p>Tras 6 años de crecimiento constante, CEREFE se traslada a instalaciones más amplias en la Zona Villa Dolores, permitiendo atender a más pacientes y ofrecer nuevos servicios.</p>
-                        <div class="timeline-comments">
-                            <div class="comment">
-                                <div class="comment-author">Lic. Angela Flores</div>
-                                <div class="comment-text">"El cambio de locación marcó un antes y después. Pudimos implementar terapias que antes no eran posibles por falta de espacio."</div>
+                        <p>Tras 6 años de crecimiento constante, CEREFE se traslada a instalaciones más amplias en la Zona Villa Dolores, permitiendo atender a más pacientes y ofrecer nuevos servicios especializados.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">800m²</div>
+                                <div class="stat-label">Nueva superficie</div>
                             </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Profesionales</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">60+</div>
+                                <div class="stat-label">Pacientes semanales</div>
+                            </div>
+                        </div>
+                        
+                        <ul class="timeline-list">
+                            <li>Superficie aumentada de 50m² a 800m²</li>
+                            <li>Implementación de hidroterapia con piscina terapéutica</li>
+                            <li>Primer taller laboral para jóvenes con discapacidad</li>
+                            <li>Sala de estimulación temprana</li>
+                            <li>Consultorio de ortopedia especializada</li>
+                        </ul>
+                        
+                        <div class="comment-card" style="margin-top: 1.5rem;">
+                            <div class="comment-header">
+                                <span class="comment-name">Lic. Angela Flores - Terapeuta</span>
+                            </div>
+                            <p class="comment-text">"El cambio de locación marcó un antes y después. Pudimos implementar terapias que antes no eran posibles por falta de espacio, como la hidroterapia que tanto beneficia a nuestros pacientes."</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Año 1998 - Programa de Educación Especial -->
+                <!-- 1995 - Programa de Capacitación -->
+                <div class="timeline-item" data-year="1995">
+                    <div class="timeline-content">
+                        <div class="year-badge">1995</div>
+                        <h3>Programa de Capacitación Docente</h3>
+                        
+                        <div class="media-container">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/7E-cwdnsiow" title="Capacitación docente CEREFE" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="media-caption">Documental sobre nuestro primer curso de capacitación</div>
+                        </div>
+                        
+                        <p>Inicio del programa de capacitación para docentes de educación regular en estrategias de inclusión educativa, pionero en Bolivia. Este programa formó a más de 200 educadores en sus primeros 5 años.</p>
+                        
+                        <div class="highlight-box">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <p>Primer centro en Bolivia en ofrecer capacitación formal en educación inclusiva para docentes de escuelas regulares</p>
+                        </div>
+                        
+                        <ul class="timeline-list">
+                            <li>Diseño del primer manual de adaptaciones curriculares</li>
+                            <li>Talleres prácticos en escuelas asociadas</li>
+                            <li>Alianza con el Ministerio de Educación</li>
+                            <li>Primera generación: 35 docentes capacitados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 1998 - Programa de Educación Especial -->
                 <div class="timeline-item" data-year="1998">
                     <div class="timeline-content">
-                        <h3>1998: Programa de Educación Especial</h3>
-                        <div class="timeline-media">
+                        <div class="year-badge">1998</div>
+                        <h3>Programa de Educación Especial</h3>
+                        <div class="media-container">
                             <div class="video-container">
-                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Programa de Educación Especial CEREFE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Programa de Educación Especial CEREFE" frameborder="0" allowfullscreen></iframe>
                             </div>
                             <div class="media-caption">Video documental del primer año del programa educativo</div>
                         </div>
-                        <p>Implementación del programa formal de educación especial, reconocido por el Ministerio de Educación, para niños y jóvenes con necesidades educativas especiales.</p>
-                        <div class="timeline-comments">
-                            <div class="comment">
-                                <div class="comment-author">Familia Pérez</div>
-                                <div class="comment-text">"Nuestro hijo encontró en CEREFE un lugar donde aprender a su ritmo. Los profesores entendían sus necesidades como nadie."</div>
+                        <p>Implementación del programa formal de educación especial, reconocido por el Ministerio de Educación, para niños y jóvenes con necesidades educativas especiales. El programa combinaba terapia con educación personalizada.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Primeros estudiantes</div>
                             </div>
+                            <div class="stat-item">
+                                <div class="stat-number">70%</div>
+                                <div class="stat-label">Desarrollo habilidades</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">4</div>
+                                <div class="stat-label">Aulas especializadas</div>
+                            </div>
+                        </div>
+                        
+                        <div class="comment-card" style="margin-top: 1.5rem;">
+                            <div class="comment-header">
+                                <span class="comment-name">Familia Pérez</span>
+                            </div>
+                            <p class="comment-text">"Nuestro hijo encontró en CEREFE un lugar donde aprender a su ritmo. Los profesores entendían sus necesidades como nadie y le ayudaron a desarrollar habilidades que creíamos imposibles."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Década de 2000 -->
+                <div class="decade-marker">Década de 2000</div>
+                
+                <!-- 2003 - Tecnología Asistiva -->
+                <div class="timeline-item" data-year="2003">
+                    <div class="timeline-content">
+                        <div class="year-badge">2003</div>
+                        <h3>Centro de Tecnología Asistiva</h3>
+                        
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Tecnología asistiva" class="media-image">
+                            <div class="media-caption">Primeros dispositivos adaptados</div>
+                        </div>
+                        
+                        <p>Creación del primer centro de tecnología asistiva en Bolivia, desarrollando dispositivos personalizados para personas con discapacidad motora. Este proyecto fue financiado parcialmente por una subvención internacional.</p>
+                        
+                        <ul class="timeline-list">
+                            <li>Primer comunicador electrónico adaptado</li>
+                            <li>Sillas de ruedas personalizadas</li>
+                            <li>Dispositivos para alimentación autónoma</li>
+                            <li>Taller de fabricación de ayudas técnicas</li>
+                            <li>Capacitación para familias en el uso de tecnología</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2007 - Sucursal Santa Cruz -->
+                <div class="timeline-item" data-year="2007">
+                    <div class="timeline-content">
+                        <div class="year-badge">2007</div>
+                        <h3>Expansión a Santa Cruz</h3>
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1575517111478-7f6afd0973db?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="CEREFE Santa Cruz" class="media-image">
+                            <div class="media-caption">Inauguración de nuestra sede en Santa Cruz</div>
+                        </div>
+                        
+                        <div class="highlight-box" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Primera Sede Regional - Después de 21 años de operar solo en La Paz, abrimos nuestras puertas en Santa Cruz de la Sierra</p>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">1200m²</div>
+                                <div class="stat-label">Instalaciones</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">18</div>
+                                <div class="stat-label">Profesionales</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Pacientes primer año</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Década de 2010 -->
+                <div class="decade-marker">Década de 2010</div>
+                
+                <!-- 2012 - Premio Nacional -->
+                <div class="timeline-item" data-year="2012">
+                    <div class="timeline-content">
+                        <div class="year-badge">2012</div>
+                        <h3>Premio Nacional a la Innovación Social</h3>
+                        
+                        <div class="media-container">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/9YffrCViTVk" title="Premio Nacional CEREFE" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="media-caption">Ceremonia de entrega del premio presidencial</div>
+                        </div>
+                        
+                        <p>Reconocimiento del Gobierno Nacional por nuestro programa "Inclusión Laboral para Jóvenes con Discapacidad Intelectual", que había logrado insertar a 45 jóvenes en empleos formales hasta ese momento.</p>
+                        
+                        <div class="highlight-box">
+                            <i class="fas fa-award"></i>
+                            <p>Primer centro de rehabilitación en recibir este galardón en la categoría de Innovación Social</p>
+                        </div>
+                        
+                        <ul class="timeline-list">
+                            <li>Programa de pasantías laborales</li>
+                            <li>Capacitación en habilidades blandas</li>
+                            <li>Acompañamiento a empresas contratantes</li>
+                            <li>Seguimiento post-contratación</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2015 - Centro de Investigación -->
+                <div class="timeline-item" data-year="2015">
+                    <div class="timeline-content">
+                        <div class="year-badge">2015</div>
+                        <h3>Centro de Investigación en Discapacidad</h3>
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Centro de Investigación" class="media-image">
+                            <div class="media-caption">Laboratorio del Centro de Investigación</div>
+                        </div>
+                        <p>Creación del primer centro de investigación especializado en discapacidad y rehabilitación en Bolivia, en colaboración con tres universidades nacionales.</p>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">5</div>
+                                <div class="stat-label">Líneas de investigación</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Estudios publicados</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Patentes registradas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2018 - Teleterapia -->
+                <div class="timeline-item" data-year="2018">
+                    <div class="timeline-content">
+                        <div class="year-badge">2018</div>
+                        <h3>Programa de Teleterapia</h3>
+                        
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1581092917906-0c57ee72ad5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Sesión de teleterapia" class="media-image">
+                            <div class="media-caption">Primeras sesiones remotas</div>
+                        </div>
+                        
+                        <p>Lanzamiento del primer programa de teleterapia en Bolivia, permitiendo atender a pacientes en áreas rurales y de difícil acceso. Este programa fue especialmente valioso durante la pandemia.</p>
+                        
+                        <ul class="timeline-list">
+                            <li>Plataforma propia desarrollada internamente</li>
+                            <li>Terapias en tiempo real y asincrónicas</li>
+                            <li>Capacitación a familias en el uso de la plataforma</li>
+                            <li>Alianzas con centros de salud rurales</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Década de 2020 -->
+                <div class="decade-marker">Década de 2020</div>
+                
+                <!-- 2020 - Pandemia -->
+                <div class="timeline-item" data-year="2020">
+                    <div class="timeline-content">
+                        <div class="year-badge">2020</div>
+                        <h3>Adaptación durante la Pandemia</h3>
+                        <div class="media-container">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/7E-cwdnsiow" title="CEREFE durante la pandemia" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <div class="media-caption">Documental sobre nuestro trabajo durante la crisis sanitaria</div>
+                        </div>
+                        
+                        <div class="highlight-box" style="background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); color: white;">
+                            <i class="fas fa-heartbeat"></i>
+                            <p>Manteniendo la Misión en Tiempos Difíciles - Protocolos innovadores para continuar la atención durante la pandemia</p>
+                        </div>
+                        
+                        <ul class="timeline-list">
+                            <li>Protocolos de bioseguridad certificados</li>
+                            <li>Kits terapéuticos para uso en casa</li>
+                            <li>Grupos de apoyo psicológico en línea</li>
+                            <li>Programa de emergencia para familias vulnerables</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2023 - Actualidad -->
+                <div class="timeline-item" data-year="2023">
+                    <div class="timeline-content">
+                        <div class="year-badge">2023</div>
+                        <h3>CEREFE en la Actualidad</h3>
+                        
+                        <div class="media-container">
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Instalaciones actuales" class="media-image">
+                            <div class="media-caption">Nuestras instalaciones actuales</div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">3</div>
+                                <div class="stat-label">Sedes</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">85</div>
+                                <div class="stat-label">Profesionales</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">1200+</div>
+                                <div class="stat-label">Pacientes anuales</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">37</div>
+                                <div class="stat-label">Años de servicio</div>
+                            </div>
+                        </div>
+                        
+                        <p>Después de 37 años de trayectoria, CEREFE se ha consolidado como el centro de rehabilitación y educación especial más grande y con mayor experiencia de Bolivia, manteniendo siempre su compromiso con la calidad, la innovación y el trato humano.</p>
+                        
+                        <div class="highlight-box">
+                            <i class="fas fa-star"></i>
+                            <p>En 2023 recibimos la acreditación internacional como Centro de Excelencia en Rehabilitación por la Organización Mundial de la Salud</p>
                         </div>
                     </div>
                 </div>
@@ -220,15 +1125,24 @@
             <div class="timeline-nav">
                 <button class="nav-btn prev-btn" aria-label="Año anterior"><i class="fas fa-chevron-left"></i></button>
                 <div class="years-container">
-                    <button class="year-btn active" data-year="1986" data-index="0">1986</button>
-                    <button class="year-btn" data-year="1992" data-index="1">1992</button>
-                    <button class="year-btn" data-year="1998" data-index="2">1998</button>
+                    <button class="year-btn active" data-year="1986">1986</button>
+                    <button class="year-btn" data-year="1988">1988</button>
+                    <button class="year-btn" data-year="1992">1992</button>
+                    <button class="year-btn" data-year="1995">1995</button>
+                    <button class="year-btn" data-year="1998">1998</button>
+                    <button class="year-btn" data-year="2003">2003</button>
+                    <button class="year-btn" data-year="2007">2007</button>
+                    <button class="year-btn" data-year="2012">2012</button>
+                    <button class="year-btn" data-year="2015">2015</button>
+                    <button class="year-btn" data-year="2018">2018</button>
+                    <button class="year-btn" data-year="2020">2020</button>
+                    <button class="year-btn" data-year="2023">2023</button>
                 </div>
                 <button class="nav-btn next-btn" aria-label="Año siguiente"><i class="fas fa-chevron-right"></i></button>
             </div>
 
             <!-- Área para comentarios de visitantes -->
-            <div class="visitor-comments">
+            <div class="comments-section">
                 <h3>Comparte tu experiencia con CEREFE</h3>
                 <form id="commentForm" class="comment-form">
                     <div class="form-group">
@@ -240,9 +1154,15 @@
                     <div class="form-group">
                         <select id="commentYear" class="form-control">
                             <option value="">¿En qué año nos conociste?</option>
+                            <option value="1980">1980-1985</option>
                             <option value="1986">1986-1990</option>
                             <option value="1991">1991-1995</option>
                             <option value="1996">1996-2000</option>
+                            <option value="2001">2001-2005</option>
+                            <option value="2006">2006-2010</option>
+                            <option value="2011">2011-2015</option>
+                            <option value="2016">2016-2020</option>
+                            <option value="2021">2021-2023</option>
                         </select>
                     </div>
                     <button type="submit" class="btn">Enviar Comentario</button>
@@ -250,17 +1170,155 @@
 
                 <div class="comments-list">
                     <h4>Comentarios de nuestra comunidad</h4>
-                    <div class="visitor-comment">
-                        <div class="visitor-comment-header">
-                            <span class="visitor-name">Familia Rodríguez</span>
-                            <span class="visitor-year">Año: 2015</span>
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <span class="comment-name">Familia Rodríguez</span>
+                            <span class="comment-year">Año: 2015</span>
                         </div>
-                        <p class="visitor-text">CEREFE cambió nuestra vida. Nuestra hija con parálisis cerebral ha logrado avances increíbles gracias a su equipo.</p>
+                        <p class="comment-text">CEREFE cambió nuestra vida. Nuestra hija con parálisis cerebral ha logrado avances increíbles gracias a su equipo. Hoy puede comunicarse y realizar actividades que nunca imaginamos posibles.</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <span class="comment-name">Juan Carlos M.</span>
+                            <span class="comment-year">Año: 2002</span>
+                        </div>
+                        <p class="comment-text">Estudié en CEREFE de 1998 a 2005. Aunque nací con síndrome de Down, aprendí a leer, escribir y hasta a usar computadora. Hoy trabajo en un supermercado haciendo inventarios.</p>
+                    </div>
+                    
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <span class="comment-name">Dra. Laura Vargas</span>
+                            <span class="comment-year">Año: 1995</span>
+                        </div>
+                        <p class="comment-text">Como médica pediatra, he derivado cientos de pacientes a CEREFE en estos 28 años. Su enfoque integral hace una diferencia tangible en la vida de los niños.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const yearButtons = document.querySelectorAll('.year-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            const yearsContainer = document.querySelector('.years-container');
+            
+            let currentIndex = 0;
+            
+            // Mostrar primer item por defecto
+            if(timelineItems.length > 0) {
+                timelineItems[0].classList.add('visible');
+            }
+            
+            // Función para mostrar un item específico
+            function showItem(index) {
+                // Validar índice
+                if(index < 0) index = timelineItems.length - 1;
+                if(index >= timelineItems.length) index = 0;
+                
+                currentIndex = index;
+                
+                // Ocultar todos los items
+                timelineItems.forEach(item => item.classList.remove('visible'));
+                
+                // Mostrar el item seleccionado
+                timelineItems[index].classList.add('visible');
+                
+                // Actualizar botones activos
+                yearButtons.forEach((btn, i) => {
+                    if(i === index) {
+                        btn.classList.add('active');
+                        
+                        // Hacer scroll al botón activo
+                        const containerWidth = yearsContainer.offsetWidth;
+                        const btnLeft = btn.offsetLeft;
+                        const btnWidth = btn.offsetWidth;
+                        
+                        yearsContainer.scrollTo({
+                            left: btnLeft - (containerWidth / 2) + (btnWidth / 2),
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Desplazar suavemente al elemento seleccionado
+                timelineItems[index].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+            
+            // Eventos para los botones de año
+            yearButtons.forEach((btn, index) => {
+                btn.addEventListener('click', () => showItem(index));
+            });
+            
+            // Eventos para botones de navegación
+            prevBtn.addEventListener('click', () => showItem(currentIndex - 1));
+            nextBtn.addEventListener('click', () => showItem(currentIndex + 1));
+            
+            // Navegación con teclado
+            document.addEventListener('keydown', function(e) {
+                if(e.key === 'ArrowLeft') showItem(currentIndex - 1);
+                if(e.key === 'ArrowRight') showItem(currentIndex + 1);
+            });
+            
+            // Animación al hacer scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => observer.observe(item));
+            
+            // Formulario de comentarios
+            const commentForm = document.getElementById('commentForm');
+            if(commentForm) {
+                commentForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('commentName').value;
+                    const text = document.getElementById('commentText').value;
+                    const year = document.getElementById('commentYear').value;
+                    
+                    if(name && text) {
+                        const commentsList = document.querySelector('.comments-list');
+                        const newComment = document.createElement('div');
+                        newComment.className = 'comment-card';
+                        newComment.innerHTML = `
+                            <div class="comment-header">
+                                <span class="comment-name">${name}</span>
+                                ${year ? `<span class="comment-year">Año: ${year}</span>` : ''}
+                            </div>
+                            <p class="comment-text">${text}</p>
+                        `;
+                        
+                        commentsList.insertBefore(newComment, commentsList.firstChild);
+                        commentForm.reset();
+                        
+                        // Animación para el nuevo comentario
+                        setTimeout(() => {
+                            newComment.style.opacity = '1';
+                            newComment.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        alert('Por favor complete todos los campos requeridos');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
 
     <!-- Sección de Director -->
     <section id="director" class="section section-bg">

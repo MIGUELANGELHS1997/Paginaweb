@@ -576,7 +576,7 @@
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">
-            <h1>Centro de Rehabilitación y Educación Especial</h1>
+            <h1>CENTRO DE REHABILITACION FISICA Y EDUCACION ESPECIAL</h1>
             <p>Brindamos atención integral a personas con dificultades en el aprendizaje, discapacidades y talento superior, promoviendo su inclusión educativa, social y desarrollo humano con más de 37 años de experiencia en Bolivia.</p>
             <div class="hero-buttons">
                 <a href="#servicios" class="btn">Nuestros Servicios</a>
@@ -2806,7 +2806,7 @@
     <!-- Sección de Director -->
     <section id="director" class="section section-bg">
         <div class="leadership-section">
-            <div class="leadership-header">
+            <div class="section-title">
                 <h2>Nuestro Equipo Directivo</h2>
                 <div class="underline"></div>
                 <p>Profesionales comprometidos con la excelencia en rehabilitación y educación especial</p>
@@ -3183,7 +3183,7 @@
     <section id="guia-familia" class="section">
         <div class="guide-section">
             <div class="guide-container">
-                <div class="guide-header">
+                <div class="section-title">
                     <h2>Guía para la Familia</h2>
                     <div class="underline"></div>
                     <p>Recursos y orientación para familias que tienen un miembro con discapacidad</p>
@@ -6317,7 +6317,7 @@
                     <div class="service-content">
                         <h3>Medicina General y Pediatría</h3>
                         <p>Atención médica integral y pediatría especializada en el diagnóstico y tratamiento de condiciones asociadas a discapacidades, con enfoque preventivo y de seguimiento continuo.</p>
-                        <a href="#medicina" class="service-btn">
+                        <a href="https://tusitio.com/medicina-general-pediatria" class="service-btn">
                             Más información <i class="fas fa-chevron-right"></i>
                         </a>
                     </div>
@@ -6970,86 +6970,215 @@
     });
 </script>
     <!-- Sección de Galería -->
-<!-- Sección de Galería -->
-<section id="galeria" class="section">
+<!-- Sección de Galería Mejorada -->
+<section id="galeria" class="section gallery-section">
     <div class="section-title">
-        <h2>Galería CEREFE</h2>
+        <h2> GALERÍA CEREFE</h2>
         <div class="underline"></div>
-        <p>Conoce nuestro trabajo a través de estas imágenes que muestran nuestras actividades, instalaciones y eventos especiales</p>
+        <p class="section-subtitle">Explora nuestro trabajo a través de imágenes que muestran nuestro enfoque integral en neurodesarrollo y educación especial</p>
     </div>
     
     <div class="gallery-container">
         <div class="gallery-controls">
-            <button class="filter-btn active" data-filter="all">Todas</button>
-            <button class="filter-btn" data-filter="actividades">Actividades</button>
-            <button class="filter-btn" data-filter="terapias">Terapias</button>
-            <button class="filter-btn" data-filter="instalaciones">Instalaciones</button>
-            <button class="filter-btn" data-filter="eventos">Eventos</button>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Todas
+                </button>
+                <button class="filter-btn" data-filter="terapias">
+                    <i class="fas fa-heartbeat"></i> Intervenciones
+                </button>
+                <button class="filter-btn" data-filter="actividades">
+                    <i class="fas fa-graduation-cap"></i> Actividades
+                </button>
+                <button class="filter-btn" data-filter="instalaciones">
+                    <i class="fas fa-building"></i> Instalaciones
+                </button>
+                <button class="filter-btn" data-filter="eventos">
+                    <i class="fas fa-calendar-alt"></i> Eventos
+                </button>
+                <button class="filter-btn" data-filter="equipo">
+                    <i class="fas fa-users"></i> Equipo
+                </button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="gallery-search" placeholder="Buscar en galería...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
+        <div class="gallery-stats">
+            <div class="stat-card">
+                <i class="fas fa-images"></i>
+                <span class="count">24</span>
+                <span>Imágenes</span>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-filter"></i>
+                <span class="active-filter">Todas</span>
+                <span>Categoría activa</span>
+            </div>
         </div>
         
         <div class="gallery-grid">
-            <div class="gallery-item actividades" data-category="actividades">
-                <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Actividades educativas en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+            <!-- Terapias -->
+            <div class="gallery-item terapias" data-category="terapias" data-title="Terapia Ocupacional" data-tags="terapia niños integración">
+                <div class="gallery-img-container">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Terapia ocupacional en CEREFE" 
+                         class="gallery-img" 
+                         loading="lazy">
+                    <div class="category-badge">Intervención</div>
+                </div>
                 <div class="img-overlay">
                     <div class="overlay-content">
-                        <h3>Actividades Educativas</h3>
-                        <p>Nuestros estudiantes participando en actividades de aprendizaje interactivo</p>
-                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
+                        <h3>Terapia Ocupacional</h3>
+                        <p>Sesiones personalizadas para mejorar habilidades motoras y cognitivas</p>
+                        <div class="action-buttons">
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen" title="Ampliar">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                            <a href="#" class="info-icon" aria-label="Más información" title="Detalles">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="gallery-item terapias" data-category="terapias">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapias en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+            <!-- Actividades -->
+            <div class="gallery-item actividades" data-category="actividades" data-title="Taller Educativo" data-tags="actividad aprendizaje niños">
+                <div class="gallery-img-container">
+                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Taller educativo en CEREFE" 
+                         class="gallery-img" 
+                         loading="lazy">
+                    <div class="category-badge">Educación</div>
+                </div>
                 <div class="img-overlay">
                     <div class="overlay-content">
-                        <h3>Sesiones de Terapia</h3>
-                        <p>Profesionales trabajando con nuestros pacientes en sesiones personalizadas</p>
-                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
+                        <h3>Taller Educativo</h3>
+                        <p>Actividades diseñadas para estimular el desarrollo cognitivo</p>
+                        <div class="action-buttons">
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen" title="Ampliar">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                            <a href="#" class="info-icon" aria-label="Más información" title="Detalles">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="gallery-item instalaciones" data-category="instalaciones">
-                <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instalaciones de CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+            <!-- Instalaciones -->
+            <div class="gallery-item instalaciones" data-category="instalaciones" data-title="Sala de Terapia" data-tags="instalación clínica equipo">
+                <div class="gallery-img-container">
+                    <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Sala de terapia en CEREFE" 
+                         class="gallery-img" 
+                         loading="lazy">
+                    <div class="category-badge">Instalación</div>
+                </div>
                 <div class="img-overlay">
                     <div class="overlay-content">
-                        <h3>Nuestras Instalaciones</h3>
-                        <p>Espacios diseñados para la comodidad y accesibilidad de nuestros pacientes</p>
-                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
+                        <h3>Sala de Terapia</h3>
+                        <p>Espacio equipado con tecnología para intervenciones especializadas</p>
+                        <div class="action-buttons">
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen" title="Ampliar">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                            <a href="#" class="info-icon" aria-label="Más información" title="Detalles">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="gallery-item eventos" data-category="eventos">
-                <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Eventos en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
-                <div class="img-overlay">
-                    <div class="overlay-content">
-                        <h3>Eventos Especiales</h3>
-                        <p>Celebraciones y actividades comunitarias para promover la inclusión</p>
-                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                    </div>
+            <!-- Eventos -->
+            <div class="gallery-item eventos" data-category="eventos" data-title="Día de la Inclusión" data-tags="evento comunidad inclusión">
+                <div class="gallery-img-container">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" 
+                         alt="Evento de inclusión en CEREFE" 
+                         class="gallery-img" 
+                         loading="lazy">
+                    <div class="category-badge">Evento</div>
                 </div>
-            </div>
-
-            <div class="gallery-item terapias" data-category="terapias">
-                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapia física en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
                 <div class="img-overlay">
                     <div class="overlay-content">
-                        <h3>Terapia Física</h3>
-                        <p>Sesiones personalizadas para mejorar la movilidad y autonomía</p>
-                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
+                        <h3>Día de la Inclusión</h3>
+                        <p>Celebración anual para promover la conciencia sobre neurodiversidad</p>
+                        <div class="action-buttons">
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen" title="Ampliar">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                            <a href="#" class="info-icon" aria-label="Más información" title="Detalles">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="gallery-item actividades" data-category="actividades">
-                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Talleres educativos" class="gallery-img" width="400" height="300" loading="lazy">
+            <!-- Equipo -->
+            <div class="gallery-item equipo" data-category="equipo" data-title="Nuestro Equipo" data-tags="profesionales staff clínica">
+                <div class="gallery-img-container">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Equipo profesional de CEREFE" 
+                         class="gallery-img" 
+                         loading="lazy">
+                    <div class="category-badge">Equipo</div>
+                </div>
                 <div class="img-overlay">
                     <div class="overlay-content">
-                        <h3>Talleres Educativos</h3>
-                        <p>Programas diseñados para el desarrollo de habilidades cognitivas</p>
-                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
+                        <h3>Nuestro Equipo</h3>
+                        <p>Profesionales multidisciplinarios especializados en neurodesarrollo</p>
+                        <div class="action-buttons">
+                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen" title="Ampliar">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                            <a href="#" class="info-icon" aria-label="Más información" title="Detalles">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Más elementos de la galería... -->
+        </div>
+ 
+    </div>
+    
+    <!-- Lightbox Modal -->
+    <div id="gallery-lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-desc"></p>
+                <div class="lightbox-nav">
+                    <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <span id="image-counter"></span>
+                    <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div class="modal-body">
+                <img id="modal-img" src="" alt="" class="modal-img">
+                <div class="modal-text">
+                    <p id="modal-description"></p>
+                    <div class="modal-meta">
+                        <div><i class="fas fa-calendar-alt"></i> <span id="modal-date"></span></div>
+                        <div><i class="fas fa-tags"></i> <span id="modal-tags"></span></div>
                     </div>
                 </div>
             </div>
@@ -7058,63 +7187,223 @@
 </section>
 
 <style>
-/* Estilos para la galería */
+/* Estilos generales */
+.gallery-section {
+    background-color: #f9fbfd;
+    padding: 60px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.section-title h2 i {
+    color: #3498db;
+}
+
+.underline {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    margin: 0 auto 20px;
+}
+
+.section-subtitle {
+    color: #7f8c8d;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Contenedor de la galería */
 .gallery-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
+/* Controles de la galería */
 .gallery-controls {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 30px;
+    gap: 20px;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .filter-btn {
-    padding: 8px 20px;
-    background-color: #f1f1f1;
+    padding: 10px 20px;
+    background-color: #e3f2fd;
     border: none;
-    border-radius: 4px;
+    border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
 }
 
 .filter-btn:hover {
-    background-color: #ddd;
+    background-color: #bbdefb;
 }
 
 .filter-btn.active {
     background-color: #3498db;
     color: white;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
 }
 
+.filter-btn i {
+    font-size: 0.9em;
+}
+
+.search-box {
+    position: relative;
+    min-width: 250px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px 15px;
+    padding-right: 40px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #7f8c8d;
+    cursor: pointer;
+}
+
+/* Estadísticas de la galería */
+.gallery-stats {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    min-width: 120px;
+}
+
+.stat-card i {
+    font-size: 1.5rem;
+    color: #3498db;
+    margin-bottom: 5px;
+}
+
+.stat-card .count {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.stat-card .active-filter {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3498db;
+}
+
+.stat-card span:last-child {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Grid de la galería */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
 .gallery-item {
     position: relative;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background: white;
 }
 
 .gallery-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.gallery-img-container {
+    position: relative;
+    overflow: hidden;
+    height: 220px;
 }
 
 .gallery-img {
     width: 100%;
-    height: 250px;
+    height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-img {
+    transform: scale(1.05);
+}
+
+.category-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 2;
 }
 
 .img-overlay {
@@ -7123,13 +7412,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.7);
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
     color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-end;
     opacity: 0;
     transition: opacity 0.3s ease;
+    padding: 20px;
 }
 
 .gallery-item:hover .img-overlay {
@@ -7137,123 +7426,600 @@
 }
 
 .overlay-content {
-    padding: 20px;
-    text-align: center;
-}
-
-.overlay-content h3 {
-    margin-top: 0;
-    font-size: 1.2rem;
-}
-
-.overlay-content p {
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-}
-
-.zoom-icon {
-    color: white;
-    font-size: 1.5rem;
+    width: 100%;
+    transform: translateY(20px);
     transition: transform 0.3s ease;
 }
 
-.zoom-icon:hover {
-    transform: scale(1.2);
+.gallery-item:hover .overlay-content {
+    transform: translateY(0);
 }
 
-/* Efecto de filtro */
+.overlay-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.overlay-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.zoom-icon, .info-icon {
+    color: white;
+    background: rgba(255,255,255,0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.zoom-icon:hover, .info-icon:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+/* Efectos de filtrado */
 .gallery-item {
-    transition: all 0.5s ease;
+    transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .gallery-item.hide {
-    transform: scale(0);
     opacity: 0;
+    transform: scale(0.8);
     height: 0;
     margin: 0;
     padding: 0;
     border: none;
 }
 
+/* Footer de la galería */
+.gallery-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn-load-more {
+    padding: 12px 25px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-load-more:hover {
+    background-color: #2980b9;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.download-options {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.download-options span {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.btn-download {
+    padding: 8px 15px;
+    background-color: #f1f1f1;
+    color: #2c3e50;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-download:hover {
+    background-color: #e0e0e0;
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+.lightbox-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 80vh;
+    margin: auto;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.lightbox-caption {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.lightbox-caption h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+}
+
+.lightbox-caption p {
+    margin: 0;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+.lightbox-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.lightbox-nav button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 15px;
+    transition: all 0.3s;
+}
+
+.lightbox-nav button:hover {
+    color: #3498db;
+}
+
+#image-counter {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-lightbox:hover {
+    color: #e74c3c;
+}
+
+/* Modal de información */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #7f8c8d;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-modal:hover {
+    color: #e74c3c;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.modal-body {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.modal-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex: 1;
+    min-width: 250px;
+}
+
+.modal-text {
+    flex: 2;
+    min-width: 250px;
+}
+
+.modal-text p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.modal-meta div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.modal-meta i {
+    font-size: 0.9em;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
+    .gallery-controls {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        width: 100%;
+    }
+    
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .gallery-footer {
+        justify-content: center;
+    }
+    
+    .modal-body {
+        flex-direction: column;
+    }
+    
+    .modal-img {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-buttons {
+        justify-content: center;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Seleccionar todos los botones de filtro
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    // Elementos de la galería
     const galleryItems = document.querySelectorAll('.gallery-item');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const searchInput = document.getElementById('gallery-search');
+    const searchBtn = document.querySelector('.search-btn');
+    const loadMoreBtn = document.querySelector('.btn-load-more');
+    const activeFilterSpan = document.querySelector('.active-filter');
+    const countSpan = document.querySelector('.count');
     
-    // Añadir evento click a cada botón de filtro
+    // Lightbox elements
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const imageCounter = document.getElementById('image-counter');
+    const closeLightbox = document.querySelector('.close-lightbox');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    
+    // Modal elements
+    const infoModal = document.getElementById('info-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalImg = document.getElementById('modal-img');
+    const modalDescription = document.getElementById('modal-description');
+    const modalDate = document.getElementById('modal-date');
+    const modalTags = document.getElementById('modal-tags');
+    const closeModal = document.querySelector('.close-modal');
+    
+    // Variables de estado
+    let currentFilter = 'all';
+    let currentItems = [];
+    let currentIndex = 0;
+    
+    // Inicializar contador
+    countSpan.textContent = galleryItems.length;
+    
+    // Función para filtrar la galería
+    function filterGallery(filterValue, searchTerm = '') {
+        currentFilter = filterValue;
+        activeFilterSpan.textContent = filterValue === 'all' ? 'Todas' : 
+                                      filterValue === 'terapias' ? 'Intervenciones' :
+                                      filterValue === 'actividades' ? 'Actividades' :
+                                      filterValue === 'instalaciones' ? 'Instalaciones' :
+                                      filterValue === 'eventos' ? 'Eventos' :
+                                      filterValue === 'equipo' ? 'Equipo' : filterValue;
+        
+        currentItems = [];
+        let visibleCount = 0;
+        
+        galleryItems.forEach((item, index) => {
+            const category = item.getAttribute('data-category');
+            const title = item.getAttribute('data-title') || '';
+            const tags = item.getAttribute('data-tags') || '';
+            
+            const matchesFilter = filterValue === 'all' || category === filterValue;
+            const matchesSearch = searchTerm === '' || 
+                                 title.toLowerCase().includes(searchTerm) || 
+                                 tags.toLowerCase().includes(searchTerm);
+            
+            if (matchesFilter && matchesSearch) {
+                item.classList.remove('hide');
+                currentItems.push(index);
+                visibleCount++;
+                
+                // Animación de aparición
+                item.style.animation = 'slideUp 0.5s ease forwards';
+                item.style.animationDelay = `${(currentItems.length - 1) * 0.1}s`;
+            } else {
+                item.classList.add('hide');
+                item.style.animation = 'none';
+            }
+        });
+        
+        countSpan.textContent = visibleCount;
+        
+        // Actualizar contador
+        document.querySelector('.count').textContent = visibleCount;
+    }
+    
+    // Event listeners para los botones de filtro
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remover la clase 'active' de todos los botones
+            // Remover clase active de todos los botones
             filterButtons.forEach(btn => btn.classList.remove('active'));
             
-            // Añadir la clase 'active' al botón clickeado
+            // Añadir clase active al botón clickeado
             this.classList.add('active');
             
-            // Obtener el valor del filtro
+            // Obtener valor del filtro
             const filterValue = this.getAttribute('data-filter');
             
-            // Filtrar las imágenes
-            galleryItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.classList.remove('hide');
-                } else {
-                    item.classList.add('hide');
-                }
-            });
+            // Filtrar galería
+            filterGallery(filterValue, searchInput.value.toLowerCase());
         });
     });
     
-    // Opcional: Lightbox para ampliar imágenes
-    const zoomIcons = document.querySelectorAll('.zoom-icon');
-    zoomIcons.forEach(icon => {
-        icon.addEventListener('click', function(e) {
+    // Event listener para la búsqueda
+    searchInput.addEventListener('input', function() {
+        filterGallery(currentFilter, this.value.toLowerCase());
+    });
+    
+    searchBtn.addEventListener('click', function() {
+        filterGallery(currentFilter, searchInput.value.toLowerCase());
+    });
+    
+    // Event listeners para zoom e información
+    galleryItems.forEach(item => {
+        const zoomIcon = item.querySelector('.zoom-icon');
+        const infoIcon = item.querySelector('.info-icon');
+        const img = item.querySelector('img');
+        
+        // Zoom
+        zoomIcon.addEventListener('click', function(e) {
             e.preventDefault();
-            const imgSrc = this.closest('.gallery-item').querySelector('img').src;
-            const imgAlt = this.closest('.gallery-item').querySelector('img').alt;
-            
-            // Crear lightbox
-            const lightbox = document.createElement('div');
-            lightbox.style.position = 'fixed';
-            lightbox.style.top = '0';
-            lightbox.style.left = '0';
-            lightbox.style.width = '100%';
-            lightbox.style.height = '100%';
-            lightbox.style.backgroundColor = 'rgba(0,0,0,0.9)';
-            lightbox.style.display = 'flex';
-            lightbox.style.alignItems = 'center';
-            lightbox.style.justifyContent = 'center';
-            lightbox.style.zIndex = '1000';
-            lightbox.style.cursor = 'pointer';
-            
-            // Crear imagen ampliada
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = imgAlt;
-            img.style.maxWidth = '90%';
-            img.style.maxHeight = '90%';
-            img.style.objectFit = 'contain';
-            img.style.borderRadius = '8px';
-            
-            // Añadir imagen al lightbox
-            lightbox.appendChild(img);
-            
-            // Cerrar lightbox al hacer click
-            lightbox.addEventListener('click', function() {
-                document.body.removeChild(lightbox);
-            });
-            
-            // Añadir lightbox al body
-            document.body.appendChild(lightbox);
+            const index = Array.from(galleryItems).indexOf(item);
+            openLightbox(index);
+        });
+        
+        // Información
+        infoIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            openInfoModal(item);
         });
     });
+    
+    // Función para abrir lightbox
+    function openLightbox(index) {
+        if (currentItems.length === 0) return;
+        
+        currentIndex = currentItems.indexOf(index);
+        if (currentIndex === -1) currentIndex = 0;
+        
+        const item = galleryItems[currentItems[currentIndex]];
+        const img = item.querySelector('img');
+        const title = item.querySelector('.overlay-content h3').textContent;
+        const desc = item.querySelector('.overlay-content p').textContent;
+        
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+        imageCounter.textContent = `${currentIndex + 1} / ${currentItems.length}`;
+        
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Función para abrir modal de información
+    function openInfoModal(item) {
+        const img = item.querySelector('img');
+        const title = item.querySelector('.overlay-content h3').textContent;
+        const desc = item.querySelector('.overlay-content p').textContent;
+        const category = item.getAttribute('data-category');
+        const tags = item.getAttribute('data-tags');
+        
+        modalTitle.textContent = title;
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalDescription.textContent = desc;
+        
+        // Fecha ficticia para el ejemplo
+        const randomDate = new Date();
+        randomDate.setDate(randomDate.getDate() - Math.floor(Math.random() * 365));
+        modalDate.textContent = randomDate.toLocaleDateString('es-ES', {
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+        });
+        
+        modalTags.textContent = tags.split(' ').map(tag => `#${tag}`).join(' ');
+        
+        infoModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+    
+    // Cerrar lightbox
+    closeLightbox.addEventListener('click', function() {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Cerrar modal
+    closeModal.addEventListener('click', function() {
+        infoModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    });
+    
+    // Navegación en lightbox
+    prevBtn.addEventListener('click', function() {
+        if (currentItems.length === 0) return;
+        
+        currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
+        const item = galleryItems[currentItems[currentIndex]];
+        const img = item.querySelector('img');
+        const title = item.querySelector('.overlay-content h3').textContent;
+        const desc = item.querySelector('.overlay-content p').textContent;
+        
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+        imageCounter.textContent = `${currentIndex + 1} / ${currentItems.length}`;
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        if (currentItems.length === 0) return;
+        
+        currentIndex = (currentIndex + 1) % currentItems.length;
+        const item = galleryItems[currentItems[currentIndex]];
+        const img = item.querySelector('img');
+        const title = item.querySelector('.overlay-content h3').textContent;
+        const desc = item.querySelector('.overlay-content p').textContent;
+        
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxTitle.textContent = title;
+        lightboxDesc.textContent = desc;
+        imageCounter.textContent = `${currentIndex + 1} / ${currentItems.length}`;
+    });
+    
+    // Cerrar al hacer clic fuera del contenido
+    window.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        if (e.target === infoModal) {
+            infoModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Cargar más imágenes (simulado)
+    loadMoreBtn.addEventListener('click', function() {
+        // En una implementación real, aquí se haría una petición AJAX
+        // para cargar más imágenes del servidor
+        alert('Función de cargar más imágenes sería implementada con AJAX en producción');
+    });
+    
+    // Inicializar con filtro 'all'
+    filterGallery('all');
 });
 </script>
 

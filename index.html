@@ -3326,14 +3326,512 @@
                         <div class="resource-card">
                             <h4>Guía de Primeros Pasos</h4>
                             <p>Descarga nuestra guía con información básica para familias que recién inician el proceso de rehabilitación.</p>
-                            <a href="#" download>Descargar Guía <i class="fas fa-download"></i></a>
+                            <a href="#" onclick="mostrarPDF()">Descargar Guía <i class="fas fa-download"></i></a>
                         </div>
+                    </div>
+                    
+                    <!-- Ventana modal para el PDF -->
+                    <div id="pdfModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close" onclick="cerrarModal()">&times;</span>
+                            <h3>Vista previa del documento</h3>
+                            <iframe id="pdfViewer" src="" width="100%" height="500px" style="border:none;"></iframe>
+                            <div class="modal-footer">
+                                <button onclick="confirmarDescarga()" class="btn-descargar">
+                                    <i class="fas fa-download"></i> Descargar PDF
+                                </button>
+                                <button onclick="cerrarModal()" class="btn-cerrar">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <style>
+                    .modal {
+                        display: none;
+                        position: fixed;
+                        z-index: 1000;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0,0,0,0.8);
+                    }
+                    
+                    .modal-content {
+                        background-color: #fefefe;
+                        margin: 5% auto;
+                        padding: 20px;
+                        border: 1px solid #888;
+                        width: 80%;
+                        max-width: 900px;
+                        border-radius: 8px;
+                    }
+                    
+                    .close {
+                        color: #aaa;
+                        float: right;
+                        font-size: 28px;
+                        font-weight: bold;
+                        cursor: pointer;
+                    }
+                    
+                    .modal-footer {
+                        margin-top: 15px;
+                        text-align: right;
+                    }
+                    
+                    .btn-descargar {
+                        background-color: #4CAF50;
+                        color: white;
+                        padding: 10px 15px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    }
+                    
+                    .btn-cerrar {
+                        background-color: #f44336;
+                        color: white;
+                        padding: 10px 15px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        margin-left: 10px;
+                    }
+                    </style>
+                    
+                    <script>
+                    function mostrarPDF() {
+                        const modal = document.getElementById('pdfModal');
+                        const pdfViewer = document.getElementById('pdfViewer');
+                        
+                        // Cargar el PDF en el iframe
+                        pdfViewer.src = 'Descarga/CAEB - 2022.pdf';
+                        
+                        // Mostrar el modal
+                        modal.style.display = 'block';
+                        
+                        // Bloquear el scroll del body
+                        document.body.style.overflow = 'hidden';
+                    }
+                    
+                    function cerrarModal() {
+                        const modal = document.getElementById('pdfModal');
+                        const pdfViewer = document.getElementById('pdfViewer');
+                        
+                        // Cerrar modal y limpiar el iframe
+                        modal.style.display = 'none';
+                        pdfViewer.src = '';
+                        
+                        // Restaurar el scroll del body
+                        document.body.style.overflow = 'auto';
+                    }
+                    
+                    function confirmarDescarga() {
+                        if(confirm('¿Estás seguro que deseas descargar este archivo?')) {
+                            const link = document.createElement('a');
+                            link.href = 'Descarga/CAEB - 2022.pdf';
+                            link.download = 'Guia-Primeros-Pasos.pdf';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        }
+                    }
+                    
+                    // Cerrar modal al hacer clic fuera del contenido
+                    window.onclick = function(event) {
+                        const modal = document.getElementById('pdfModal');
+                        if (event.target == modal) {
+                            cerrarModal();
+                        }
+                    }
+                    </script>
                         
                         <div class="resource-card">
                             <h4>Directorio de Instituciones</h4>
                             <p>Listado de organizaciones y entidades que ofrecen apoyo a personas con discapacidad en Bolivia.</p>
-                            <a href="#">Ver Directorio <i class="fas fa-external-link-alt"></i></a>
+                            <a href="#" onclick="mostrarDirectorio()" class="btn-ver-directorio">Ver Directorio <i class="fas fa-external-link-alt"></i></a>
                         </div>
+                        
+                        <!-- Ventana modal mejorada -->
+                        <div id="directorioModal" class="modal-directorio">
+                            <div class="modal-contenido-directorio">
+                                <div class="modal-header-directorio">
+                                    <h3><i class="fas fa-building"></i> Directorio de Instituciones de Apoyo</h3>
+                                    <span class="close-directorio" onclick="cerrarModalDirectorio()">&times;</span>
+                                </div>
+                                
+                                <div class="modal-body-directorio">
+                                    <div class="search-box">
+                                        <input type="text" id="buscarInstitucion" placeholder="Buscar institución..." onkeyup="filtrarInstituciones()">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    
+                                    <div class="filtros">
+                                        <span>Filtrar por:</span>
+                                        <select id="filtroDepartamento" onchange="filtrarInstituciones()">
+                                            <option value="todos">Todos los departamentos</option>
+                                            <option value="La Paz">La Paz</option>
+                                            <option value="Santa Cruz">Santa Cruz</option>
+                                            <option value="Cochabamba">Cochabamba</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="instituciones-container" id="listaInstituciones">
+                                        <!-- Institución 1 -->
+                                        <div class="institucion-card" data-departamento="La Paz" data-categoria="discapacidad">
+                                            <div class="institucion-header">
+                                                <img src="https://via.placeholder.com/50" alt="Logo" class="institucion-logo">
+                                                <h4>Centro de Rehabilitación Integral CERI</h4>
+                                                <span class="etiqueta-departamento">La Paz</span>
+                                            </div>
+                                            <div class="institucion-info">
+                                                <p><i class="fas fa-map-marker-alt"></i> Av. Arce #1234, Zona Sopocachi</p>
+                                                <p><i class="fas fa-phone"></i> (2) 2123456 - 72568945</p>
+                                                <p><i class="fas fa-envelope"></i> info@ceri.org.bo</p>
+                                                <p><i class="fas fa-globe"></i> <a href="https://www.ceri.org.bo" target="_blank">www.ceri.org.bo</a></p>
+                                                <p><i class="fas fa-info-circle"></i> Ofrece terapias físicas, ocupacionales y apoyo psicológico</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Institución 2 -->
+                                        <div class="institucion-card" data-departamento="Santa Cruz" data-categoria="discapacidad">
+                                            <div class="institucion-header">
+                                                <img src="https://via.placeholder.com/50" alt="Logo" class="institucion-logo">
+                                                <h4>Fundación AMIGOS</h4>
+                                                <span class="etiqueta-departamento">Santa Cruz</span>
+                                            </div>
+                                            <div class="institucion-info">
+                                                <p><i class="fas fa-map-marker-alt"></i> Av. San Martín #567, Equipetrol</p>
+                                                <p><i class="fas fa-phone"></i> (3) 3344556 - 70011223</p>
+                                                <p><i class="fas fa-envelope"></i> contacto@fundacionamigos.org</p>
+                                                <p><i class="fas fa-globe"></i> <a href="https://www.fundacionamigos.org" target="_blank">www.fundacionamigos.org</a></p>
+                                                <p><i class="fas fa-info-circle"></i> Programas de inclusión laboral y talleres de capacitación</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Institución 3 -->
+                                        <div class="institucion-card" data-departamento="Cochabamba" data-categoria="discapacidad">
+                                            <div class="institucion-header">
+                                                <img src="https://via.placeholder.com/50" alt="Logo" class="institucion-logo">
+                                                <h4>Asociación Pro Personas con Discapacidad</h4>
+                                                <span class="etiqueta-departamento">Cochabamba</span>
+                                            </div>
+                                            <div class="institucion-info">
+                                                <p><i class="fas fa-map-marker-alt"></i> Calle Jordán #789, Zona Central</p>
+                                                <p><i class="fas fa-phone"></i> (4) 4256789 - 67788990</p>
+                                                <p><i class="fas fa-envelope"></i> contacto@appd.org.bo</p>
+                                                <p><i class="fas fa-info-circle"></i> Asesoría legal y defensa de derechos</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Institución 4 -->
+                                        <div class="institucion-card" data-departamento="La Paz" data-categoria="educacion">
+                                            <div class="institucion-header">
+                                                <img src="https://via.placeholder.com/50" alt="Logo" class="institucion-logo">
+                                                <h4>Centro Educativo Especial San Juan de Dios</h4>
+                                                <span class="etiqueta-departamento">La Paz</span>
+                                            </div>
+                                            <div class="institucion-info">
+                                                <p><i class="fas fa-map-marker-alt"></i> Calle México #456, Zona San Pedro</p>
+                                                <p><i class="fas fa-phone"></i> (2) 2288990 - 71234567</p>
+                                                <p><i class="fas fa-info-circle"></i> Educación especial para niños y jóvenes con discapacidad</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-footer-directorio">
+                                    <button class="btn-descargar-directorio" onclick="descargarDirectorio()">
+                                        <i class="fas fa-file-pdf"></i> Descargar Directorio Completo
+                                    </button>
+                                    <button class="btn-cerrar-directorio" onclick="cerrarModalDirectorio()">
+                                        <i class="fas fa-times"></i> Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <style>
+                        /* Estilos generales */
+                        .modal-directorio {
+                            display: none;
+                            position: fixed;
+                            z-index: 1000;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0,0,0,0.8);
+                            animation: fadeIn 0.3s;
+                        }
+                        
+                        @keyframes fadeIn {
+                            from {opacity: 0;}
+                            to {opacity: 1;}
+                        }
+                        
+                        .modal-contenido-directorio {
+                            background-color: #fff;
+                            margin: 2% auto;
+                            width: 85%;
+                            max-width: 900px;
+                            border-radius: 10px;
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+                            overflow: hidden;
+                            max-height: 90vh;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        
+                        .modal-header-directorio {
+                            background: linear-gradient(135deg, #2c3e50, #3498db);
+                            color: white;
+                            padding: 15px 20px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        .modal-header-directorio h3 {
+                            color: white !important;
+                            margin: 0;
+                            font-size: 1.3rem;
+                        }
+                        
+                        .modal-header-directorio h3 i {
+                            margin-right: 10px;
+                        }
+                        
+                        .close-directorio {
+                            color: white;
+                            font-size: 28px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            transition: 0.3s;
+                        }
+                        
+                        .close-directorio:hover {
+                            transform: scale(1.2);
+                        }
+                        
+                        .modal-body-directorio {
+                            padding: 20px;
+                            overflow-y: auto;
+                            flex-grow: 1;
+                        }
+                        
+                        .search-box {
+                            position: relative;
+                            margin-bottom: 20px;
+                        }
+                        
+                        .search-box input {
+                            width: 100%;
+                            padding: 10px 15px 10px 40px;
+                            border: 1px solid #ddd;
+                            border-radius: 5px;
+                            font-size: 1rem;
+                        }
+                        
+                        .search-box i {
+                            position: absolute;
+                            left: 15px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            color: #777;
+                        }
+                        
+                        .filtros {
+                            margin-bottom: 20px;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        
+                        .filtros select {
+                            padding: 8px 12px;
+                            border-radius: 5px;
+                            border: 1px solid #ddd;
+                        }
+                        
+                        .instituciones-container {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+                            gap: 20px;
+                        }
+                        
+                        .institucion-card {
+                            border: 1px solid #e0e0e0;
+                            border-radius: 8px;
+                            padding: 15px;
+                            transition: transform 0.3s, box-shadow 0.3s;
+                        }
+                        
+                        .institucion-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                        }
+                        
+                        .institucion-header {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 15px;
+                            gap: 15px;
+                        }
+                        
+                        .institucion-logo {
+                            width: 50px;
+                            height: 50px;
+                            object-fit: cover;
+                            border-radius: 50%;
+                            border: 1px solid #eee;
+                        }
+                        
+                        .institucion-header h4 {
+                            margin: 0;
+                            flex-grow: 1;
+                            color: #2c3e50;
+                        }
+                        
+                        .etiqueta-departamento {
+                            background-color: #3498db;
+                            color: white;
+                            padding: 3px 8px;
+                            border-radius: 4px;
+                            font-size: 0.8rem;
+                        }
+                        
+                        .institucion-info p {
+                            margin: 8px 0;
+                            font-size: 0.9rem;
+                            color: #555;
+                        }
+                        
+                        .institucion-info i {
+                            width: 20px;
+                            color: #3498db;
+                            margin-right: 5px;
+                        }
+                        
+                        .institucion-info a {
+                            color: #2980b9;
+                            text-decoration: none;
+                        }
+                        
+                        .institucion-info a:hover {
+                            text-decoration: underline;
+                        }
+                        
+                        .modal-footer-directorio {
+                            padding: 15px 20px;
+                            background-color: #f8f9fa;
+                            border-top: 1px solid #eee;
+                            display: flex;
+                            justify-content: flex-end;
+                            gap: 10px;
+                        }
+                        
+                        .btn-descargar-directorio {
+                            background-color: #27ae60;
+                            color: white;
+                            border: none;
+                            padding: 10px 15px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            transition: background-color 0.3s;
+                        }
+                        
+                        .btn-descargar-directorio:hover {
+                            background-color: #219653;
+                        }
+                        
+                        .btn-cerrar-directorio {
+                            background-color: #e74c3c;
+                            color: white;
+                            border: none;
+                            padding: 10px 15px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            transition: background-color 0.3s;
+                        }
+                        
+                        .btn-cerrar-directorio:hover {
+                            background-color: #c0392b;
+                        }
+                        
+                        /* Responsive */
+                        @media (max-width: 768px) {
+                            .modal-contenido-directorio {
+                                width: 95%;
+                                margin: 1% auto;
+                            }
+                            
+                            .instituciones-container {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                        </style>
+                        
+                        <script>
+                        // Funciones para el modal
+                        function mostrarDirectorio() {
+                            const modal = document.getElementById('directorioModal');
+                            modal.style.display = 'block';
+                            document.body.style.overflow = 'hidden';
+                        }
+                        
+                        function cerrarModalDirectorio() {
+                            const modal = document.getElementById('directorioModal');
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                        
+                        // Función de búsqueda y filtrado
+                        function filtrarInstituciones() {
+                            const input = document.getElementById('buscarInstitucion');
+                            const departamento = document.getElementById('filtroDepartamento').value;
+                            const filter = input.value.toUpperCase();
+                            const instituciones = document.querySelectorAll('.institucion-card');
+                            
+                            instituciones.forEach(institucion => {
+                                const nombre = institucion.querySelector('h4').textContent.toUpperCase();
+                                const depto = institucion.getAttribute('data-departamento');
+                                
+                                const matchNombre = nombre.includes(filter);
+                                const matchDepto = departamento === 'todos' || depto === departamento;
+                                
+                                if (matchNombre && matchDepto) {
+                                    institucion.style.display = '';
+                                } else {
+                                    institucion.style.display = 'none';
+                                }
+                            });
+                        }
+                        
+                        // Función para descargar directorio
+                        function descargarDirectorio() {
+                            if(confirm('¿Desea descargar el directorio completo en formato PDF?')) {
+                                // Aquí iría la lógica para generar/descargar el PDF
+                                alert('Descarga iniciada (simulación)');
+                                // En producción, reemplazar con:
+                                // window.location.href = 'ruta/al/directorio.pdf';
+                            }
+                        }
+                        
+                        // Cerrar al hacer clic fuera del modal
+                        window.onclick = function(event) {
+                            const modal = document.getElementById('directorioModal');
+                            if (event.target == modal) {
+                                cerrarModalDirectorio();
+                            }
+                        }
+                        </script>
                         
                         <div class="resource-card">
                             <h4>Talleres para Familias</h4>
@@ -3341,11 +3839,7 @@
                             <a href="#contacto">Inscribirse <i class="fas fa-arrow-right"></i></a>
                         </div>
                         
-                        <div class="resource-card">
-                            <h4>Casos atendidos</h4>
-                            <p>Historias de éxito y testimonios de familias que han pasado por nuestro centro.</p>
-                            <a href="#">Ver casos <i class="fas fa-book-open"></i></a>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -3693,23 +4187,31 @@
     
         
         /* Iconos rediseñados */
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: white;
-            color: var(--primary-color);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            position: absolute;
-            bottom: -30px;
-            right: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
+    /* Icono rediseñado - VERSIÓN MEJORADA */
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: white;
+    color: var(--primary-color);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 20px;  /* Cambiado de -0px a 20px */
+    right: 20px;   /* Cambiado de 25px a 20px para consistencia */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 3;    /* Aumentado de 2 a 3 para asegurar visibilidad */
+    transition: all 0.3s ease;
+}
+
+/* Añade esto para el efecto hover */
+.service-card:hover .service-icon {
+    transform: translateY(-5px);
+    background: var(--primary-color);
+    color: white;
+}
         
         .service-card:hover .service-icon {
             transform: translateY(-5px);
@@ -3833,6 +4335,7 @@
             
             .service-icon {
                 right: 20px;
+                
             }
         }
     </style>

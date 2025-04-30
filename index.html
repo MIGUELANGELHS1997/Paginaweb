@@ -3839,7 +3839,624 @@
                             <a href="#contacto">Inscribirse <i class="fas fa-arrow-right"></i></a>
                         </div>
                         
-
+                        <div class="resource-card">
+                            <h4>Casos atendidos</h4>
+                            <p>Historias de éxito y testimonios de familias que han pasado por nuestro centro.</p>
+                            <a href="#" onclick="mostrarCasosAtendidos()" class="btn-ver-casos">Ver casos <i class="fas fa-book-open"></i></a>
+                        </div>
+                        
+                        <!-- Ventana modal mejorada -->
+                        <div id="casosModal" class="modal-casos">
+                            <div class="modal-contenido-casos">
+                                <div class="modal-header-casos">
+                                    <h3><i class="fas fa-chart-line"></i> Casos Atendidos - Reporte Estadístico</h3>
+                                    <span class="close-casos" onclick="cerrarModalCasos()">&times;</span>
+                                </div>
+                                
+                                <div class="modal-body-casos">
+                                    <!-- Pestañas -->
+                                    <div class="tabs">
+                                        <button class="tab-btn active" onclick="openTab('estadisticas')">Estadísticas</button>
+                                        <button class="tab-btn" onclick="openTab('testimonios')">Testimonios</button>
+                                        <button class="tab-btn" onclick="openTab('progresos')">Progresos</button>
+                                    </div>
+                                    
+                                    <!-- Contenido de pestañas -->
+                                    <div id="estadisticas" class="tab-content" style="display: block;">
+                                        <div class="grid-estadisticas">
+                                            <!-- Gráfico circular -->
+                                            <div class="grafico-card">
+                                                <h4>Distribución por Diagnóstico</h4>
+                                                <div class="grafico-circular">
+                                                    <canvas id="diagnosticoChart"></canvas>
+                                                </div>
+                                                <div class="leyenda">
+                                                    <div><span class="color-tdah"></span> TDAH (35%)</div>
+                                                    <div><span class="color-tea"></span> TEA (25%)</div>
+                                                    <div><span class="color-pse"></span> PSE (20%)</div>
+                                                    <div><span class="color-otros"></span> Otros (20%)</div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Gráfico de barras -->
+                                            <div class="grafico-card">
+                                                <h4>Mejoría por Tratamiento</h4>
+                                                <div class="grafico-barras">
+                                                    <canvas id="mejoriaChart"></canvas>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Estadísticas generales -->
+                                            <div class="stats-card">
+                                                <h4>Datos Generales</h4>
+                                                <div class="stat-item">
+                                                    <div class="stat-value">1,248</div>
+                                                    <div class="stat-label">Casos atendidos</div>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <div class="stat-value">87%</div>
+                                                    <div class="stat-label">Tasa de éxito</div>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <div class="stat-value">94%</div>
+                                                    <div class="stat-label">Satisfacción familiar</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="testimonios" class="tab-content">
+                                        <div class="testimonios-container">
+                                            <div class="testimonio-card">
+                                                <div class="testimonio-header">
+                                                    <img src="https://via.placeholder.com/60" alt="Familia" class="testimonio-img">
+                                                    <div>
+                                                        <h5>Familia Pérez</h5>
+                                                        <span class="diagnostico-tag">TDAH</span>
+                                                    </div>
+                                                </div>
+                                                <div class="testimonio-texto">
+                                                    <p>"El apoyo recibido transformó la vida de nuestro hijo. Pasó de tener dificultades escolares a ser un estudiante destacado en solo 8 meses."</p>
+                                                    <div class="testimonio-rating">
+                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="testimonio-card">
+                                                <div class="testimonio-header">
+                                                    <img src="https://via.placeholder.com/60" alt="Familia" class="testimonio-img">
+                                                    <div>
+                                                        <h5>Familia González</h5>
+                                                        <span class="diagnostico-tag">TEA</span>
+                                                    </div>
+                                                </div>
+                                                <div class="testimonio-texto">
+                                                    <p>"Las terapias personalizadas ayudaron a nuestra hija a desarrollar habilidades sociales que nunca imaginamos posibles. Estamos eternamente agradecidos."</p>
+                                                    <div class="testimonio-rating">
+                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="progresos" class="tab-content">
+                                        <div class="progresos-container">
+                                            <div class="progreso-card">
+                                                <h5>Progreso promedio por diagnóstico</h5>
+                                                <div class="progreso-grafico">
+                                                    <canvas id="progresoChart"></canvas>
+                                                </div>
+                                                <div class="progreso-detalle">
+                                                    <p>Los casos de TDAH muestran mejoría más rápida (3-5 meses), mientras que los casos de TEA requieren más tiempo (6-12 meses) pero con resultados sostenidos.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="modal-footer-casos">
+                                    <button class="btn-descargar-casos" onclick="descargarReporte()">
+                                        <i class="fas fa-file-pdf"></i> Descargar Reporte
+                                    </button>
+                                    <button class="btn-cerrar-casos" onclick="cerrarModalCasos()">
+                                        <i class="fas fa-times"></i> Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <style>
+                        /* Estilos generales */
+                        .modal-casos {
+                            display: none;
+                            position: fixed;
+                            z-index: 1000;
+                            left: 0;
+                            top: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: rgba(0,0,0,0.9);
+                            animation: fadeIn 0.4s;
+                        }
+                        
+                        @keyframes fadeIn {
+                            from {opacity: 0;}
+                            to {opacity: 1;}
+                        }
+                        
+                        .modal-contenido-casos {
+                            background-color: #fff;
+                            margin: 2% auto;
+                            width: 90%;
+                            max-width: 1000px;
+                            border-radius: 10px;
+                            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+                            overflow: hidden;
+                            max-height: 90vh;
+                            display: flex;
+                            flex-direction: column;
+                        }
+                        
+                        .modal-header-casos {
+                            background: linear-gradient(135deg, #3498db, #2c3e50);
+                            color: white;
+                            padding: 18px 25px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                        
+                        .modal-header-casos h3 {
+                            margin: 0;
+                            font-size: 1.4rem;
+                        }
+                        
+                        .modal-header-casos h3 i {
+                            margin-right: 12px;
+                        }
+                        
+                        .close-casos {
+                            color: white;
+                            font-size: 30px;
+                            font-weight: bold;
+                            cursor: pointer;
+                            transition: 0.3s;
+                        }
+                        
+                        .close-casos:hover {
+                            transform: scale(1.2);
+                        }
+                        
+                        .modal-body-casos {
+                            padding: 0;
+                            overflow-y: auto;
+                            flex-grow: 1;
+                        }
+                        
+                        /* Pestañas */
+                        .tabs {
+                            display: flex;
+                            border-bottom: 1px solid #ddd;
+                            background: #f8f9fa;
+                        }
+                        
+                        .tab-btn {
+                            padding: 12px 20px;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            font-size: 1rem;
+                            transition: all 0.3s;
+                            border-bottom: 3px solid transparent;
+                        }
+                        
+                        .tab-btn:hover {
+                            background: #e9ecef;
+                        }
+                        
+                        .tab-btn.active {
+                            border-bottom: 3px solid #3498db;
+                            color: #3498db;
+                            font-weight: bold;
+                        }
+                        
+                        .tab-content {
+                            display: none;
+                            padding: 20px;
+                        }
+                        
+                        /* Grid estadísticas */
+                        .grid-estadisticas {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                            gap: 25px;
+                            padding: 15px;
+                        }
+                        
+                        .grafico-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+                        }
+                        
+                        .grafico-card h4 {
+                            margin-top: 0;
+                            color: #2c3e50;
+                            font-size: 1.1rem;
+                        }
+                        
+                        .grafico-circular, .grafico-barras, .progreso-grafico {
+                            position: relative;
+                            height: 200px;
+                            margin: 15px 0;
+                        }
+                        
+                        .leyenda {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 15px;
+                            justify-content: center;
+                            margin-top: 15px;
+                        }
+                        
+                        .leyenda div {
+                            display: flex;
+                            align-items: center;
+                            font-size: 0.9rem;
+                        }
+                        
+                        .color-tdah {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #3498db;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
+                        .color-tea {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #e74c3c;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
+                        .color-pse {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #f39c12;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
+                        .color-otros {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #2ecc71;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
+                        /* Stats cards */
+                        .stats-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
+                        }
+                        
+                        .stat-item {
+                            text-align: center;
+                            margin: 15px 0;
+                        }
+                        
+                        .stat-value {
+                            font-size: 2.2rem;
+                            font-weight: bold;
+                            color: #3498db;
+                            line-height: 1;
+                        }
+                        
+                        .stat-label {
+                            font-size: 0.9rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        /* Testimonios */
+                        .testimonios-container {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                            gap: 20px;
+                            padding: 15px;
+                        }
+                        
+                        .testimonio-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+                        }
+                        
+                        .testimonio-header {
+                            display: flex;
+                            align-items: center;
+                            margin-bottom: 15px;
+                            gap: 15px;
+                        }
+                        
+                        .testimonio-img {
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                            border: 2px solid #3498db;
+                        }
+                        
+                        .testimonio-header h5 {
+                            margin: 0 0 5px 0;
+                            color: #2c3e50;
+                        }
+                        
+                        .diagnostico-tag {
+                            background: #e74c3c;
+                            color: white;
+                            padding: 2px 8px;
+                            border-radius: 4px;
+                            font-size: 0.8rem;
+                        }
+                        
+                        .testimonio-texto p {
+                            font-style: italic;
+                            color: #555;
+                            line-height: 1.5;
+                        }
+                        
+                        .testimonio-rating {
+                            color: #f39c12;
+                            margin-top: 10px;
+                        }
+                        
+                        /* Footer */
+                        .modal-footer-casos {
+                            padding: 15px 25px;
+                            background-color: #f8f9fa;
+                            border-top: 1px solid #eee;
+                            display: flex;
+                            justify-content: flex-end;
+                            gap: 15px;
+                        }
+                        
+                        .btn-descargar-casos {
+                            background-color: #27ae60;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            transition: background-color 0.3s;
+                            font-size: 0.95rem;
+                        }
+                        
+                        .btn-descargar-casos:hover {
+                            background-color: #219653;
+                        }
+                        
+                        .btn-cerrar-casos {
+                            background-color: #e74c3c;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            transition: background-color 0.3s;
+                            font-size: 0.95rem;
+                        }
+                        
+                        .btn-cerrar-casos:hover {
+                            background-color: #c0392b;
+                        }
+                        
+                        /* Responsive */
+                        @media (max-width: 768px) {
+                            .modal-contenido-casos {
+                                width: 95%;
+                                margin: 1% auto;
+                            }
+                            
+                            .grid-estadisticas {
+                                grid-template-columns: 1fr;
+                            }
+                            
+                            .tabs {
+                                flex-wrap: wrap;
+                            }
+                            
+                            .tab-btn {
+                                flex: 1;
+                                text-align: center;
+                                padding: 10px;
+                                font-size: 0.9rem;
+                            }
+                        }
+                        </style>
+                        
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+                        // Funciones para el modal
+                        function mostrarCasosAtendidos() {
+                            const modal = document.getElementById('casosModal');
+                            modal.style.display = 'block';
+                            document.body.style.overflow = 'hidden';
+                            renderizarGraficos();
+                        }
+                        
+                        function cerrarModalCasos() {
+                            const modal = document.getElementById('casosModal');
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                        
+                        // Funciones para pestañas
+                        function openTab(tabName) {
+                            const tabContents = document.getElementsByClassName('tab-content');
+                            for (let i = 0; i < tabContents.length; i++) {
+                                tabContents[i].style.display = 'none';
+                            }
+                            
+                            const tabButtons = document.getElementsByClassName('tab-btn');
+                            for (let i = 0; i < tabButtons.length; i++) {
+                                tabButtons[i].classList.remove('active');
+                            }
+                            
+                            document.getElementById(tabName).style.display = 'block';
+                            event.currentTarget.classList.add('active');
+                        }
+                        
+                        // Renderizar gráficos
+                        function renderizarGraficos() {
+                            // Gráfico circular
+                            const ctx1 = document.getElementById('diagnosticoChart').getContext('2d');
+                            new Chart(ctx1, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['TDAH', 'TEA', 'PSE', 'Otros'],
+                                    datasets: [{
+                                        data: [35, 25, 20, 20],
+                                        backgroundColor: [
+                                            '#3498db',
+                                            '#e74c3c',
+                                            '#f39c12',
+                                            '#2ecc71'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    cutout: '70%',
+                                    plugins: {
+                                        legend: {
+                                            display: false
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Gráfico de barras (mejoría)
+                            const ctx2 = document.getElementById('mejoriaChart').getContext('2d');
+                            new Chart(ctx2, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['Terapia Conductual', 'Intervención Temprana', 'Apoyo Educativo', 'Terapia Familiar'],
+                                    datasets: [{
+                                        label: 'Porcentaje de Mejoría',
+                                        data: [78, 85, 72, 90],
+                                        backgroundColor: '#3498db',
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            max: 100
+                                        }
+                                    },
+                                    plugins: {
+                                        legend: {
+                                            display: false
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Gráfico de progresos
+                            const ctx3 = document.getElementById('progresoChart').getContext('2d');
+                            new Chart(ctx3, {
+                                type: 'line',
+                                data: {
+                                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                                    datasets: [
+                                        {
+                                            label: 'TDAH',
+                                            data: [20, 35, 50, 65, 75, 85],
+                                            borderColor: '#3498db',
+                                            backgroundColor: 'rgba(52, 152, 219, 0.1)',
+                                            tension: 0.3,
+                                            fill: true
+                                        },
+                                        {
+                                            label: 'TEA',
+                                            data: [15, 25, 35, 50, 60, 75],
+                                            borderColor: '#e74c3c',
+                                            backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                                            tension: 0.3,
+                                            fill: true
+                                        },
+                                        {
+                                            label: 'PSE',
+                                            data: [25, 40, 55, 65, 75, 80],
+                                            borderColor: '#f39c12',
+                                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                                            tension: 0.3,
+                                            fill: true
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    plugins: {
+                                        legend: {
+                                            position: 'top'
+                                        }
+                                    },
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            max: 100
+                                        }
+                                    }
+                                }
+                            });
+                        }
+                        
+                        // Descargar reporte
+                        function descargarReporte() {
+                            if(confirm('¿Desea descargar el reporte completo de casos atendidos?')) {
+                                // Simulación - en producción usaría un enlace real a PDF
+                                alert('Descarga iniciada (simulación)');
+                                // window.location.href = 'ruta/al/reporte.pdf';
+                            }
+                        }
+                        
+                        // Cerrar al hacer clic fuera del modal
+                        window.onclick = function(event) {
+                            const modal = document.getElementById('casosModal');
+                            if (event.target == modal) {
+                                cerrarModalCasos();
+                            }
+                        }
+                        </script>
                     </div>
                 </div>
             </div>

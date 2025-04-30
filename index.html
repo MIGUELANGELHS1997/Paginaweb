@@ -3849,16 +3849,21 @@
                         <div id="casosModal" class="modal-casos">
                             <div class="modal-contenido-casos">
                                 <div class="modal-header-casos">
-                                    <h3><i class="fas fa-chart-line"></i> Casos Atendidos - Reporte Estadístico</h3>
+                                    <div class="header-content">
+                                        <h3><i class="fas fa-chart-line"></i> Informe de Casos Atendidos - Centro de Atención Especializada</h3>
+                                        <p class="header-subtitle">Datos actualizados al Q2 2023 | Certificado ISO 9001:2023</p>
+                                    </div>
                                     <span class="close-casos" onclick="cerrarModalCasos()">&times;</span>
                                 </div>
                                 
                                 <div class="modal-body-casos">
                                     <!-- Pestañas -->
                                     <div class="tabs">
-                                        <button class="tab-btn active" onclick="openTab('estadisticas')">Estadísticas</button>
-                                        <button class="tab-btn" onclick="openTab('testimonios')">Testimonios</button>
-                                        <button class="tab-btn" onclick="openTab('progresos')">Progresos</button>
+                                        <button class="tab-btn active" onclick="openTab('estadisticas')"><i class="fas fa-chart-pie"></i> Estadísticas</button>
+                                        <button class="tab-btn" onclick="openTab('testimonios')"><i class="fas fa-comment-alt"></i> Testimonios</button>
+                                        <button class="tab-btn" onclick="openTab('progresos')"><i class="fas fa-chart-line"></i> Progresos</button>
+                                        <button class="tab-btn" onclick="openTab('equipo')"><i class="fas fa-users"></i> Nuestro Equipo</button>
+                                        <button class="tab-btn" onclick="openTab('metodologia')"><i class="fas fa-flask"></i> Metodología</button>
                                     </div>
                                     
                                     <!-- Contenido de pestañas -->
@@ -3866,7 +3871,10 @@
                                         <div class="grid-estadisticas">
                                             <!-- Gráfico circular -->
                                             <div class="grafico-card">
-                                                <h4>Distribución por Diagnóstico</h4>
+                                                <div class="card-header">
+                                                    <h4><i class="fas fa-diagnoses"></i> Distribución por Diagnóstico</h4>
+                                                    <span class="info-icon" title="Diagnósticos principales atendidos en los últimos 12 meses"><i class="fas fa-info-circle"></i></span>
+                                                </div>
                                                 <div class="grafico-circular">
                                                     <canvas id="diagnosticoChart"></canvas>
                                                 </div>
@@ -3874,34 +3882,135 @@
                                                     <div><span class="color-tdah"></span> TDAH (35%)</div>
                                                     <div><span class="color-tea"></span> TEA (25%)</div>
                                                     <div><span class="color-pse"></span> PSE (20%)</div>
-                                                    <div><span class="color-otros"></span> Otros (20%)</div>
+                                                    <div><span class="color-dislexia"></span> Dislexia (12%)</div>
+                                                    <div><span class="color-otros"></span> Otros (8%)</div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <p><i class="fas fa-clock"></i> Datos actualizados: 15/06/2023</p>
                                                 </div>
                                             </div>
                                             
                                             <!-- Gráfico de barras -->
                                             <div class="grafico-card">
-                                                <h4>Mejoría por Tratamiento</h4>
+                                                <div class="card-header">
+                                                    <h4><i class="fas fa-heartbeat"></i> Efectividad por Tratamiento</h4>
+                                                    <span class="info-icon" title="Porcentaje de mejoría clínicamente significativa"><i class="fas fa-info-circle"></i></span>
+                                                </div>
                                                 <div class="grafico-barras">
                                                     <canvas id="mejoriaChart"></canvas>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <p><i class="fas fa-chart-bar"></i> Basado en evaluaciones pre-post estandarizadas</p>
                                                 </div>
                                             </div>
                                             
                                             <!-- Estadísticas generales -->
                                             <div class="stats-card">
-                                                <h4>Datos Generales</h4>
-                                                <div class="stat-item">
-                                                    <div class="stat-value">1,248</div>
-                                                    <div class="stat-label">Casos atendidos</div>
+                                                <div class="card-header">
+                                                    <h4><i class="fas fa-clipboard-list"></i> Indicadores Clave</h4>
+                                                    <span class="info-icon" title="Métricas principales del centro"><i class="fas fa-info-circle"></i></span>
                                                 </div>
                                                 <div class="stat-item">
-                                                    <div class="stat-value">87%</div>
-                                                    <div class="stat-label">Tasa de éxito</div>
+                                                    <div class="stat-icon"><i class="fas fa-user-friends"></i></div>
+                                                    <div class="stat-content">
+                                                        <div class="stat-value">1,842</div>
+                                                        <div class="stat-label">Casos atendidos (2020-2023)</div>
+                                                    </div>
                                                 </div>
                                                 <div class="stat-item">
-                                                    <div class="stat-value">94%</div>
-                                                    <div class="stat-label">Satisfacción familiar</div>
+                                                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                                                    <div class="stat-content">
+                                                        <div class="stat-value">89%</div>
+                                                        <div class="stat-label">Tasa de éxito clínico</div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                                                    <div class="stat-content">
+                                                        <div class="stat-value">96%</div>
+                                                        <div class="stat-label">Satisfacción familiar</div>
+                                                    </div>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+                                                    <div class="stat-content">
+                                                        <div class="stat-value">72%</div>
+                                                        <div class="stat-label">Continuidad en tratamiento</div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <p><i class="fas fa-certificate"></i> Certificado por la Asociación Española de Pediatría</p>
                                                 </div>
                                             </div>
+                                            
+                                            <!-- Datos demográficos -->
+                                            <div class="grafico-card">
+                                                <div class="card-header">
+                                                    <h4><i class="fas fa-users"></i> Perfil Demográfico</h4>
+                                                    <span class="info-icon" title="Distribución por edad y género"><i class="fas fa-info-circle"></i></span>
+                                                </div>
+                                                <div class="grafico-barras">
+                                                    <canvas id="demografiaChart"></canvas>
+                                                </div>
+                                                <div class="demografia-leyenda">
+                                                    <div><span class="color-masculino"></span> Masculino</div>
+                                                    <div><span class="color-femenino"></span> Femenino</div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <p><i class="fas fa-child"></i> Edad promedio: 9.2 años | Ratio M/F: 2.5:1</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="data-table-container">
+                                            <h4><i class="fas fa-table"></i> Datos Comparativos por Año</h4>
+                                            <table class="data-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Año</th>
+                                                        <th>Casos</th>
+                                                        <th>Tasa Éxito</th>
+                                                        <th>Sesión Promedio</th>
+                                                        <th>Derivaciones</th>
+                                                        <th>Escolarización</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>2020</td>
+                                                        <td>412</td>
+                                                        <td>83%</td>
+                                                        <td>14.2</td>
+                                                        <td>28%</td>
+                                                        <td>72%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2021</td>
+                                                        <td>587</td>
+                                                        <td>86%</td>
+                                                        <td>12.8</td>
+                                                        <td>24%</td>
+                                                        <td>78%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2022</td>
+                                                        <td>643</td>
+                                                        <td>88%</td>
+                                                        <td>11.5</td>
+                                                        <td>19%</td>
+                                                        <td>85%</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2023*</td>
+                                                        <td>200</td>
+                                                        <td>91%</td>
+                                                        <td>10.3</td>
+                                                        <td>15%</td>
+                                                        <td>89%</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <p class="table-note">* Datos hasta junio 2023 | Escolarización: % en educación ordinaria con apoyos</p>
                                         </div>
                                     </div>
                                     
@@ -3909,34 +4018,137 @@
                                         <div class="testimonios-container">
                                             <div class="testimonio-card">
                                                 <div class="testimonio-header">
-                                                    <img src="https://via.placeholder.com/60" alt="Familia" class="testimonio-img">
+                                                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="Familia Pérez" class="testimonio-img">
                                                     <div>
                                                         <h5>Familia Pérez</h5>
-                                                        <span class="diagnostico-tag">TDAH</span>
+                                                        <div class="testimonio-meta">
+                                                            <span class="diagnostico-tag">TDAH</span>
+                                                            <span class="testimonio-date"><i class="fas fa-calendar-alt"></i> 12 meses de tratamiento</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="testimonio-texto">
-                                                    <p>"El apoyo recibido transformó la vida de nuestro hijo. Pasó de tener dificultades escolares a ser un estudiante destacado en solo 8 meses."</p>
-                                                    <div class="testimonio-rating">
-                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <p>"El equipo multidisciplinar transformó la vida de nuestro hijo. Pasó de tener dificultades escolares graves (repetir curso) a ser un estudiante con notas destacadas en solo 8 meses. Las estrategias de organización y las terapias cognitivas fueron clave."</p>
+                                                    <div class="testimonio-details">
+                                                        <div class="testimonio-rating">
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                            <span>5/5</span>
+                                                        </div>
+                                                        <div class="testimonio-therapist">
+                                                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=30&h=30&q=80" alt="Dra. Martínez">
+                                                            <span>Terapeuta: Dra. Martínez</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="testimonio-video">
+                                                    <button class="btn-play-video" onclick="playTestimonioVideo('perez')">
+                                                        <i class="fas fa-play"></i> Ver testimonio en video (2:45)
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="testimonio-card">
+                                                <div class="testimonio-header">
+                                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="Familia González" class="testimonio-img">
+                                                    <div>
+                                                        <h5>Familia González</h5>
+                                                        <div class="testimonio-meta">
+                                                            <span class="diagnostico-tag">TEA Nivel 1</span>
+                                                            <span class="testimonio-date"><i class="fas fa-calendar-alt"></i> 18 meses de tratamiento</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="testimonio-texto">
+                                                    <p>"Las terapias personalizadas ayudaron a nuestra hija a desarrollar habilidades sociales que nunca imaginamos posibles. De no poder mantener contacto visual a participar en actividades grupales. El programa de integración sensorial fue revolucionario para su regulación emocional."</p>
+                                                    <div class="testimonio-details">
+                                                        <div class="testimonio-rating">
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                            <span>4.7/5</span>
+                                                        </div>
+                                                        <div class="testimonio-therapist">
+                                                            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=30&h=30&q=80" alt="Ps. Rodríguez">
+                                                            <span>Terapeuta: Ps. Rodríguez</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="testimonio-before-after">
+                                                    <div class="before-after-item">
+                                                        <h6>Antes</h6>
+                                                        <ul>
+                                                            <li><i class="fas fa-times-circle"></i> 0 amigos</li>
+                                                            <li><i class="fas fa-times-circle"></i> Crisis diarias</li>
+                                                            <li><i class="fas fa-times-circle"></i> No lenguaje funcional</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="before-after-item">
+                                                        <h6>Después</h6>
+                                                        <ul>
+                                                            <li><i class="fas fa-check-circle"></i> 3 amigos estables</li>
+                                                            <li><i class="fas fa-check-circle"></i> Crisis semanales</li>
+                                                            <li><i class="fas fa-check-circle"></i> Frases de 4-5 palabras</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             
                                             <div class="testimonio-card">
                                                 <div class="testimonio-header">
-                                                    <img src="https://via.placeholder.com/60" alt="Familia" class="testimonio-img">
+                                                    <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80" alt="Familia López" class="testimonio-img">
                                                     <div>
-                                                        <h5>Familia González</h5>
-                                                        <span class="diagnostico-tag">TEA</span>
+                                                        <h5>Familia López</h5>
+                                                        <div class="testimonio-meta">
+                                                            <span class="diagnostico-tag">Dislexia severa</span>
+                                                            <span class="testimonio-date"><i class="fas fa-calendar-alt"></i> 9 meses de tratamiento</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="testimonio-texto">
-                                                    <p>"Las terapias personalizadas ayudaron a nuestra hija a desarrollar habilidades sociales que nunca imaginamos posibles. Estamos eternamente agradecidos."</p>
-                                                    <div class="testimonio-rating">
-                                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                                    <p>"El programa de reeducación lectora con método multisensorial cambió todo. Pasó de leer 20 ppm con 85% errores a 65 ppm con 95% precisión. La colaboración con su colegio fue excepcional, adaptando evaluaciones y usando tecnología asistida."</p>
+                                                    <div class="testimonio-details">
+                                                        <div class="testimonio-rating">
+                                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                            <span>5/5</span>
+                                                        </div>
+                                                        <div class="testimonio-therapist">
+                                                            <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=30&h=30&q=80" alt="Logopeda García">
+                                                            <span>Terapeuta: Logopeda García</span>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div class="testimonio-progress">
+                                                    <div class="progress-bar-container">
+                                                        <label>Velocidad lectora (ppm)</label>
+                                                        <div class="progress-bar">
+                                                            <div class="progress-fill" style="width: 25%; background-color: #e74c3c;">20</div>
+                                                            <div class="progress-fill" style="width: 75%; background-color: #2ecc71;">65</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="progress-bar-container">
+                                                        <label>Precisión (%)</label>
+                                                        <div class="progress-bar">
+                                                            <div class="progress-fill" style="width: 15%; background-color: #e74c3c;">15%</div>
+                                                            <div class="progress-fill" style="width: 85%; background-color: #2ecc71;">95%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="testimonios-stats">
+                                            <div class="testimonio-stat-card">
+                                                <div class="stat-icon"><i class="fas fa-comments"></i></div>
+                                                <div class="stat-value">4.8/5</div>
+                                                <div class="stat-label">Valoración promedio</div>
+                                            </div>
+                                            <div class="testimonio-stat-card">
+                                                <div class="stat-icon"><i class="fas fa-user-check"></i></div>
+                                                <div class="stat-value">94%</div>
+                                                <div class="stat-label">Recomendarían el centro</div>
+                                            </div>
+                                            <div class="testimonio-stat-card">
+                                                <div class="stat-icon"><i class="fas fa-calendar-plus"></i></div>
+                                                <div class="stat-value">78%</div>
+                                                <div class="stat-label">Continuaron tratamiento</div>
                                             </div>
                                         </div>
                                     </div>
@@ -3944,12 +4156,327 @@
                                     <div id="progresos" class="tab-content">
                                         <div class="progresos-container">
                                             <div class="progreso-card">
-                                                <h5>Progreso promedio por diagnóstico</h5>
+                                                <div class="card-header">
+                                                    <h4><i class="fas fa-chart-line"></i> Evolución Clínica Promedio</h4>
+                                                    <span class="info-icon" title="Puntuaciones en escalas estandarizadas"><i class="fas fa-info-circle"></i></span>
+                                                </div>
                                                 <div class="progreso-grafico">
                                                     <canvas id="progresoChart"></canvas>
                                                 </div>
                                                 <div class="progreso-detalle">
-                                                    <p>Los casos de TDAH muestran mejoría más rápida (3-5 meses), mientras que los casos de TEA requieren más tiempo (6-12 meses) pero con resultados sostenidos.</p>
+                                                    <p>Los casos de TDAH muestran mejoría significativa en 3-5 meses (reducción del 40% en síntomas), mientras que los casos de TEA requieren 6-12 meses pero con resultados más estables. La dislexia muestra mejoría lineal constante.</p>
+                                                    <div class="progreso-metrics">
+                                                        <div class="metric-item">
+                                                            <div class="metric-value">5.2</div>
+                                                            <div class="metric-label">Meses promedio para mejoría significativa</div>
+                                                        </div>
+                                                        <div class="metric-item">
+                                                            <div class="metric-value">68%</div>
+                                                            <div class="metric-label">Reducción síntomas a 12 meses</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="progreso-card">
+                                                <div class="card-header">
+                                                    <h4><i class="fas fa-school"></i> Impacto en el Ámbito Escolar</h4>
+                                                    <span class="info-icon" title="Datos comparativos pre-post intervención"><i class="fas fa-info-circle"></i></span>
+                                                </div>
+                                                <div class="progreso-grafico">
+                                                    <canvas id="escolarChart"></canvas>
+                                                </div>
+                                                <div class="progreso-detalle">
+                                                    <p>Mejora sustancial en todos los indicadores educativos tras la intervención interdisciplinar. El 82% de los casos logran adaptación curricular satisfactoria.</p>
+                                                    <ul class="progreso-list">
+                                                        <li><i class="fas fa-check-circle"></i> 3x aumento en participación en clase</li>
+                                                        <li><i class="fas fa-check-circle"></i> 2.5x mejora en rendimiento académico</li>
+                                                        <li><i class="fas fa-check-circle"></i> 4x reducción en conductas disruptivas</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="progreso-comparison">
+                                                <h4><i class="fas fa-balance-scale"></i> Comparativa con Estándares Nacionales</h4>
+                                                <div class="comparison-grid">
+                                                    <div class="comparison-item">
+                                                        <div class="comparison-metric">Tasa de éxito</div>
+                                                        <div class="comparison-bar">
+                                                            <div class="bar-ours" style="width: 89%;">89%</div>
+                                                            <div class="bar-national" style="width: 72%;">72%</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comparison-item">
+                                                        <div class="comparison-metric">Tiempo respuesta</div>
+                                                        <div class="comparison-bar">
+                                                            <div class="bar-ours" style="width: 60%;">2.1 semanas</div>
+                                                            <div class="bar-national" style="width: 100%;">3.5 semanas</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="comparison-item">
+                                                        <div class="comparison-metric">Satisfacción</div>
+                                                        <div class="comparison-bar">
+                                                            <div class="bar-ours" style="width: 96%;">96%</div>
+                                                            <div class="bar-national" style="width: 82%;">82%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="comparison-legend">
+                                                    <span class="legend-ours"><i class="fas fa-square"></i> Nuestro centro</span>
+                                                    <span class="legend-national"><i class="fas fa-square"></i> Promedio nacional</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="equipo" class="tab-content">
+                                        <div class="equipo-container">
+                                            <h4><i class="fas fa-users"></i> Nuestro Equipo Multidisciplinar</h4>
+                                            <p class="equipo-intro">Contamos con un equipo altamente especializado en diferentes áreas de la neurodiversidad, trabajando de forma coordinada para ofrecer la mejor atención integral.</p>
+                                            
+                                            <div class="equipo-grid">
+                                                <div class="profesional-card">
+                                                    <div class="profesional-img">
+                                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80" alt="Dra. Laura Martínez">
+                                                        <div class="profesional-badge">Jefa de Equipo</div>
+                                                    </div>
+                                                    <div class="profesional-info">
+                                                        <h5>Dra. Laura Martínez</h5>
+                                                        <div class="profesional-title">Neuropsicóloga Infantil</div>
+                                                        <div class="profesional-meta">
+                                                            <span><i class="fas fa-graduation-cap"></i> PhD en Neurociencia</span>
+                                                            <span><i class="fas fa-certificate"></i> 15 años de experiencia</span>
+                                                        </div>
+                                                        <div class="profesional-specialties">
+                                                            <span class="specialty-tag">TDAH</span>
+                                                            <span class="specialty-tag">Dificultades aprendizaje</span>
+                                                            <span class="specialty-tag">Evaluación cognitiva</span>
+                                                        </div>
+                                                        <div class="profesional-bio">
+                                                            <p>Especialista en evaluación neuropsicológica y diseño de intervenciones personalizadas. Formada en el Hospital Sant Joan de Déu.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="profesional-card">
+                                                    <div class="profesional-img">
+                                                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80" alt="Ps. Carlos Rodríguez">
+                                                        <div class="profesional-badge">Coordinador TEA</div>
+                                                    </div>
+                                                    <div class="profesional-info">
+                                                        <h5>Ps. Carlos Rodríguez</h5>
+                                                        <div class="profesional-title">Psicólogo Clínico</div>
+                                                        <div class="profesional-meta">
+                                                            <span><i class="fas fa-graduation-cap"></i> Máster en TEA</span>
+                                                            <span><i class="fas fa-certificate"></i> 10 años de experiencia</span>
+                                                        </div>
+                                                        <div class="profesional-specialties">
+                                                            <span class="specialty-tag">TEA</span>
+                                                            <span class="specialty-tag">Integración sensorial</span>
+                                                            <span class="specialty-tag">Terapia familiar</span>
+                                                        </div>
+                                                        <div class="profesional-bio">
+                                                            <p>Experto en intervención temprana y apoyo a familias. Certificado en ADOS-2 y terapia DIR/Floortime.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="profesional-card">
+                                                    <div class="profesional-img">
+                                                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80" alt="Ana García">
+                                                        <div class="profesional-badge">Coordinadora Logopedia</div>
+                                                    </div>
+                                                    <div class="profesional-info">
+                                                        <h5>Ana García</h5>
+                                                        <div class="profesional-title">Logopeda Especializada</div>
+                                                        <div class="profesional-meta">
+                                                            <span><i class="fas fa-graduation-cap"></i> Máster en Dificultades Aprendizaje</span>
+                                                            <span><i class="fas fa-certificate"></i> 8 años de experiencia</span>
+                                                        </div>
+                                                        <div class="profesional-specialties">
+                                                            <span class="specialty-tag">Dislexia</span>
+                                                            <span class="specialty-tag">TEL</span>
+                                                            <span class="specialty-tag">Comunicación alternativa</span>
+                                                        </div>
+                                                        <div class="profesional-bio">
+                                                            <p>Especialista en reeducación lectora con método multisensorial. Formada en el centro Davis Dyslexia Association.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="profesional-card">
+                                                    <div class="profesional-img">
+                                                        <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&h=150&q=80" alt="David Sánchez">
+                                                        <div class="profesional-badge">Terapeuta Ocupacional</div>
+                                                    </div>
+                                                    <div class="profesional-info">
+                                                        <h5>David Sánchez</h5>
+                                                        <div class="profesional-title">Terapeuta Ocupacional</div>
+                                                        <div class="profesional-meta">
+                                                            <span><i class="fas fa-graduation-cap"></i> Especialista en Integración Sensorial</span>
+                                                            <span><i class="fas fa-certificate"></i> 6 años de experiencia</span>
+                                                        </div>
+                                                        <div class="profesional-specialties">
+                                                            <span class="specialty-tag">Integración sensorial</span>
+                                                            <span class="specialty-tag">Motricidad fina</span>
+                                                            <span class="specialty-tag">Actividades vida diaria</span>
+                                                        </div>
+                                                        <div class="profesional-bio">
+                                                            <p>Certificado en terapia Snoezelen y sala multisensorial. Experto en dificultades de regulación.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="equipo-stats">
+                                                <div class="equipo-stat-card">
+                                                    <div class="stat-icon"><i class="fas fa-user-md"></i></div>
+                                                    <div class="stat-value">12</div>
+                                                    <div class="stat-label">Profesionales</div>
+                                                </div>
+                                                <div class="equipo-stat-card">
+                                                    <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                                                    <div class="stat-value">7</div>
+                                                    <div class="stat-label">Especialidades</div>
+                                                </div>
+                                                <div class="equipo-stat-card">
+                                                    <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+                                                    <div class="stat-value">58</div>
+                                                    <div class="stat-label">Certificaciones</div>
+                                                </div>
+                                                <div class="equipo-stat-card">
+                                                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                                                    <div class="stat-value">85%</div>
+                                                    <div class="stat-label">Formación continua anual</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="metodologia" class="tab-content">
+                                        <div class="metodologia-container">
+                                            <h4><i class="fas fa-flask"></i> Nuestra Metodología Basada en Evidencia</h4>
+                                            <p class="metodologia-intro">Combinamos los enfoques más efectivos validados científicamente, adaptados a cada caso particular mediante un proceso riguroso de evaluación e intervención.</p>
+                                            
+                                            <div class="metodologia-steps">
+                                                <div class="step-card">
+                                                    <div class="step-number">1</div>
+                                                    <div class="step-content">
+                                                        <h5>Evaluación Integral</h5>
+                                                        <p>Análisis multidisciplinar mediante pruebas estandarizadas, entrevistas y observación clínica.</p>
+                                                        <ul>
+                                                            <li>Batería neuropsicológica</li>
+                                                            <li>Evaluación sensorial</li>
+                                                            <li>Análisis funcional conductual</li>
+                                                            <li>Entrevista familiar estructurada</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="step-card">
+                                                    <div class="step-number">2</div>
+                                                    <div class="step-content">
+                                                        <h5>Plan Individualizado</h5>
+                                                        <p>Diseño de intervención personalizada con objetivos SMART y métricas de seguimiento.</p>
+                                                        <ul>
+                                                            <li>Objetivos a corto, medio y largo plazo</li>
+                                                            <li>Coordinación con centro escolar</li>
+                                                            <li>Protocolo de actuación familiar</li>
+                                                            <li>Adaptaciones específicas</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="step-card">
+                                                    <div class="step-number">3</div>
+                                                    <div class="step-content">
+                                                        <h5>Intervención Especializada</h5>
+                                                        <p>Aplicación de terapias basadas en evidencia según necesidades identificadas.</p>
+                                                        <div class="terapias-grid">
+                                                            <div class="terapia-item">
+                                                                <div class="terapia-icon"><i class="fas fa-brain"></i></div>
+                                                                <div class="terapia-name">Terapia Cognitivo-Conductual</div>
+                                                            </div>
+                                                            <div class="terapia-item">
+                                                                <div class="terapia-icon"><i class="fas fa-hands-helping"></i></div>
+                                                                <div class="terapia-name">Entrenamiento Habilidades Sociales</div>
+                                                            </div>
+                                                            <div class="terapia-item">
+                                                                <div class="terapia-icon"><i class="fas fa-book-reader"></i></div>
+                                                                <div class="terapia-name">Método Multisensorial</div>
+                                                            </div>
+                                                            <div class="terapia-item">
+                                                                <div class="terapia-icon"><i class="fas fa-project-diagram"></i></div>
+                                                                <div class="terapia-name">Integración Sensorial</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="step-card">
+                                                    <div class="step-number">4</div>
+                                                    <div class="step-content">
+                                                        <h5>Seguimiento y Ajuste</h5>
+                                                        <p>Evaluación continua del progreso con ajuste dinámico de la intervención.</p>
+                                                        <div class="seguimiento-stats">
+                                                            <div class="seguimiento-item">
+                                                                <div class="seguimiento-value">Cada 4 semanas</div>
+                                                                <div class="seguimiento-label">Reuniones de equipo</div>
+                                                            </div>
+                                                            <div class="seguimiento-item">
+                                                                <div class="seguimiento-value">Cada 12 semanas</div>
+                                                                <div class="seguimiento-label">Evaluación formal</div>
+                                                            </div>
+                                                            <div class="seguimiento-item">
+                                                                <div class="seguimiento-value">24/7</div>
+                                                                <div class="seguimiento-label">Disponibilidad consultas</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="metodologia-evidence">
+                                                <h5><i class="fas fa-book-medical"></i> Enfoques Basados en Evidencia</h5>
+                                                <div class="evidence-grid">
+                                                    <div class="evidence-card">
+                                                        <div class="evidence-icon"><i class="fas fa-check-circle"></i></div>
+                                                        <div class="evidence-content">
+                                                            <h6>ABA para TEA</h6>
+                                                            <p>Análisis Conductual Aplicado con protocolos individualizados y registro continuo.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="evidence-card">
+                                                        <div class="evidence-icon"><i class="fas fa-check-circle"></i></div>
+                                                        <div class="evidence-content">
+                                                            <h6>Entrenamiento en Funciones Ejecutivas</h6>
+                                                            <p>Programa Cogmed y metodología Barkley para TDAH.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="evidence-card">
+                                                        <div class="evidence-icon"><i class="fas fa-check-circle"></i></div>
+                                                        <div class="evidence-content">
+                                                            <h6>Método Orton-Gillingham</h6>
+                                                            <p>Para dislexia, combinando enfoque fonético y multisensorial.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="evidence-card">
+                                                        <div class="evidence-icon"><i class="fas fa-check-circle"></i></div>
+                                                        <div class="evidence-content">
+                                                            <h6>Terapia DIR/Floortime</h6>
+                                                            <p>Para desarrollo emocional y social en TEA.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="metodologia-results">
+                                                <h5><i class="fas fa-trophy"></i> Resultados Validados</h5>
+                                                <div class="results-chart-container">
+                                                    <canvas id="resultsChart"></canvas>
+                                                </div>
+                                                <div class="results-notes">
+                                                    <p><i class="fas fa-clipboard-check"></i> Todos nuestros protocolos están basados en guías clínicas internacionales (NICE, AAP, SIGN) y son reevaluados anualmente.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3957,12 +4484,21 @@
                                 </div>
                                 
                                 <div class="modal-footer-casos">
-                                    <button class="btn-descargar-casos" onclick="descargarReporte()">
-                                        <i class="fas fa-file-pdf"></i> Descargar Reporte
-                                    </button>
-                                    <button class="btn-cerrar-casos" onclick="cerrarModalCasos()">
-                                        <i class="fas fa-times"></i> Cerrar
-                                    </button>
+                                    <div class="footer-actions">
+                                        <button class="btn-contactar" onclick="contactarEquipo()">
+                                            <i class="fas fa-envelope"></i> Contactar al equipo
+                                        </button>
+                                        <button class="btn-descargar-casos" onclick="descargarReporte()">
+                                            <i class="fas fa-file-pdf"></i> Descargar Informe Completo
+                                        </button>
+                                        <button class="btn-cerrar-casos" onclick="cerrarModalCasos()">
+                                            <i class="fas fa-times"></i> Cerrar
+                                        </button>
+                                    </div>
+                                    <div class="footer-credits">
+                                        <p><i class="fas fa-shield-alt"></i> Todos los datos están anonimizados según ley de protección de datos</p>
+                                        <p><i class="fas fa-certificate"></i> Centro acreditado por el Ministerio de Sanidad con código N-2543-X</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -3979,6 +4515,7 @@
                             height: 100%;
                             background-color: rgba(0,0,0,0.9);
                             animation: fadeIn 0.4s;
+                            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                         }
                         
                         @keyframes fadeIn {
@@ -3990,7 +4527,7 @@
                             background-color: #fff;
                             margin: 2% auto;
                             width: 90%;
-                            max-width: 1000px;
+                            max-width: 1200px;
                             border-radius: 10px;
                             box-shadow: 0 5px 30px rgba(0,0,0,0.3);
                             overflow: hidden;
@@ -4000,17 +4537,29 @@
                         }
                         
                         .modal-header-casos {
-                            background: linear-gradient(135deg, #3498db, #2c3e50);
+                            background: linear-gradient(135deg, #2c3e50, #3498db);
                             color: white;
                             padding: 18px 25px;
                             display: flex;
                             justify-content: space-between;
                             align-items: center;
+                            position: relative;
+                        }
+                        
+                        .header-content {
+                            flex: 1;
                         }
                         
                         .modal-header-casos h3 {
                             margin: 0;
                             font-size: 1.4rem;
+                            font-weight: 600;
+                        }
+                        
+                        .header-subtitle {
+                            margin: 5px 0 0;
+                            font-size: 0.85rem;
+                            opacity: 0.9;
                         }
                         
                         .modal-header-casos h3 i {
@@ -4023,6 +4572,7 @@
                             font-weight: bold;
                             cursor: pointer;
                             transition: 0.3s;
+                            margin-left: 20px;
                         }
                         
                         .close-casos:hover {
@@ -4033,6 +4583,7 @@
                             padding: 0;
                             overflow-y: auto;
                             flex-grow: 1;
+                            color: #333;
                         }
                         
                         /* Pestañas */
@@ -4040,6 +4591,7 @@
                             display: flex;
                             border-bottom: 1px solid #ddd;
                             background: #f8f9fa;
+                            flex-wrap: wrap;
                         }
                         
                         .tab-btn {
@@ -4047,24 +4599,37 @@
                             background: none;
                             border: none;
                             cursor: pointer;
-                            font-size: 1rem;
+                            font-size: 0.95rem;
                             transition: all 0.3s;
                             border-bottom: 3px solid transparent;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            color: #555;
+                            font-weight: 500;
                         }
                         
                         .tab-btn:hover {
                             background: #e9ecef;
+                            color: #2c3e50;
                         }
                         
                         .tab-btn.active {
                             border-bottom: 3px solid #3498db;
-                            color: #3498db;
-                            font-weight: bold;
+                            color: #2c3e50;
+                            font-weight: 600;
+                            background: #e3f2fd;
                         }
                         
+                        .tab-btn i {
+                            font-size: 0.9em;
+                        }
+                        
+                        /* Contenido de pestañas */
                         .tab-content {
                             display: none;
                             padding: 20px;
+                            animation: fadeIn 0.5s;
                         }
                         
                         /* Grid estadísticas */
@@ -4072,20 +4637,50 @@
                             display: grid;
                             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
                             gap: 25px;
-                            padding: 15px;
+                            padding: 15px 0;
                         }
                         
-                        .grafico-card {
+                        .grafico-card, .stats-card {
                             background: white;
                             border-radius: 8px;
                             padding: 20px;
-                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                            transition: transform 0.3s, box-shadow 0.3s;
                         }
                         
-                        .grafico-card h4 {
-                            margin-top: 0;
+                        .grafico-card:hover, .stats-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                        }
+                        
+                        .card-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-bottom: 15px;
+                            border-bottom: 1px solid #eee;
+                            padding-bottom: 10px;
+                        }
+                        
+                        .card-header h4 {
+                            margin: 0;
                             color: #2c3e50;
                             font-size: 1.1rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        
+                        .card-header h4 i {
+                            color: #3498db;
+                            font-size: 0.9em;
+                        }
+                        
+                        .info-icon {
+                            color: #7f8c8d;
+                            cursor: help;
+                            font-size: 0.9em;
                         }
                         
                         .grafico-circular, .grafico-barras, .progreso-grafico {
@@ -4094,18 +4689,18 @@
                             margin: 15px 0;
                         }
                         
-                        .leyenda {
+                        .leyenda, .demografia-leyenda {
                             display: flex;
                             flex-wrap: wrap;
                             gap: 15px;
                             justify-content: center;
                             margin-top: 15px;
+                            font-size: 0.85rem;
                         }
                         
-                        .leyenda div {
+                        .leyenda div, .demografia-leyenda div {
                             display: flex;
                             align-items: center;
-                            font-size: 0.9rem;
                         }
                         
                         .color-tdah {
@@ -4135,6 +4730,15 @@
                             border-radius: 3px;
                         }
                         
+                        .color-dislexia {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #9b59b6;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
                         .color-otros {
                             display: inline-block;
                             width: 15px;
@@ -4144,47 +4748,155 @@
                             border-radius: 3px;
                         }
                         
+                        .color-masculino {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #3498db;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
+                        .color-femenino {
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: #e84393;
+                            margin-right: 5px;
+                            border-radius: 3px;
+                        }
+                        
+                        .card-footer {
+                            margin-top: 15px;
+                            padding-top: 10px;
+                            border-top: 1px solid #eee;
+                            font-size: 0.75rem;
+                            color: #7f8c8d;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+                        
+                        .card-footer i {
+                            font-size: 0.9em;
+                        }
+                        
                         /* Stats cards */
                         .stats-card {
-                            background: white;
-                            border-radius: 8px;
-                            padding: 20px;
-                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
                             display: flex;
                             flex-direction: column;
                             justify-content: space-around;
                         }
                         
                         .stat-item {
-                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
                             margin: 15px 0;
+                            padding: 10px;
+                            border-radius: 5px;
+                            background: #f8f9fa;
+                        }
+                        
+                        .stat-icon {
+                            width: 40px;
+                            height: 40px;
+                            background: #3498db;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: white;
+                            font-size: 1.1rem;
+                            flex-shrink: 0;
+                        }
+                        
+                        .stat-content {
+                            flex: 1;
                         }
                         
                         .stat-value {
-                            font-size: 2.2rem;
+                            font-size: 1.8rem;
                             font-weight: bold;
-                            color: #3498db;
+                            color: #2c3e50;
                             line-height: 1;
                         }
                         
                         .stat-label {
-                            font-size: 0.9rem;
+                            font-size: 0.85rem;
                             color: #7f8c8d;
+                            margin-top: 3px;
+                        }
+                        
+                        /* Tabla de datos */
+                        .data-table-container {
+                            margin-top: 30px;
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                        }
+                        
+                        .data-table-container h4 {
+                            margin-top: 0;
+                            color: #2c3e50;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            font-size: 1.1rem;
+                        }
+                        
+                        .data-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 15px;
+                            font-size: 0.9rem;
+                        }
+                        
+                        .data-table th, .data-table td {
+                            padding: 12px 15px;
+                            text-align: left;
+                            border-bottom: 1px solid #eee;
+                        }
+                        
+                        .data-table th {
+                            background-color: #f8f9fa;
+                            color: #2c3e50;
+                            font-weight: 600;
+                        }
+                        
+                        .data-table tr:hover {
+                            background-color: #f1f9fe;
+                        }
+                        
+                        .table-note {
+                            font-size: 0.75rem;
+                            color: #7f8c8d;
+                            margin-top: 10px;
+                            font-style: italic;
                         }
                         
                         /* Testimonios */
                         .testimonios-container {
                             display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                            gap: 20px;
-                            padding: 15px;
+                            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                            gap: 25px;
+                            padding: 15px 0;
                         }
                         
                         .testimonio-card {
                             background: white;
                             border-radius: 8px;
                             padding: 20px;
-                            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                            transition: transform 0.3s;
+                        }
+                        
+                        .testimonio-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
                         }
                         
                         .testimonio-header {
@@ -4195,35 +4907,762 @@
                         }
                         
                         .testimonio-img {
-                            width: 60px;
-                            height: 60px;
+                            width: 70px;
+                            height: 70px;
                             border-radius: 50%;
                             object-fit: cover;
-                            border: 2px solid #3498db;
+                            border: 3px solid #3498db;
                         }
                         
                         .testimonio-header h5 {
                             margin: 0 0 5px 0;
                             color: #2c3e50;
+                            font-size: 1.1rem;
+                        }
+                        
+                        .testimonio-meta {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                            align-items: center;
                         }
                         
                         .diagnostico-tag {
                             background: #e74c3c;
                             color: white;
-                            padding: 2px 8px;
+                            padding: 3px 10px;
                             border-radius: 4px;
-                            font-size: 0.8rem;
+                            font-size: 0.75rem;
+                            font-weight: 500;
+                        }
+                        
+                        .testimonio-date {
+                            font-size: 0.75rem;
+                            color: #7f8c8d;
+                            display: flex;
+                            align-items: center;
+                            gap: 3px;
+                        }
+                        
+                        .testimonio-date i {
+                            font-size: 0.8em;
                         }
                         
                         .testimonio-texto p {
-                            font-style: italic;
                             color: #555;
-                            line-height: 1.5;
+                            line-height: 1.6;
+                            font-size: 0.95rem;
+                            margin: 0 0 15px 0;
+                        }
+                        
+                        .testimonio-details {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            margin-top: 15px;
                         }
                         
                         .testimonio-rating {
                             color: #f39c12;
-                            margin-top: 10px;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                            font-size: 0.9rem;
+                        }
+                        
+                        .testimonio-rating span {
+                            color: #2c3e50;
+                            font-weight: 500;
+                            margin-left: 3px;
+                        }
+                        
+                        .testimonio-therapist {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            font-size: 0.8rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        .testimonio-therapist img {
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                        
+                        .testimonio-video {
+                            margin-top: 15px;
+                            padding-top: 15px;
+                            border-top: 1px solid #eee;
+                        }
+                        
+                        .btn-play-video {
+                            background: #e74c3c;
+                            color: white;
+                            border: none;
+                            padding: 8px 15px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            transition: background-color 0.3s;
+                            font-size: 0.85rem;
+                        }
+                        
+                        .btn-play-video:hover {
+                            background: #c0392b;
+                        }
+                        
+                        .testimonio-before-after {
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 15px;
+                            margin-top: 15px;
+                            padding-top: 15px;
+                            border-top: 1px solid #eee;
+                        }
+                        
+                        .before-after-item {
+                            padding: 10px;
+                            border-radius: 5px;
+                        }
+                        
+                        .before-after-item h6 {
+                            margin: 0 0 10px 0;
+                            font-size: 0.9rem;
+                            color: #2c3e50;
+                        }
+                        
+                        .before-after-item ul {
+                            margin: 0;
+                            padding: 0;
+                            list-style: none;
+                        }
+                        
+                        .before-after-item li {
+                            margin-bottom: 5px;
+                            font-size: 0.85rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+                        
+                        .before-after-item li i {
+                            font-size: 0.8em;
+                        }
+                        
+                        .before-after-item li i.fa-times-circle {
+                            color: #e74c3c;
+                        }
+                        
+                        .before-after-item li i.fa-check-circle {
+                            color: #2ecc71;
+                        }
+                        
+                        .testimonio-progress {
+                            margin-top: 15px;
+                            padding-top: 15px;
+                            border-top: 1px solid #eee;
+                        }
+                        
+                        .progress-bar-container {
+                            margin-bottom: 10px;
+                        }
+                        
+                        .progress-bar-container label {
+                            display: block;
+                            margin-bottom: 5px;
+                            font-size: 0.8rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        .progress-bar {
+                            height: 25px;
+                            background: #f1f1f1;
+                            border-radius: 5px;
+                            overflow: hidden;
+                            display: flex;
+                        }
+                        
+                        .progress-fill {
+                            height: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            padding-right: 8px;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                            color: white;
+                            min-width: 30px;
+                        }
+                        
+                        .testimonios-stats {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                            gap: 15px;
+                            margin-top: 30px;
+                        }
+                        
+                        .testimonio-stat-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            text-align: center;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                        }
+                        
+                        .testimonio-stat-card .stat-icon {
+                            width: 50px;
+                            height: 50px;
+                            margin: 0 auto 10px;
+                            background: #3498db;
+                            font-size: 1.3rem;
+                        }
+                        
+                        .testimonio-stat-card .stat-value {
+                            font-size: 1.8rem;
+                            color: #2c3e50;
+                            font-weight: bold;
+                            margin: 5px 0;
+                        }
+                        
+                        .testimonio-stat-card .stat-label {
+                            font-size: 0.85rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        /* Progresos */
+                        .progresos-container {
+                            display: grid;
+                            gap: 25px;
+                            padding: 15px 0;
+                        }
+                        
+                        .progreso-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                        }
+                        
+                        .progreso-detalle {
+                            margin-top: 15px;
+                            padding-top: 15px;
+                            border-top: 1px solid #eee;
+                        }
+                        
+                        .progreso-detalle p {
+                            color: #555;
+                            line-height: 1.6;
+                            margin: 0 0 15px 0;
+                        }
+                        
+                        .progreso-metrics {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                            gap: 15px;
+                            margin-top: 15px;
+                        }
+                        
+                        .metric-item {
+                            text-align: center;
+                            padding: 15px;
+                            background: #f8f9fa;
+                            border-radius: 5px;
+                        }
+                        
+                        .metric-value {
+                            font-size: 1.8rem;
+                            font-weight: bold;
+                            color: #3498db;
+                            line-height: 1;
+                        }
+                        
+                        .metric-label {
+                            font-size: 0.85rem;
+                            color: #7f8c8d;
+                            margin-top: 5px;
+                        }
+                        
+                        .progreso-list {
+                            margin: 15px 0 0;
+                            padding: 0;
+                            list-style: none;
+                        }
+                        
+                        .progreso-list li {
+                            margin-bottom: 8px;
+                            padding-left: 25px;
+                            position: relative;
+                            font-size: 0.9rem;
+                        }
+                        
+                        .progreso-list li i {
+                            position: absolute;
+                            left: 0;
+                            top: 3px;
+                            color: #3498db;
+                        }
+                        
+                        .progreso-comparison {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                            margin-top: 25px;
+                        }
+                        
+                        .progreso-comparison h4 {
+                            margin-top: 0;
+                            color: #2c3e50;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            font-size: 1.1rem;
+                        }
+                        
+                        .comparison-grid {
+                            margin-top: 20px;
+                        }
+                        
+                        .comparison-item {
+                            margin-bottom: 15px;
+                        }
+                        
+                        .comparison-metric {
+                            font-size: 0.9rem;
+                            color: #7f8c8d;
+                            margin-bottom: 5px;
+                        }
+                        
+                        .comparison-bar {
+                            display: flex;
+                            height: 30px;
+                            margin-bottom: 15px;
+                        }
+                        
+                        .bar-ours {
+                            background: #3498db;
+                            color: white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            padding-right: 10px;
+                            font-size: 0.8rem;
+                            font-weight: bold;
+                            border-radius: 3px 0 0 3px;
+                        }
+                        
+                        .bar-national {
+                            background: #95a5a6;
+                            color: white;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            padding-right: 10px;
+                            font-size: 0.8rem;
+                            font-weight: bold;
+                            border-radius: 0 3px 3px 0;
+                        }
+                        
+                        .comparison-legend {
+                            display: flex;
+                            gap: 15px;
+                            margin-top: 15px;
+                            font-size: 0.85rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        .legend-ours i {
+                            color: #3498db;
+                        }
+                        
+                        .legend-national i {
+                            color: #95a5a6;
+                        }
+                        
+                        /* Equipo */
+                        .equipo-container {
+                            padding: 15px 0;
+                        }
+                        
+                        .equipo-intro {
+                            color: #555;
+                            line-height: 1.6;
+                            margin: 0 0 25px 0;
+                            font-size: 0.95rem;
+                        }
+                        
+                        .equipo-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                            gap: 25px;
+                        }
+                        
+                        .profesional-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                            display: flex;
+                            gap: 20px;
+                            transition: transform 0.3s;
+                        }
+                        
+                        .profesional-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                        }
+                        
+                        .profesional-img {
+                            position: relative;
+                            flex-shrink: 0;
+                        }
+                        
+                        .profesional-img img {
+                            width: 120px;
+                            height: 120px;
+                            border-radius: 8px;
+                            object-fit: cover;
+                            border: 3px solid #3498db;
+                        }
+                        
+                        .profesional-badge {
+                            position: absolute;
+                            top: -10px;
+                            right: -10px;
+                            background: #e74c3c;
+                            color: white;
+                            padding: 3px 8px;
+                            border-radius: 4px;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                        }
+                        
+                        .profesional-info {
+                            flex: 1;
+                        }
+                        
+                        .profesional-info h5 {
+                            margin: 0 0 5px 0;
+                            color: #2c3e50;
+                            font-size: 1.2rem;
+                        }
+                        
+                        .profesional-title {
+                            font-size: 0.9rem;
+                            color: #3498db;
+                            font-weight: 500;
+                            margin-bottom: 10px;
+                        }
+                        
+                        .profesional-meta {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                            margin-bottom: 10px;
+                            font-size: 0.8rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        .profesional-meta span {
+                            display: flex;
+                            align-items: center;
+                            gap: 3px;
+                        }
+                        
+                        .profesional-meta i {
+                            font-size: 0.9em;
+                        }
+                        
+                        .profesional-specialties {
+                            display: flex;
+                            flex-wrap: wrap;
+                            gap: 5px;
+                            margin-bottom: 10px;
+                        }
+                        
+                        .specialty-tag {
+                            background: #f1f9fe;
+                            color: #3498db;
+                            padding: 3px 8px;
+                            border-radius: 4px;
+                            font-size: 0.75rem;
+                            border: 1px solid #d4e6f7;
+                        }
+                        
+                        .profesional-bio p {
+                            font-size: 0.85rem;
+                            color: #555;
+                            line-height: 1.5;
+                            margin: 0;
+                        }
+                        
+                        .equipo-stats {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                            gap: 15px;
+                            margin-top: 30px;
+                        }
+                        
+                        .equipo-stat-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            text-align: center;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                        }
+                        
+                        .equipo-stat-card .stat-icon {
+                            width: 50px;
+                            height: 50px;
+                            margin: 0 auto 10px;
+                            background: #3498db;
+                            font-size: 1.3rem;
+                        }
+                        
+                        .equipo-stat-card .stat-value {
+                            font-size: 1.8rem;
+                            color: #2c3e50;
+                            font-weight: bold;
+                            margin: 5px 0;
+                        }
+                        
+                        .equipo-stat-card .stat-label {
+                            font-size: 0.85rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        /* Metodología */
+                        .metodologia-container {
+                            padding: 15px 0;
+                        }
+                        
+                        .metodologia-intro {
+                            color: #555;
+                            line-height: 1.6;
+                            margin: 0 0 25px 0;
+                            font-size: 0.95rem;
+                        }
+                        
+                        .metodologia-steps {
+                            display: grid;
+                            gap: 25px;
+                        }
+                        
+                        .step-card {
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                            display: flex;
+                            gap: 20px;
+                            transition: transform 0.3s;
+                        }
+                        
+                        .step-card:hover {
+                            transform: translateY(-5px);
+                            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                        }
+                        
+                        .step-number {
+                            width: 40px;
+                            height: 40px;
+                            background: #3498db;
+                            color: white;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            flex-shrink: 0;
+                        }
+                        
+                        .step-content {
+                            flex: 1;
+                        }
+                        
+                        .step-content h5 {
+                            margin: 0 0 10px 0;
+                            color: #2c3e50;
+                            font-size: 1.1rem;
+                        }
+                        
+                        .step-content p {
+                            color: #555;
+                            line-height: 1.6;
+                            margin: 0 0 15px 0;
+                            font-size: 0.9rem;
+                        }
+                        
+                        .step-content ul {
+                            margin: 0 0 15px 0;
+                            padding: 0 0 0 20px;
+                            color: #555;
+                            font-size: 0.9rem;
+                            line-height: 1.6;
+                        }
+                        
+                        .step-content li {
+                            margin-bottom: 5px;
+                        }
+                        
+                        .terapias-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                            gap: 15px;
+                            margin-top: 15px;
+                        }
+                        
+                        .terapia-item {
+                            background: #f8f9fa;
+                            border-radius: 5px;
+                            padding: 15px;
+                            text-align: center;
+                            transition: transform 0.3s;
+                        }
+                        
+                        .terapia-item:hover {
+                            transform: translateY(-3px);
+                            background: #e3f2fd;
+                        }
+                        
+                        .terapia-icon {
+                            font-size: 1.8rem;
+                            color: #3498db;
+                            margin-bottom: 10px;
+                        }
+                        
+                        .terapia-name {
+                            font-size: 0.85rem;
+                            color: #2c3e50;
+                            font-weight: 500;
+                        }
+                        
+                        .seguimiento-stats {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                            gap: 15px;
+                            margin-top: 15px;
+                        }
+                        
+                        .seguimiento-item {
+                            text-align: center;
+                            padding: 15px;
+                            background: #f8f9fa;
+                            border-radius: 5px;
+                        }
+                        
+                        .seguimiento-value {
+                            font-size: 1.3rem;
+                            font-weight: bold;
+                            color: #3498db;
+                            line-height: 1;
+                        }
+                        
+                        .seguimiento-label {
+                            font-size: 0.85rem;
+                            color: #7f8c8d;
+                            margin-top: 5px;
+                        }
+                        
+                        .metodologia-evidence {
+                            margin-top: 30px;
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                        }
+                        
+                        .metodologia-evidence h5 {
+                            margin: 0 0 20px 0;
+                            color: #2c3e50;
+                            font-size: 1.1rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        
+                        .evidence-grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                            gap: 15px;
+                        }
+                        
+                        .evidence-card {
+                            display: flex;
+                            gap: 15px;
+                            padding: 15px;
+                            background: #f8f9fa;
+                            border-radius: 5px;
+                        }
+                        
+                        .evidence-icon {
+                            color: #2ecc71;
+                            font-size: 1.5rem;
+                            flex-shrink: 0;
+                        }
+                        
+                        .evidence-content h6 {
+                            margin: 0 0 5px 0;
+                            color: #2c3e50;
+                            font-size: 0.95rem;
+                        }
+                        
+                        .evidence-content p {
+                            margin: 0;
+                            color: #555;
+                            font-size: 0.85rem;
+                            line-height: 1.5;
+                        }
+                        
+                        .metodologia-results {
+                            margin-top: 30px;
+                            background: white;
+                            border-radius: 8px;
+                            padding: 20px;
+                            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+                            border: 1px solid #eee;
+                        }
+                        
+                        .metodologia-results h5 {
+                            margin: 0 0 20px 0;
+                            color: #2c3e50;
+                            font-size: 1.1rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                        
+                        .results-chart-container {
+                            position: relative;
+                            height: 300px;
+                            margin: 15px 0;
+                        }
+                        
+                        .results-notes {
+                            margin-top: 15px;
+                            padding-top: 15px;
+                            border-top: 1px solid #eee;
+                            font-size: 0.85rem;
+                            color: #555;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+                        
+                        .results-notes i {
+                            color: #3498db;
                         }
                         
                         /* Footer */
@@ -4231,9 +5670,32 @@
                             padding: 15px 25px;
                             background-color: #f8f9fa;
                             border-top: 1px solid #eee;
+                        }
+                        
+                        .footer-actions {
                             display: flex;
                             justify-content: flex-end;
                             gap: 15px;
+                            margin-bottom: 15px;
+                            flex-wrap: wrap;
+                        }
+                        
+                        .btn-contactar {
+                            background-color: #3498db;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            transition: background-color 0.3s;
+                            font-size: 0.95rem;
+                        }
+                        
+                        .btn-contactar:hover {
+                            background-color: #2980b9;
                         }
                         
                         .btn-descargar-casos {
@@ -4272,6 +5734,26 @@
                             background-color: #c0392b;
                         }
                         
+                        .footer-credits {
+                            display: flex;
+                            justify-content: space-between;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                            font-size: 0.75rem;
+                            color: #7f8c8d;
+                        }
+                        
+                        .footer-credits p {
+                            margin: 0;
+                            display: flex;
+                            align-items: center;
+                            gap: 5px;
+                        }
+                        
+                        .footer-credits i {
+                            font-size: 0.9em;
+                        }
+                        
                         /* Responsive */
                         @media (max-width: 768px) {
                             .modal-contenido-casos {
@@ -4279,20 +5761,57 @@
                                 margin: 1% auto;
                             }
                             
-                            .grid-estadisticas {
+                            .grid-estadisticas, .testimonios-container, .equipo-grid {
                                 grid-template-columns: 1fr;
                             }
                             
                             .tabs {
-                                flex-wrap: wrap;
+                                overflow-x: auto;
+                                flex-wrap: nowrap;
+                                padding-bottom: 5px;
                             }
                             
                             .tab-btn {
-                                flex: 1;
-                                text-align: center;
-                                padding: 10px;
-                                font-size: 0.9rem;
+                                padding: 10px 15px;
+                                font-size: 0.85rem;
+                                white-space: nowrap;
                             }
+                            
+                            .profesional-card {
+                                flex-direction: column;
+                            }
+                            
+                            .profesional-img img {
+                                width: 100%;
+                                height: auto;
+                                max-height: 200px;
+                            }
+                            
+                            .footer-actions {
+                                justify-content: center;
+                            }
+                            
+                            .footer-credits {
+                                flex-direction: column;
+                                align-items: center;
+                                text-align: center;
+                            }
+                        }
+                        
+                        /* Animaciones */
+                        @keyframes slideIn {
+                            from {
+                                transform: translateY(20px);
+                                opacity: 0;
+                            }
+                            to {
+                                transform: translateY(0);
+                                opacity: 1;
+                            }
+                        }
+                        
+                        .tab-content {
+                            animation: slideIn 0.5s ease-out;
                         }
                         </style>
                         
@@ -4330,21 +5849,22 @@
                         
                         // Renderizar gráficos
                         function renderizarGraficos() {
-                            // Gráfico circular
+                            // Gráfico circular de diagnósticos
                             const ctx1 = document.getElementById('diagnosticoChart').getContext('2d');
                             new Chart(ctx1, {
                                 type: 'doughnut',
                                 data: {
-                                    labels: ['TDAH', 'TEA', 'PSE', 'Otros'],
+                                    labels: ['TDAH', 'TEA', 'PSE', 'Dislexia', 'Otros'],
                                     datasets: [{
-                                        data: [35, 25, 20, 20],
+                                        data: [35, 25, 20, 12, 8],
                                         backgroundColor: [
                                             '#3498db',
                                             '#e74c3c',
                                             '#f39c12',
+                                            '#9b59b6',
                                             '#2ecc71'
                                         ],
-                                        borderWidth: 1
+                                        borderWidth: 0
                                     }]
                                 },
                                 options: {
@@ -4354,6 +5874,13 @@
                                     plugins: {
                                         legend: {
                                             display: false
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    return `${context.label}: ${context.raw}%`;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -4364,11 +5891,24 @@
                             new Chart(ctx2, {
                                 type: 'bar',
                                 data: {
-                                    labels: ['Terapia Conductual', 'Intervención Temprana', 'Apoyo Educativo', 'Terapia Familiar'],
+                                    labels: ['Terapia Conductual', 'Intervención Temprana', 'Apoyo Educativo', 'Terapia Familiar', 'Integración Sensorial'],
                                     datasets: [{
                                         label: 'Porcentaje de Mejoría',
-                                        data: [78, 85, 72, 90],
-                                        backgroundColor: '#3498db',
+                                        data: [78, 85, 72, 90, 82],
+                                        backgroundColor: [
+                                            'rgba(52, 152, 219, 0.7)',
+                                            'rgba(46, 204, 113, 0.7)',
+                                            'rgba(155, 89, 182, 0.7)',
+                                            'rgba(241, 196, 15, 0.7)',
+                                            'rgba(230, 126, 34, 0.7)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(52, 152, 219, 1)',
+                                            'rgba(46, 204, 113, 1)',
+                                            'rgba(155, 89, 182, 1)',
+                                            'rgba(241, 196, 15, 1)',
+                                            'rgba(230, 126, 34, 1)'
+                                        ],
                                         borderWidth: 1
                                     }]
                                 },
@@ -4378,12 +5918,29 @@
                                     scales: {
                                         y: {
                                             beginAtZero: true,
-                                            max: 100
+                                            max: 100,
+                                            title: {
+                                                display: true,
+                                                text: 'Porcentaje de mejoría'
+                                            }
+                                        },
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Tipo de intervención'
+                                            }
                                         }
                                     },
                                     plugins: {
                                         legend: {
                                             display: false
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    return `${context.raw}% de mejoría`;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -4394,31 +5951,34 @@
                             new Chart(ctx3, {
                                 type: 'line',
                                 data: {
-                                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                                    labels: ['Inicio', '3 meses', '6 meses', '9 meses', '12 meses', '18 meses'],
                                     datasets: [
                                         {
                                             label: 'TDAH',
-                                            data: [20, 35, 50, 65, 75, 85],
+                                            data: [20, 45, 65, 75, 85, 88],
                                             borderColor: '#3498db',
                                             backgroundColor: 'rgba(52, 152, 219, 0.1)',
                                             tension: 0.3,
-                                            fill: true
+                                            fill: true,
+                                            borderWidth: 2
                                         },
                                         {
                                             label: 'TEA',
-                                            data: [15, 25, 35, 50, 60, 75],
+                                            data: [15, 30, 50, 65, 75, 82],
                                             borderColor: '#e74c3c',
                                             backgroundColor: 'rgba(231, 76, 60, 0.1)',
                                             tension: 0.3,
-                                            fill: true
+                                            fill: true,
+                                            borderWidth: 2
                                         },
                                         {
-                                            label: 'PSE',
-                                            data: [25, 40, 55, 65, 75, 80],
-                                            borderColor: '#f39c12',
-                                            backgroundColor: 'rgba(243, 156, 18, 0.1)',
+                                            label: 'Dislexia',
+                                            data: [10, 25, 40, 60, 75, 85],
+                                            borderColor: '#9b59b6',
+                                            backgroundColor: 'rgba(155, 89, 182, 0.1)',
                                             tension: 0.3,
-                                            fill: true
+                                            fill: true,
+                                            borderWidth: 2
                                         }
                                     ]
                                 },
@@ -4428,12 +5988,185 @@
                                     plugins: {
                                         legend: {
                                             position: 'top'
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    return `${context.dataset.label}: ${context.raw}% de objetivos`;
+                                                }
+                                            }
                                         }
                                     },
                                     scales: {
                                         y: {
                                             beginAtZero: true,
-                                            max: 100
+                                            max: 100,
+                                            title: {
+                                                display: true,
+                                                text: '% de objetivos alcanzados'
+                                            }
+                                        },
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Tiempo de intervención'
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Gráfico demográfico
+                            const ctx4 = document.getElementById('demografiaChart').getContext('2d');
+                            new Chart(ctx4, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['3-6 años', '7-10 años', '11-14 años', '15-18 años'],
+                                    datasets: [
+                                        {
+                                            label: 'Masculino',
+                                            data: [65, 120, 85, 40],
+                                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                                            borderColor: 'rgba(52, 152, 219, 1)',
+                                            borderWidth: 1
+                                        },
+                                        {
+                                            label: 'Femenino',
+                                            data: [25, 45, 30, 15],
+                                            backgroundColor: 'rgba(232, 67, 147, 0.7)',
+                                            borderColor: 'rgba(232, 67, 147, 1)',
+                                            borderWidth: 1
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            title: {
+                                                display: true,
+                                                text: 'Número de casos'
+                                            }
+                                        },
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Grupo de edad'
+                                            }
+                                        }
+                                    },
+                                    plugins: {
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    return `${context.dataset.label}: ${context.raw} casos`;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Gráfico escolar
+                            const ctx5 = document.getElementById('escolarChart').getContext('2d');
+                            new Chart(ctx5, {
+                                type: 'radar',
+                                data: {
+                                    labels: ['Rendimiento', 'Conducta', 'Socialización', 'Autonomía', 'Motivación'],
+                                    datasets: [
+                                        {
+                                            label: 'Pre-intervención',
+                                            data: [30, 25, 35, 40, 20],
+                                            backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                                            borderColor: 'rgba(231, 76, 60, 1)',
+                                            borderWidth: 2,
+                                            pointBackgroundColor: 'rgba(231, 76, 60, 1)'
+                                        },
+                                        {
+                                            label: 'Post-intervención',
+                                            data: [75, 80, 70, 85, 75],
+                                            backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                                            borderColor: 'rgba(46, 204, 113, 1)',
+                                            borderWidth: 2,
+                                            pointBackgroundColor: 'rgba(46, 204, 113, 1)'
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        r: {
+                                            angleLines: {
+                                                display: true
+                                            },
+                                            suggestedMin: 0,
+                                            suggestedMax: 100
+                                        }
+                                    },
+                                    plugins: {
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    return `${context.dataset.label}: ${context.raw}%`;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Gráfico de resultados
+                            const ctx6 = document.getElementById('resultsChart').getContext('2d');
+                            new Chart(ctx6, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['TDAH', 'TEA', 'Dislexia', 'Promedio'],
+                                    datasets: [
+                                        {
+                                            label: 'Nuestro centro',
+                                            data: [89, 85, 92, 89],
+                                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                                            borderColor: 'rgba(52, 152, 219, 1)',
+                                            borderWidth: 1
+                                        },
+                                        {
+                                            label: 'Estándar nacional',
+                                            data: [72, 68, 75, 72],
+                                            backgroundColor: 'rgba(149, 165, 166, 0.7)',
+                                            borderColor: 'rgba(149, 165, 166, 1)',
+                                            borderWidth: 1
+                                        }
+                                    ]
+                                },
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true,
+                                            max: 100,
+                                            title: {
+                                                display: true,
+                                                text: '% de éxito'
+                                            }
+                                        },
+                                        x: {
+                                            title: {
+                                                display: true,
+                                                text: 'Diagnóstico'
+                                            }
+                                        }
+                                    },
+                                    plugins: {
+                                        tooltip: {
+                                            callbacks: {
+                                                label: function(context) {
+                                                    return `${context.dataset.label}: ${context.raw}% de éxito`;
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -4442,11 +6175,23 @@
                         
                         // Descargar reporte
                         function descargarReporte() {
-                            if(confirm('¿Desea descargar el reporte completo de casos atendidos?')) {
+                            if(confirm('¿Desea descargar el informe completo en formato PDF?')) {
                                 // Simulación - en producción usaría un enlace real a PDF
                                 alert('Descarga iniciada (simulación)');
                                 // window.location.href = 'ruta/al/reporte.pdf';
                             }
+                        }
+                        
+                        // Contactar al equipo
+                        function contactarEquipo() {
+                            alert('Redirigiendo al formulario de contacto...');
+                            // window.location.href = 'contacto.html';
+                        }
+                        
+                        // Reproducir video testimonio
+                        function playTestimonioVideo(id) {
+                            alert(`Reproduciendo testimonio video de la familia ${id}`);
+                            // Aquí iría la lógica para abrir un modal con el video
                         }
                         
                         // Cerrar al hacer clic fuera del modal
@@ -5225,91 +6970,292 @@
     });
 </script>
     <!-- Sección de Galería -->
-    <section id="galeria" class="section">
-        <div class="section-title">
-            <h2>Galería CEREFE</h2>
-            <div class="underline"></div>
-            <p>Conoce nuestro trabajo a través de estas imágenes que muestran nuestras actividades, instalaciones y eventos especiales</p>
+<!-- Sección de Galería -->
+<section id="galeria" class="section">
+    <div class="section-title">
+        <h2>Galería CEREFE</h2>
+        <div class="underline"></div>
+        <p>Conoce nuestro trabajo a través de estas imágenes que muestran nuestras actividades, instalaciones y eventos especiales</p>
+    </div>
+    
+    <div class="gallery-container">
+        <div class="gallery-controls">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="actividades">Actividades</button>
+            <button class="filter-btn" data-filter="terapias">Terapias</button>
+            <button class="filter-btn" data-filter="instalaciones">Instalaciones</button>
+            <button class="filter-btn" data-filter="eventos">Eventos</button>
         </div>
         
-        <div class="gallery-container">
-            <div class="gallery-controls">
-                <button class="filter-btn active" data-filter="all">Todas</button>
-                <button class="filter-btn" data-filter="actividades">Actividades</button>
-                <button class="filter-btn" data-filter="terapias">Terapias</button>
-                <button class="filter-btn" data-filter="instalaciones">Instalaciones</button>
-                <button class="filter-btn" data-filter="eventos">Eventos</button>
+        <div class="gallery-grid">
+            <div class="gallery-item actividades" data-category="actividades">
+                <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Actividades educativas en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+                <div class="img-overlay">
+                    <div class="overlay-content">
+                        <h3>Actividades Educativas</h3>
+                        <p>Nuestros estudiantes participando en actividades de aprendizaje interactivo</p>
+                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
+                    </div>
+                </div>
             </div>
             
-            <div class="gallery-grid">
-                <div class="gallery-item actividades" data-category="actividades">
-                    <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Actividades educativas en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
-                    <div class="img-overlay">
-                        <div class="overlay-content">
-                            <h3>Actividades Educativas</h3>
-                            <p>Nuestros estudiantes participando en actividades de aprendizaje interactivo</p>
-                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                        </div>
+            <div class="gallery-item terapias" data-category="terapias">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapias en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+                <div class="img-overlay">
+                    <div class="overlay-content">
+                        <h3>Sesiones de Terapia</h3>
+                        <p>Profesionales trabajando con nuestros pacientes en sesiones personalizadas</p>
+                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>
-                
-                <div class="gallery-item terapias" data-category="terapias">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapias en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
-                    <div class="img-overlay">
-                        <div class="overlay-content">
-                            <h3>Sesiones de Terapia</h3>
-                            <p>Profesionales trabajando con nuestros pacientes en sesiones personalizadas</p>
-                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                        </div>
+            </div>
+            
+            <div class="gallery-item instalaciones" data-category="instalaciones">
+                <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instalaciones de CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+                <div class="img-overlay">
+                    <div class="overlay-content">
+                        <h3>Nuestras Instalaciones</h3>
+                        <p>Espacios diseñados para la comodidad y accesibilidad de nuestros pacientes</p>
+                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>
-                
-                <div class="gallery-item instalaciones" data-category="instalaciones">
-                    <img src="https://images.unsplash.com/photo-1579684453423-f84349ef60b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Instalaciones de CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
-                    <div class="img-overlay">
-                        <div class="overlay-content">
-                            <h3>Nuestras Instalaciones</h3>
-                            <p>Espacios diseñados para la comodidad y accesibilidad de nuestros pacientes</p>
-                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                        </div>
+            </div>
+            
+            <div class="gallery-item eventos" data-category="eventos">
+                <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Eventos en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+                <div class="img-overlay">
+                    <div class="overlay-content">
+                        <h3>Eventos Especiales</h3>
+                        <p>Celebraciones y actividades comunitarias para promover la inclusión</p>
+                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>
-                
-                <div class="gallery-item eventos" data-category="eventos">
-                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Eventos en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
-                    <div class="img-overlay">
-                        <div class="overlay-content">
-                            <h3>Eventos Especiales</h3>
-                            <p>Celebraciones y actividades comunitarias para promover la inclusión</p>
-                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-                <div class="gallery-item terapias" data-category="terapias">
-                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapia física en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
-                    <div class="img-overlay">
-                        <div class="overlay-content">
-                            <h3>Terapia Física</h3>
-                            <p>Sesiones personalizadas para mejorar la movilidad y autonomía</p>
-                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                        </div>
+            <div class="gallery-item terapias" data-category="terapias">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Terapia física en CEREFE" class="gallery-img" width="400" height="300" loading="lazy">
+                <div class="img-overlay">
+                    <div class="overlay-content">
+                        <h3>Terapia Física</h3>
+                        <p>Sesiones personalizadas para mejorar la movilidad y autonomía</p>
+                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>
-                
-                <div class="gallery-item actividades" data-category="actividades">
-                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Talleres educativos" class="gallery-img" width="400" height="300" loading="lazy">
-                    <div class="img-overlay">
-                        <div class="overlay-content">
-                            <h3>Talleres Educativos</h3>
-                            <p>Programas diseñados para el desarrollo de habilidades cognitivas</p>
-                            <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
-                        </div>
+            </div>
+            
+            <div class="gallery-item actividades" data-category="actividades">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80" alt="Talleres educativos" class="gallery-img" width="400" height="300" loading="lazy">
+                <div class="img-overlay">
+                    <div class="overlay-content">
+                        <h3>Talleres Educativos</h3>
+                        <p>Programas diseñados para el desarrollo de habilidades cognitivas</p>
+                        <a href="#" class="zoom-icon" aria-label="Ampliar imagen"><i class="fas fa-search-plus"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+/* Estilos para la galería */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.gallery-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 8px 20px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-btn:hover {
+    background-color: #ddd;
+}
+
+.filter-btn.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .img-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.overlay-content h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.overlay-content p {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.zoom-icon {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.zoom-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Efecto de filtro */
+.gallery-item {
+    transition: all 0.5s ease;
+}
+
+.gallery-item.hide {
+    transform: scale(0);
+    opacity: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Seleccionar todos los botones de filtro
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    // Añadir evento click a cada botón de filtro
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remover la clase 'active' de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Añadir la clase 'active' al botón clickeado
+            this.classList.add('active');
+            
+            // Obtener el valor del filtro
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Filtrar las imágenes
+            galleryItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.classList.remove('hide');
+                } else {
+                    item.classList.add('hide');
+                }
+            });
+        });
+    });
+    
+    // Opcional: Lightbox para ampliar imágenes
+    const zoomIcons = document.querySelectorAll('.zoom-icon');
+    zoomIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.preventDefault();
+            const imgSrc = this.closest('.gallery-item').querySelector('img').src;
+            const imgAlt = this.closest('.gallery-item').querySelector('img').alt;
+            
+            // Crear lightbox
+            const lightbox = document.createElement('div');
+            lightbox.style.position = 'fixed';
+            lightbox.style.top = '0';
+            lightbox.style.left = '0';
+            lightbox.style.width = '100%';
+            lightbox.style.height = '100%';
+            lightbox.style.backgroundColor = 'rgba(0,0,0,0.9)';
+            lightbox.style.display = 'flex';
+            lightbox.style.alignItems = 'center';
+            lightbox.style.justifyContent = 'center';
+            lightbox.style.zIndex = '1000';
+            lightbox.style.cursor = 'pointer';
+            
+            // Crear imagen ampliada
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.alt = imgAlt;
+            img.style.maxWidth = '90%';
+            img.style.maxHeight = '90%';
+            img.style.objectFit = 'contain';
+            img.style.borderRadius = '8px';
+            
+            // Añadir imagen al lightbox
+            lightbox.appendChild(img);
+            
+            // Cerrar lightbox al hacer click
+            lightbox.addEventListener('click', function() {
+                document.body.removeChild(lightbox);
+            });
+            
+            // Añadir lightbox al body
+            document.body.appendChild(lightbox);
+        });
+    });
+});
+</script>
 
     <!-- Sección de Donaciones -->
     <section id="donacion" class="section">

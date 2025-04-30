@@ -3436,66 +3436,408 @@
     </section>
 
     <!-- Sección de Servicios Destacados -->
-    <section id="servicios" class="section services-highlight">
-        <div class="section-title">
-            <h2>Nuestros Servicios</h2>
-            <div class="underline"></div>
-            <p>Ofrecemos una amplia gama de servicios especializados para atender las necesidades de nuestros pacientes</p>
-        </div>
-        <div class="grid">
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Medicina" class="service-image" width="400" height="220" loading="lazy">
-                <div class="service-content">
-                    <h3>Medicina General y Pediatría</h3>
-                    <p>Atención médica general y pediatría especializada en el diagnóstico y tratamiento de condiciones asociadas a discapacidades.</p>
-                    <a href="#medicina" class="service-btn">Más información</a>
-                </div>
+    <section id="servicios" class="section services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios Especializados</h2>
+                <div class="underline"></div>
+                <p class="section-subtitle">Ofrecemos una amplia gama de servicios integrales para atender las necesidades únicas de nuestros pacientes</p>
             </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Odontología" class="service-image" width="400" height="220" loading="lazy">
-                <div class="service-content">
-                    <h3>Odontología Especializada</h3>
-                    <p>Atención odontológica adaptada a pacientes con discapacidad, con equipos especiales y personal capacitado. Realizamos tratamientos preventivos, restaurativos y de ortodoncia.</p>
-                    <a href="#odontologia" class="service-btn">Más información</a>
+    
+            <div class="services-grid">
+                <!-- Medicina General -->
+                <div class="service-card">
+                    <div class="service-image-container">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Servicio de Medicina" 
+                                 class="service-image" 
+                                 loading="lazy">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Medicina General y Pediatría</h3>
+                        <p>Atención médica integral y pediatría especializada en el diagnóstico y tratamiento de condiciones asociadas a discapacidades, con enfoque preventivo y de seguimiento continuo.</p>
+                        <a href="#medicina" class="service-btn">
+                            Más información <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Psicología" class="service-image" width="400" height="220" loading="lazy">
-                <div class="service-content">
-                    <h3>Psicología y Orientación</h3>
-                    <p>Evaluación, diagnóstico e intervención psicológica individual y familiar para el desarrollo emocional. Trabajamos en el fortalecimiento de habilidades sociales y adaptativas.</p>
-                    <a href="#psicologia" class="service-btn">Más información</a>
+    
+                <!-- Odontología -->
+                <div class="service-card">
+                    <div class="service-image-container">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Servicio de Odontología" 
+                                 class="service-image" 
+                                 loading="lazy">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Odontología Especializada</h3>
+                        <p>Atención odontológica adaptada con equipos especiales y personal capacitado para pacientes con discapacidad. Tratamientos preventivos, restaurativos y de ortodoncia con enfoque accesible.</p>
+                        <a href="#odontologia" class="service-btn">
+                            Más información <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Pedagogía" class="service-image" width="400" height="220" loading="lazy">
-                <div class="service-content">
-                    <h3>Pedagogía y Educación Especial</h3>
-                    <p>Programas educativos personalizados según las necesidades y capacidades de cada estudiante. Implementamos metodologías innovadoras para el aprendizaje significativo.</p>
-                    <a href="#pedagogia" class="service-btn">Más información</a>
+    
+                <!-- Psicología -->
+                <div class="service-card">
+                    <div class="service-image-container">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Servicio de Psicología" 
+                                 class="service-image" 
+                                 loading="lazy">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Psicología y Orientación</h3>
+                        <p>Evaluación, diagnóstico e intervención psicológica individual y familiar para el desarrollo emocional. Fortalecimiento de habilidades sociales, adaptativas y programas de autocuidado.</p>
+                        <a href="#psicologia" class="service-btn">
+                            Más información <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Fisioterapia" class="service-image" width="400" height="220" loading="lazy">
-                <div class="service-content">
-                    <h3>Fisioterapia y Rehabilitación</h3>
-                    <p>Terapias físicas para mejorar movilidad, fuerza y coordinación con equipos especializados. Desarrollamos planes de rehabilitación integral para cada paciente.</p>
-                    <a href="#fisioterapia" class="service-btn">Más información</a>
+    
+                <!-- Pedagogía -->
+                <div class="service-card">
+                    <div class="service-image-container">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Servicio de Pedagogía" 
+                                 class="service-image" 
+                                 loading="lazy">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Pedagogía y Educación Especial</h3>
+                        <p>Programas educativos personalizados con metodologías innovadoras para aprendizaje significativo. Adaptación curricular según necesidades y capacidades individuales.</p>
+                        <a href="#pedagogia" class="service-btn">
+                            Más información <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Servicio de Trabajo Social" class="service-image" width="400" height="220" loading="lazy">
-                <div class="service-content">
-                    <h3>Trabajo Social y Orientación</h3>
-                    <p>Apoyo social, gestión de ayudas técnicas y acompañamiento en procesos de inclusión. Brindamos asesoramiento legal y gestionamos redes de apoyo familiar.</p>
-                    <a href="#trabajo-social" class="service-btn">Más información</a>
+    
+                <!-- Fisioterapia -->
+                <div class="service-card">
+                    <div class="service-image-container">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Servicio de Fisioterapia" 
+                                 class="service-image" 
+                                 loading="lazy">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Fisioterapia y Rehabilitación</h3>
+                        <p>Terapias físicas con equipos especializados para mejorar movilidad, fuerza y coordinación. Planes de rehabilitación integral con seguimiento multidisciplinario.</p>
+                        <a href="#fisioterapia" class="service-btn">
+                            Más información <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Trabajo Social -->
+                <div class="service-card">
+                    <div class="service-image-container">
+                        <div class="image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                                 alt="Servicio de Trabajo Social" 
+                                 class="service-image" 
+                                 loading="lazy">
+                        </div>
+                        <div class="service-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3>Trabajo Social y Orientación</h3>
+                        <p>Apoyo social integral, gestión de ayudas técnicas y acompañamiento en procesos de inclusión. Asesoramiento legal y gestión de redes de apoyo familiar y comunitario.</p>
+                        <a href="#trabajo-social" class="service-btn">
+                            Más información <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <style>
+        /* Variables de color */
+        :root {
+            --primary-color: #1e40af; /* Azul más oscuro */
+            --secondary-color: #1e3a8a; /* Azul más intenso */
+            --text-color: #000000; /* Texto blanco */
+            --light-text: #e5e7eb; /* Gris claro */
+            --background-color: #f0f4f8; /* Fondo claro */
+            --card-bg: #ffffff; /* Fondo tarjetas */
+            --image-overlay: rgba(30, 58, 138, 0.7); /* Overlay azul */
+        }
+    
+        /* Estilos generales */
+        .services-section {
+            background-color: var(--background-color);
+            padding: 6rem 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.75rem;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .underline {
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 0 auto 2rem;
+            border-radius: 3px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+        
+        /* Grid de servicios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+        
+       
+/* Tarjetas de servicio */
+.service-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor cuadrado perfecto */
+.service-image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Esto crea un cuadrado perfecto (relación 1:1) */
+    overflow: hidden;
+}
+
+.image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-card:hover .service-image {
+    transform: scale(1.05);
+}
+    
+        
+        /* Iconos rediseñados */
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: absolute;
+            bottom: -30px;
+            right: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: translateY(-5px);
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        /* Contenido de la tarjeta */
+        .service-content {
+            padding: 2.5rem 2rem 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .service-content p {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            flex-grow: 1;
+        }
+        
+        /* Botón con texto blanco */
+        .service-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--primary-color);
+            color: white !important;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            width: fit-content;
+            font-size: 1.05rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .service-btn i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-btn:hover {
+            background-color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .service-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+            
+            .service-image-container {
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-section {
+                padding: 4rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.25rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 0 auto;
+                gap: 2.5rem;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+                bottom: -25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .services-section {
+                padding: 3rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-content {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.4rem;
+            }
+            
+            .service-image-container {
+                height: 200px;
+            }
+            
+            .service-icon {
+                right: 20px;
+            }
+        }
+    </style>
 
     <!-- Sección de Estadísticas -->
-    <!-- Sección de Estadísticas Mejorada -->
 <!-- Sección de Estadísticas Profesional -->
 <section class="section impact-section" style="background: linear-gradient(135deg, #0056b3, #00a0e9); padding: 6rem 0; position: relative; overflow: hidden;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2;">

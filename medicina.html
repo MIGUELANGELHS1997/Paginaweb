@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Médico Integral | Servicios de Salud</title>
+    <style>
+        :root {
+            --azul-oscuro: #0A2463;
+            --azul-medio: #3E78B2;
+            --azul-claro: #D7E5F2;
+            --blanco: #FFFFFF;
+            --verde: #4CB944;
+            --naranja: #FF7F50;
+            --sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #F9F9F9;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            padding-bottom: 60px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+            color: var(--blanco);
+            text-align: center;
+            padding: 3rem 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: var(--azul-oscuro);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--naranja);
+        }
+        
+        .card {
+            background: var(--blanco);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        li::before {
+            content: '•';
+            color: var(--verde);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .metas-container {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .meta-item {
+            background: var(--azul-claro);
+            padding: 1.5rem;
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 0.5rem;
+            box-shadow: var(--sombra);
+        }
+        
+        .meta-numero {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--azul-oscuro);
+            margin-bottom: 0.5rem;
+        }
+        
+        .verificadores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .verificador {
+            background: var(--azul-claro);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .especialidades {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .especialidad {
+            background: linear-gradient(to right, var(--azul-medio), var(--azul-oscuro));
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Galería de Imágenes */
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .imagen-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            position: relative;
+            height: 250px;
+            transition: transform 0.3s;
+        }
+        
+        .imagen-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .imagen-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .imagen-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .imagen-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 36, 99, 0.8);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .imagen-card:hover .imagen-info {
+            transform: translateY(0);
+        }
+
+        /* Sección de Videos */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: var(--azul-oscuro);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .video-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Botón Volver */
+        .btn-volver {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--naranja);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            z-index: 100;
+        }
+
+        .btn-volver:hover {
+            background: var(--azul-oscuro);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-volver i {
+            font-size: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .metas-container {
+                flex-direction: column;
+            }
+            
+            .meta-item {
+                margin: 0.5rem 0;
+            }
+
+            .btn-volver {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .galeria {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Centro Médico Integral</h1>
+            <p>Comprometidos con la salud y bienestar de nuestra comunidad</p>
+        </div>
+    </header>
+    
+    <!-- Objetivo -->
+    <section class="container">
+        <div class="card">
+            <h2>Nuestro Objetivo</h2>
+            <p>Mejorar el estado de salud de la población que demande nuestros servicios mediante atención médica especializada y humanizada.</p>
+        </div>
+    </section>
+    
+    <!-- Actividades -->
+    <section class="container">
+        <div class="card">
+            <h2>Actividades Específicas</h2>
+            <ul>
+                <li>Atender integralmente a pacientes internos y externos</li>
+                <li>Realizar diagnóstico presuntivo y solicitar valoración multidisciplinaria</li>
+                <li>Prescribir medicación de acuerdo a patología y realizar seguimiento</li>
+                <li>Atención de emergencias y resolución de las mismas</li>
+                <li>Redactar informes médicos según requerimiento de pacientes</li>
+                <li>Realizar referencia y contra referencia</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- Galería de Imágenes -->
+    <section class="container">
+        <div class="card">
+            <h2>Nuestras Instalaciones</h2>
+            <div class="galeria">
+                <div class="imagen-card">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Consultorios">
+                    <div class="imagen-info">
+                        <h3>Consultorios Modernos</h3>
+                        <p>Equipados con tecnología de última generación</p>
+                    </div>
+                </div>
+                <div class="imagen-card">
+                    <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Atención médica">
+                    <div class="imagen-info">
+                        <h3>Atención Personalizada</h3>
+                        <p>Profesionales altamente capacitados</p>
+                    </div>
+                </div>
+                <div class="imagen-card">
+                    <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Equipo médico">
+                    <div class="imagen-info">
+                        <h3>Equipo Multidisciplinario</h3>
+                        <p>Trabajo en equipo para mejor diagnóstico</p>
+                    </div>
+                </div>
+                <div class="imagen-card">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Tecnología">
+                    <div class="imagen-info">
+                        <h3>Tecnología Avanzada</h3>
+                        <p>Equipos de diagnóstico de precisión</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Metas -->
+    <section class="container">
+        <div class="card">
+            <h2>Nuestras Metas</h2>
+            <div class="metas-container">
+                <div class="meta-item">
+                    <div class="meta-numero">12</div>
+                    <div>Pacientes diarios</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-numero">240</div>
+                    <div>Pacientes mensuales</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-numero">2,400</div>
+                    <div>Pacientes anuales</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Videos -->
+    <section class="container">
+        <div class="card">
+            <h2>Conoce Nuestro Trabajo</h2>
+            <div class="video-container">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/7U0U7ZQ4JYw" title="Video sobre nuestro centro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Nuestra Filosofía de Atención</h3>
+                        <p>Conoce nuestro enfoque centrado en el paciente</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/5L6L1N6ZfUQ" title="Instalaciones" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3>Tour por Nuestras Instalaciones</h3>
+                        <p>Descubre nuestro centro médico</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Verificadores -->
+    <section class="container">
+        <div class="card">
+            <h2>Verificadores</h2>
+            <div class="verificadores">
+                <span class="verificador">Historias clínicas</span>
+                <span class="verificador">Recibos recetarios</span>
+                <span class="verificador">Libros de registro</span>
+                <span class="verificador">Informes mensuales</span>
+                <span class="verificador">Software SBP</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Proyección -->
+    <section class="container">
+        <div class="card">
+            <h2>Proyección Futura</h2>
+            <p>Organizar e implementar consultorios especializados en:</p>
+            <div class="especialidades">
+                <span class="especialidad">Pediatría</span>
+                <span class="especialidad">Ginecología</span>
+                <span class="especialidad">Neurología</span>
+                <span class="especialidad">Otorrinolaringología</span>
+                <span class="especialidad">Fonoaudiología</span>
+                <span class="especialidad">Oftalmología</span>
+                <span class="especialidad">Traumatología</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Volver -->
+    <a href="javascript:history.back()" class="btn-volver" title="Volver atrás">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <script>
+        // Animación para el botón de volver
+        document.querySelector('.btn-volver').addEventListener('mouseenter', function() {
+            this.querySelector('i').style.transform = 'translateX(-3px)';
+        });
+        
+        document.querySelector('.btn-volver').addEventListener('mouseleave', function() {
+            this.querySelector('i').style.transform = 'translateX(0)';
+        });
+        
+        // Efecto de carga para las imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            const imagenes = document.querySelectorAll('.imagen-card');
+            
+            imagenes.forEach((img, index) => {
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                    img.style.transform = 'translateY(0)';
+                }, 150 * index);
+            });
+        });
+    </script>
+</body>
+</html>

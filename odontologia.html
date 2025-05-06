@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odontología Integral | Salud Bucal Especializada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --azul-oscuro: #0A4D68;
+            --azul-medio: #088395;
+            --azul-claro: #05BFDB;
+            --azul-suave: #E8F9FD;
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F7F8;
+            --gris-medio: #E0E3E7;
+            --texto-oscuro: #2D3436;
+            --verde: #00B894;
+            --sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transicion: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--azul-suave);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+            color: var(--blanco);
+            text-align: center;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--azul-claro);
+            color: var(--azul-oscuro);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicion);
+            box-shadow: var(--sombra);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(5, 191, 219, 0.3);
+        }
+
+        /* Secciones */
+        section {
+            padding: 4rem 0;
+        }
+
+        h2 {
+            color: var(--azul-oscuro);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--azul-claro);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--azul-medio);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tarjetas */
+        .card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Listas */
+        ul {
+            list-style-position: inside;
+            margin: 1.5rem 0;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--azul-claro);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Objetivos */
+        .objetivos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .objetivo-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--sombra);
+            border-top: 4px solid var(--azul-claro);
+            transition: var(--transicion);
+        }
+
+        .objetivo-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--azul-medio);
+        }
+
+        .objetivo-icon {
+            font-size: 2.5rem;
+            color: var(--azul-medio);
+            margin-bottom: 1rem;
+        }
+
+        /* Proyección */
+        .proyeccion-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .proyeccion-icon {
+            background: var(--azul-claro);
+            color: var(--azul-oscuro);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--blanco);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+            padding-left: 0;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+
+        .footer-col a:hover {
+            color: var(--azul-claro);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botones de navegación */
+        .nav-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--azul-medio);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transicion);
+            border: none;
+        }
+
+        .nav-btn:hover {
+            background: var(--azul-claro);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn i {
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .nav-buttons {
+                right: 15px;
+                bottom: 15px;
+            }
+            
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Odontología Integral</h1>
+            <p class="subtitle">Cuidado especializado para tu salud bucodental</p>
+            <a href="#servicios" class="btn">Nuestros Servicios</a>
+        </div>
+    </header>
+
+    <!-- Qué es Odontología -->
+    <section id="odontologia">
+        <div class="container">
+            <h2>¿Qué es la Odontología?</h2>
+            <div class="card">
+                <p>La odontología es una de las ciencias de la salud, encargada del diagnóstico, tratamiento y prevención de las enfermedades del aparato estomatognático, que incluye:</p>
+                <ul>
+                    <li>Dientes y encías</li>
+                    <li>Tejido periodontal</li>
+                    <li>Maxilares</li>
+                    <li>Articulación temporomandibular</li>
+                </ul>
+                <p>Nuestro enfoque integral combina tecnología avanzada con atención personalizada para garantizar la mejor salud bucal para nuestros pacientes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section id="objetivos" style="background-color: var(--blanco);">
+        <div class="container">
+            <h2>Nuestros Objetivos</h2>
+            
+            <h3>Objetivo General</h3>
+            <div class="card">
+                <p>Aplicar conocimientos teórico-prácticos sobre promoción, prevención, diagnóstico, tratamiento y rehabilitación de enfermedades buco dentales para resolver los problemas de salud oral de nuestra población en riesgo.</p>
+            </div>
+            
+            <h3>Objetivos Específicos</h3>
+            <div class="objetivos-container">
+                <div class="objetivo-card">
+                    <div class="objetivo-icon">
+                        <i class="fas fa-teeth"></i>
+                    </div>
+                    <h4>Salud Oral</h4>
+                    <p>Elevar el nivel de salud oral en la población asistente mediante tratamientos preventivos y correctivos.</p>
+                </div>
+                
+                <div class="objetivo-card">
+                    <div class="objetivo-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h4>Concientización</h4>
+                    <p>Concientizar sobre la importancia de la prevención de patologías en cavidad bucal a través de programas educativos.</p>
+                </div>
+                
+                <div class="objetivo-card">
+                    <div class="objetivo-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4>Interrelación</h4>
+                    <p>Lograr interrelación entre especialidades existentes en la Institución y el servicio Odontológico para atención integral.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyección a 5 años -->
+    <section id="proyeccion">
+        <div class="container">
+            <h2>Proyección a 5 Años</h2>
+            <div class="card">
+                <div class="proyeccion-item">
+                    <div class="proyeccion-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4>Convenios Educativos</h4>
+                        <p>Realizar convenios con diferentes Facultades de Odontología, para lograr que estudiantes puedan realizar prácticas en nuestra institución, logrando sensibilizar y motivar para que nuevos profesionales puedan contribuir en el mejoramiento de la salud oral de las personas con discapacidad.</p>
+                    </div>
+                </div>
+                
+                <div class="proyeccion-item">
+                    <div class="proyeccion-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div>
+                        <h4>Especialistas Odontológicos</h4>
+                        <p>Buscar convenios con profesionales en diferentes especialidades en odontología, para cubrir en forma integral la Rehabilitación Buco Dental de nuestros pacientes.</p>
+                    </div>
+                </div>
+                
+                <div class="proyeccion-item">
+                    <div class="proyeccion-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <div>
+                        <h4>Bioseguridad</h4>
+                        <p>Formar un equipo de Bioseguridad que se encargue específicamente del lavado del instrumental, la esterilización adecuada del equipo, campos, etc., ya que van en incremento los índices de VIH Sida, que se registran en nuestro medio, es necesario cumplir con las normas adecuadas de seguridad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" style="background-color: var(--blanco);">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3><i class="fas fa-tooth" style="color: var(--azul-medio); margin-right: 10px;"></i> Odontología General</h3>
+                    <p>Diagnóstico y tratamiento de problemas bucales comunes, incluyendo caries, gingivitis y limpiezas profesionales.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-teeth-open" style="color: var(--azul-medio); margin-right: 10px;"></i> Ortodoncia</h3>
+                    <p>Corrección de la posición de los dientes y maxilares para mejorar función y estética dental.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-crown" style="color: var(--azul-medio); margin-right: 10px;"></i> Rehabilitación Oral</h3>
+                    <p>Restauramos la función masticatoria y estética mediante prótesis fijas, removibles e implantes dentales.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-baby" style="color: var(--azul-medio); margin-right: 10px;"></i> Odontopediatría</h3>
+                    <p>Atención dental especializada para niños, creando hábitos de higiene oral desde temprana edad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botones de navegación flotantes -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="backBtn" title="Volver atrás">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <button class="nav-btn" id="topBtn" title="Ir arriba">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        // Botón para ir arriba
+        const topBtn = document.getElementById('topBtn');
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Botón para ir atrás
+        const backBtn = document.getElementById('backBtn');
+        backBtn.addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Mostrar/ocultar botón de ir arriba según scroll
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                topBtn.style.display = 'flex';
+            } else {
+                topBtn.style.display = 'flex'; // Siempre visible
+            }
+        });
+    </script>
+</body>
+</html>

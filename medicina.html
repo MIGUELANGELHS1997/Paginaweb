@@ -3,16 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro Médico Integral | Servicios de Salud</title>
+    <title>Medicina General y Pediatría | Excelencia en Salud</title>
+    <meta name="description" content="Servicios profesionales de medicina general y enfermería con enfoque humano y calidad certificada">
     <style>
         :root {
             --azul-oscuro: #0A2463;
             --azul-medio: #3E78B2;
             --azul-claro: #D7E5F2;
             --blanco: #FFFFFF;
-            --verde: #4CB944;
-            --naranja: #FF7F50;
+            --gris-claro: #F5F5F5;
+            --gris-medio: #E0E0E0;
+            --gris-oscuro: #757575;
+            --texto-oscuro: #212121;
+            --texto-medio: #424242;
+            --verde: #4CAF50;
+            --verde-oscuro: #388E3C;
+            --naranja: #FF7043;
+            --naranja-oscuro: #E64A19;
             --sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --sombra-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --transicion: all 0.3s ease;
         }
         
         * {
@@ -23,11 +33,11 @@
         }
         
         body {
-            background-color: #F9F9F9;
-            color: #333;
+            background-color: var(--gris-claro);
+            color: var(--texto-medio);
             line-height: 1.6;
             position: relative;
-            padding-bottom: 60px;
+            overflow-x: hidden;
         }
         
         .container {
@@ -40,13 +50,41 @@
             background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
             color: var(--blanco);
             text-align: center;
-            padding: 3rem 0;
+            padding: 4rem 0 6rem;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
         }
         
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--blanco);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         h2 {
@@ -54,6 +92,7 @@
             margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            font-size: 2rem;
         }
         
         h2::after {
@@ -64,36 +103,63 @@
             width: 60px;
             height: 4px;
             background: var(--naranja);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            color: var(--azul-oscuro);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        h4 {
+            color: var(--azul-medio);
+            margin-bottom: 0.5rem;
         }
         
         .card {
             background: var(--blanco);
-            border-radius: 10px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
             box-shadow: var(--sombra);
-            transition: transform 0.3s;
+            transition: var(--transicion);
+            border: 1px solid var(--gris-medio);
         }
         
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
         }
         
         .grid-2 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: var(--texto-medio);
+            line-height: 1.7;
         }
         
         ul {
             list-style-position: inside;
-            margin-top: 1rem;
+            margin: 1.5rem 0;
         }
         
         li {
             margin-bottom: 0.8rem;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.8rem;
+            color: var(--texto-medio);
         }
         
         li::before {
@@ -102,86 +168,136 @@
             font-weight: bold;
             position: absolute;
             left: 0;
+            font-size: 1.5rem;
+            line-height: 1;
         }
         
         .metas-container {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
         
         .meta-item {
             background: var(--azul-claro);
-            padding: 1.5rem;
-            border-radius: 10px;
-            flex: 1;
-            margin: 0 0.5rem;
+            padding: 2rem 1rem;
+            border-radius: 12px;
             box-shadow: var(--sombra);
+            transition: var(--transicion);
+            text-align: center;
+            border: 2px solid rgba(10, 36, 99, 0.1);
+        }
+        
+        .meta-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-hover);
+            background: var(--azul-medio);
+            color: white;
+        }
+        
+        .meta-item:hover .meta-numero {
+            color: white;
         }
         
         .meta-numero {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--azul-oscuro);
             margin-bottom: 0.5rem;
+            transition: var(--transicion);
         }
         
-        .verificadores {
+        .verificadores-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
         
         .verificador {
             background: var(--azul-claro);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transicion);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--azul-oscuro);
         }
         
-        .especialidades {
+        .verificador i {
+            color: var(--azul-oscuro);
+        }
+        
+        .verificador:hover {
+            background: var(--azul-medio);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .verificador:hover i {
+            color: white;
+        }
+        
+        .especialidades-container {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
         
         .especialidad {
             background: linear-gradient(to right, var(--azul-medio), var(--azul-oscuro));
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transicion);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .especialidad i {
+            font-size: 1.1rem;
+        }
+        
+        .especialidad:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(10, 36, 99, 0.3);
         }
 
         /* Galería de Imágenes */
         .galeria {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2.5rem;
         }
         
         .imagen-card {
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--sombra);
             position: relative;
-            height: 250px;
-            transition: transform 0.3s;
+            height: 280px;
+            transition: var(--transicion);
         }
         
         .imagen-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.5s ease;
         }
         
         .imagen-card:hover {
             transform: translateY(-10px);
+            box-shadow: var(--sombra-hover);
         }
         
         .imagen-card:hover img {
@@ -193,36 +309,48 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 36, 99, 0.8);
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.9), transparent);
             color: white;
-            padding: 1rem;
+            padding: 1.5rem;
             transform: translateY(100%);
-            transition: transform 0.3s;
+            transition: var(--transicion);
         }
         
         .imagen-card:hover .imagen-info {
             transform: translateY(0);
         }
+        
+        .imagen-info h3 {
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .imagen-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
 
         /* Sección de Videos */
         .video-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2.5rem;
         }
         
         .video-card {
             background: var(--azul-oscuro);
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--sombra);
-            transition: transform 0.3s;
+            transition: var(--transicion);
+            position: relative;
         }
         
         .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
         }
         
         .video-wrapper {
@@ -242,240 +370,620 @@
         }
         
         .video-info {
-            padding: 1.5rem;
+            padding: 1.8rem;
             color: white;
         }
         
         .video-info h3 {
-            margin-bottom: 0.5rem;
+            color: white;
+            margin-bottom: 0.8rem;
+        }
+        
+        .video-info p {
+            color: rgba(255, 255, 255, 0.85);
         }
 
-        /* Botón Volver */
-        .btn-volver {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+        /* Sección de Servicios */
+        .servicios-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .servicio-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            border-top: 4px solid var(--verde);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .servicio-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--verde);
+            transition: var(--transicion);
+        }
+        
+        .servicio-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--sombra-hover);
+        }
+        
+        .servicio-card:hover::after {
+            height: 6px;
             background: var(--naranja);
-            color: white;
-            width: 50px;
-            height: 50px;
+        }
+        
+        .servicio-icono {
+            font-size: 2.5rem;
+            color: var(--azul-medio);
+            margin-bottom: 1.5rem;
+        }
+        
+        .servicio-card h3 {
+            margin-bottom: 1rem;
+            color: var(--azul-oscuro);
+        }
+
+        /* Botones Flotantes */
+        .botones-flotantes {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .btn-flotante {
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
-            z-index: 100;
-        }
-
-        .btn-volver:hover {
-            background: var(--azul-oscuro);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-volver i {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transicion);
+            opacity: 0.9;
+            color: white;
             font-size: 1.5rem;
         }
         
-        @media (max-width: 768px) {
-            .metas-container {
-                flex-direction: column;
+        .btn-volver {
+            background: var(--naranja);
+        }
+        
+        .btn-inicio {
+            background: var(--azul-medio);
+        }
+        
+        .btn-flotante:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            opacity: 1;
+        }
+        
+        .btn-volver:hover {
+            background: var(--naranja-oscuro);
+        }
+        
+        .btn-inicio:hover {
+            background: var(--azul-oscuro);
+        }
+        
+        /* Sección de Testimonios */
+        .testimonios-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonio-card {
+    background: var(--blanco);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: var(--transicion);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transform: perspective(1000px) translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
+.testimonio-card:hover {
+    transform: perspective(1000px) translateZ(20px) translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.testimonio-texto {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: var(--texto-medio);
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.testimonio-texto::before {
+    content: '"';
+    font-size: 5rem;
+    color: rgba(10, 36, 99, 0.1);
+    position: absolute;
+    top: -2.5rem;
+    left: -1.5rem;
+    line-height: 1;
+    z-index: 0;
+    font-family: Georgia, serif;
+}
+        
+        .testimonio-texto {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--texto-medio);
+            position: relative;
+        }
+        
+        .testimonio-texto::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--azul-claro);
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonio-autor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .testimonio-autor img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--azul-claro);
+        }
+        
+        .autor-info h4 {
+            color: var(--azul-oscuro);
+            margin-bottom: 0.2rem;
+        }
+        
+        .autor-info p {
+            color: var(--gris-oscuro);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--naranja);
+            border-radius: 2px;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col li {
+            margin-bottom: 0.8rem;
+            padding-left: 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .footer-col li::before {
+            content: none;
+        }
+        
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+        
+        .footer-col a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
             }
             
-            .meta-item {
-                margin: 0.5rem 0;
+            .container {
+                padding: 1.5rem;
             }
-
-            .btn-volver {
-                width: 45px;
-                height: 45px;
-                bottom: 15px;
-                right: 15px;
+            
+            .card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
             }
             
             .galeria {
                 grid-template-columns: 1fr;
             }
+            
+            .botones-flotantes {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            header {
+                padding: 3rem 0 5rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .meta-item {
+                padding: 1.5rem 1rem;
+            }
+            
+            .meta-numero {
+                font-size: 2rem;
+            }
+            
+            .botones-flotantes {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
         }
     </style>
     <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Fuente de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <h1>Centro Médico Integral</h1>
-            <p>Comprometidos con la salud y bienestar de nuestra comunidad</p>
+        <div class="header-content container">
+            <h1 class="fade-in">Centro Médico Integral</h1>
+            <p class="subtitle fade-in delay-1">Excelencia en atención médica y enfermería con enfoque humano y profesional</p>
         </div>
     </header>
     
-    <!-- Objetivo -->
+    <!-- Objetivo General -->
     <section class="container">
-        <div class="card">
-            <h2>Nuestro Objetivo</h2>
-            <p>Mejorar el estado de salud de la población que demande nuestros servicios mediante atención médica especializada y humanizada.</p>
-        </div>
-    </section>
-    
-    <!-- Actividades -->
-    <section class="container">
-        <div class="card">
-            <h2>Actividades Específicas</h2>
-            <ul>
-                <li>Atender integralmente a pacientes internos y externos</li>
-                <li>Realizar diagnóstico presuntivo y solicitar valoración multidisciplinaria</li>
-                <li>Prescribir medicación de acuerdo a patología y realizar seguimiento</li>
-                <li>Atención de emergencias y resolución de las mismas</li>
-                <li>Redactar informes médicos según requerimiento de pacientes</li>
-                <li>Realizar referencia y contra referencia</li>
-            </ul>
-        </div>
-    </section>
-    
-    <!-- Galería de Imágenes -->
-    <section class="container">
-        <div class="card">
-            <h2>Nuestras Instalaciones</h2>
-            <div class="galeria">
-                <div class="imagen-card">
-                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Consultorios">
-                    <div class="imagen-info">
-                        <h3>Consultorios Modernos</h3>
-                        <p>Equipados con tecnología de última generación</p>
-                    </div>
+        <div class="card fade-in delay-2">
+            <h2>Nuestra Misión</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Medicina General</h3>
+                    <p>Resolver problemas de salud mediante una práctica profesional ética, competente y científicamente fundamentada, respondiendo a las necesidades sociales con una perspectiva solidaria y humana, promoviendo el cuidado de la salud para alcanzar una mejor calidad de vida.</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Objetivos Específicos:</h4>
+                    <ul>
+                        <li>Servicio ambulatorio oportuno de alta calidad</li>
+                        <li>Garantizar excelencia en diagnóstico y tratamiento</li>
+                        <li>Atención integral al paciente y su familia</li>
+                        <li>Comprensión humanística de los problemas de salud</li>
+                        <li>Resolución de problemas a nivel comunitario</li>
+                    </ul>
                 </div>
-                <div class="imagen-card">
-                    <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Atención médica">
-                    <div class="imagen-info">
-                        <h3>Atención Personalizada</h3>
-                        <p>Profesionales altamente capacitados</p>
-                    </div>
-                </div>
-                <div class="imagen-card">
-                    <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Equipo médico">
-                    <div class="imagen-info">
-                        <h3>Equipo Multidisciplinario</h3>
-                        <p>Trabajo en equipo para mejor diagnóstico</p>
-                    </div>
-                </div>
-                <div class="imagen-card">
-                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Tecnología">
-                    <div class="imagen-info">
-                        <h3>Tecnología Avanzada</h3>
-                        <p>Equipos de diagnóstico de precisión</p>
-                    </div>
+                <div>
+                    <h3>Enfermería</h3>
+                    <p>Brindar atención de calidad con calidez humana a pacientes que acuden a nuestra institución, garantizando una atención oportuna y adecuada mediante procedimientos profesionales y un trato empático.</p>
+                    
+                    <h4 style="margin-top: 1.5rem;">Objetivos Específicos:</h4>
+                    <ul>
+                        <li>Toma precisa de signos vitales y antropometría</li>
+                        <li>Atención personalizada a cada paciente</li>
+                        <li>Administración segura de medicamentos</li>
+                        <li>Apoyo en procedimientos médicos</li>
+                        <li>Educación para la salud</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Metas -->
+    <!-- Servicios -->
     <section class="container">
-        <div class="card">
-            <h2>Nuestras Metas</h2>
-            <div class="metas-container">
-                <div class="meta-item">
-                    <div class="meta-numero">12</div>
-                    <div>Pacientes diarios</div>
+        <div class="card fade-in delay-3">
+            <h2>Nuestros Servicios</h2>
+            <div class="servicios-container">
+                <div class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Consulta Médica General</h3>
+                    <p>Atención personalizada para diagnóstico y tratamiento de enfermedades comunes, con enfoque preventivo y seguimiento continuo.</p>
                 </div>
-                <div class="meta-item">
-                    <div class="meta-numero">240</div>
-                    <div>Pacientes mensuales</div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Control de Signos Vitales</h3>
+                    <p>Monitoreo profesional de presión arterial, frecuencia cardíaca, temperatura y otros indicadores de salud fundamentales.</p>
                 </div>
-                <div class="meta-item">
-                    <div class="meta-numero">2,400</div>
-                    <div>Pacientes anuales</div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Desarrollo Infantil</h3>
+                    <p>Seguimiento especializado del crecimiento y desarrollo de niños, detección temprana de alteraciones y orientación a padres.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3>Atención de Urgencias</h3>
+                    <p>Manejo inmediato de emergencias médicas con protocolos establecidos y equipamiento necesario para estabilización.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <h3>Farmacia Integral</h3>
+                    <p>Dispensación de medicamentos con orientación profesional, incluyendo banco de antiepilépticos especializados.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icono">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Promoción de Salud</h3>
+                    <p>Programas educativos para el cuidado preventivo de la salud individual, familiar y comunitaria.</p>
                 </div>
             </div>
+        </div>
+    </section>
+    
+    <!-- Proyección a 5 años -->
+    <section class="container">
+        <div class="card fade-in delay-3">
+            <h2>Proyección a 5 Años</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Medicina General</h3>
+                    <ul>
+                        <li>Capacitación continua en desarrollo infantil y sus alteraciones</li>
+                        <li>Actualización constante en tratamientos y protocolos</li>
+                        <li>Implementación de telemedicina para consultas remotas</li>
+                        <li>Certificaciones en atención primaria avanzada</li>
+                        <li>Ampliación de horarios de atención</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Enfermería</h3>
+                    <ul>
+                        <li>Ambiente exclusivo para enfermería y farmacia</li>
+                        <li>Banco de medicamentos antiepilépticos</li>
+                        <li>Capacitación continua según requerimientos</li>
+                        <li>Implementación de historias clínicas electrónicas</li>
+                        <li>Certificación en cuidados especializados</li>
+                    </ul>
+                </div>
+            </div>
+            
+          
         </div>
     </section>
     
     <!-- Videos -->
     <section class="container">
-        <div class="card">
+        <div class="card fade-in delay-4">
             <h2>Conoce Nuestro Trabajo</h2>
             <div class="video-container">
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/7U0U7ZQ4JYw" title="Video sobre nuestro centro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/nD8BIu-9vyE" title="Video sobre nuestro centro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Nuestra Filosofía de Atención</h3>
-                        <p>Conoce nuestro enfoque centrado en el paciente</p>
+                        <p>Conoce nuestro enfoque centrado en el paciente y la calidad humana que nos distingue</p>
                     </div>
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/5L6L1N6ZfUQ" title="Instalaciones" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/vJPgE33JzKc" title="Instalaciones" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
                         <h3>Tour por Nuestras Instalaciones</h3>
-                        <p>Descubre nuestro centro médico</p>
+                        <p>Recorrido virtual por nuestro centro médico y sus áreas de atención</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+   
+    <footer>
+      
     
-    <!-- Verificadores -->
-    <section class="container">
-        <div class="card">
-            <h2>Verificadores</h2>
-            <div class="verificadores">
-                <span class="verificador">Historias clínicas</span>
-                <span class="verificador">Recibos recetarios</span>
-                <span class="verificador">Libros de registro</span>
-                <span class="verificador">Informes mensuales</span>
-                <span class="verificador">Software SBP</span>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Proyección -->
-    <section class="container">
-        <div class="card">
-            <h2>Proyección Futura</h2>
-            <p>Organizar e implementar consultorios especializados en:</p>
-            <div class="especialidades">
-                <span class="especialidad">Pediatría</span>
-                <span class="especialidad">Ginecología</span>
-                <span class="especialidad">Neurología</span>
-                <span class="especialidad">Otorrinolaringología</span>
-                <span class="especialidad">Fonoaudiología</span>
-                <span class="especialidad">Oftalmología</span>
-                <span class="especialidad">Traumatología</span>
-            </div>
-        </div>
-    </section>
+        
+        <style>
+        .footer-high-relief {
+            background-color: var(--blanco);
+            padding: 3rem 0;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .copyright-box {
+            text-align: center;
+            padding: 2rem;
+            background: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15), inset 0 1px 0 rgba(160, 75, 75, 0.8);
+            border: 1px solid rgba(0,0,0,0.05);
+            transform: perspective(1000px) translateZ(20px);
+        }
+        
+        .copyright-text {
+            color: var(--texto-oscuro);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin: 0;
+            text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        }
+        </style>
+    </footer>
 
-    <!-- Botón Volver -->
-    <a href="javascript:history.back()" class="btn-volver" title="Volver atrás">
-        <i class="fas fa-arrow-left"></i>
-    </a>
+    <!-- Botones Flotantes -->
+    <div class="botones-flotantes">
+        <a href="#" class="btn-flotante btn-inicio" title="Ir al principio">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+        <a href="javascript:history.back()" class="btn-flotante btn-volver" title="Volver atrás">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
 
     <script>
-        // Animación para el botón de volver
-        document.querySelector('.btn-volver').addEventListener('mouseenter', function() {
-            this.querySelector('i').style.transform = 'translateX(-3px)';
-        });
-        
-        document.querySelector('.btn-volver').addEventListener('mouseleave', function() {
-            this.querySelector('i').style.transform = 'translateX(0)';
-        });
-        
-        // Efecto de carga para las imágenes
-        document.addEventListener('DOMContentLoaded', function() {
-            const imagenes = document.querySelectorAll('.imagen-card');
-            
-            imagenes.forEach((img, index) => {
-                setTimeout(() => {
-                    img.style.opacity = '1';
-                    img.style.transform = 'translateY(0)';
-                }, 150 * index);
+        // Animación para los botones flotantes
+        document.querySelectorAll('.btn-flotante').forEach(boton => {
+            boton.addEventListener('mouseenter', function() {
+                this.querySelector('i').style.transform = 'scale(1.2)';
             });
+            
+            boton.addEventListener('mouseleave', function() {
+                this.querySelector('i').style.transform = 'scale(1)';
+            });
+        });
+        
+        // Mostrar/ocultar botones al hacer scroll
+        window.addEventListener('scroll', function() {
+            const botones = document.querySelector('.botones-flotantes');
+            if (window.scrollY > 300) {
+                botones.style.opacity = '0.9';
+                botones.style.visibility = 'visible';
+            } else {
+                botones.style.opacity = '0';
+                botones.style.visibility = 'hidden';
+            }
+        });
+        
+        // Botón "Ir al principio"
+        document.querySelector('.btn-inicio').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Animación de elementos al hacer scroll
+        const elementosAnimados = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        elementosAnimados.forEach(elemento => {
+            elemento.style.opacity = '0';
+            elemento.style.transform = 'translateY(20px)';
+            elemento.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(elemento);
         });
     </script>
 </body>

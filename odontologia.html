@@ -335,6 +335,114 @@
                 font-size: 1rem;
             }
         }
+    
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: var(--blanco);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .video-info h3 {
+            color: var(--azul-oscuro);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-info h3 i {
+            margin-right: 10px;
+            color: var(--azul-medio);
+        }
+        
+        .video-info p {
+            color: var(--texto-oscuro);
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .video-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--azul-medio);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicion);
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        
+        .video-btn:hover {
+            background-color: var(--azul-claro);
+            transform: translateY(-2px);
+        }
+        
+        .video-btn i {
+            margin-left: 5px;
+        }
+        
+        /* Responsive para videos */
+        @media (max-width: 768px) {
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .video-card {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-info h3 {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -343,7 +451,7 @@
         <div class="header-content">
             <h1>Odontología Integral</h1>
             <p class="subtitle">Cuidado especializado para tu salud bucodental</p>
-            <a href="#servicios" class="btn">Nuestros Servicios</a>
+          
         </div>
     </header>
 
@@ -468,17 +576,74 @@
             </div>
         </div>
     </section>
-
+    <section class="video-section">
+        <div class="container">
+            <div class="card">
+                <h2>Conoce Nuestro Trabajo</h2>
+                <p>Descubre nuestra filosofía de atención y conoce nuestras instalaciones a través de estos videos</p>
+                
+                <div class="video-container">
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/nD8BIu-9vyE" title="Video sobre nuestro centro" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3><i class="fas fa-heart"></i> Nuestra Filosofía</h3>
+                            <p>Conoce nuestro enfoque centrado en el paciente y la calidad humana que nos distingue. Descubre por qué miles de pacientes nos eligen cada año.</p>
+                            <a href="https://www.youtube.com/watch?v=nD8BIu-9vyE" class="video-btn" target="_blank">
+                                Ver completo <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/vJPgE33JzKc" title="Instalaciones" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h3><i class="fas fa-clinic-medical"></i> Nuestras Instalaciones</h3>
+                            <p>Recorrido virtual por nuestro centro médico equipado con tecnología de última generación para tu comodidad y seguridad.</p>
+                            <a href="https://www.youtube.com/watch?v=vJPgE33JzKc" class="video-btn" target="_blank">
+                                Ver completo <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
     <!-- Botones de navegación flotantes -->
     <div class="nav-buttons">
-        <button class="nav-btn" id="backBtn" title="Volver atrás">
-            <i class="fas fa-arrow-left"></i>
-        </button>
         <button class="nav-btn" id="topBtn" title="Ir arriba">
             <i class="fas fa-arrow-up"></i>
         </button>
+        <button class="nav-btn" id="backBtn" title="Volver atrás">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+    
     </div>
 
+    <script>
+        // Script para hacer los videos responsivos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ajustar altura de los contenedores de video
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            
+            function adjustVideoHeights() {
+                videoWrappers.forEach(wrapper => {
+                    const width = wrapper.offsetWidth;
+                    wrapper.style.height = (width * 0.5625) + 'px'; // 16:9 ratio
+                });
+            }
+            
+            // Ajustar inicialmente y en redimensionamiento
+            adjustVideoHeights();
+            window.addEventListener('resize', adjustVideoHeights);
+            
+            // El resto de tus scripts...
+        });
+    </script>
     <script>
         // Botón para ir arriba
         const topBtn = document.getElementById('topBtn');
@@ -495,14 +660,7 @@
             window.history.back();
         });
 
-        // Mostrar/ocultar botón de ir arriba según scroll
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                topBtn.style.display = 'flex';
-            } else {
-                topBtn.style.display = 'flex'; // Siempre visible
-            }
-        });
+
     </script>
 </body>
 </html>

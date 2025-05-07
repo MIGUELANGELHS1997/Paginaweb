@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedagogía Integral | Inclusión Educativa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --verde-oscuro: #1E5631;
+            --verde-medio: #4CAF50;
+            --verde-claro: #A4DE02;
+            --verde-suave: #F0F7DA;
+            --blanco: #FFFFFF;
+            --gris-claro: #F5F7F8;
+            --texto-oscuro: #2D3436;
+            --naranja: #FF9800;
+            --sombra: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transicion: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--verde-suave);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: var(--blanco);
+            text-align: center;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--verde-claro);
+            color: var(--verde-oscuro);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicion);
+            box-shadow: var(--sombra);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(164, 222, 2, 0.3);
+        }
+
+        /* Secciones */
+        section {
+            padding: 4rem 0;
+        }
+
+        h2 {
+            color: var(--verde-oscuro);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--verde-claro);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--verde-medio);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tarjetas */
+        .card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Listas */
+        ul {
+            list-style-position: inside;
+            margin: 1.5rem 0;
+        }
+
+        li {
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--verde-claro);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Objetivos */
+        .objetivos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .objetivo-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--sombra);
+            border-top: 4px solid var(--verde-claro);
+            transition: var(--transicion);
+        }
+
+        .objetivo-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--verde-medio);
+        }
+
+        .objetivo-icon {
+            font-size: 2.5rem;
+            color: var(--verde-medio);
+            margin-bottom: 1rem;
+        }
+
+        /* Proyección */
+        .proyeccion-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .proyeccion-icon {
+            background: var(--verde-claro);
+            color: var(--verde-oscuro);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        /* Servicios */
+        .servicio-card {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            border-left: 4px solid var(--verde-medio);
+        }
+
+        .servicio-card:hover {
+            transform: translateY(-5px);
+            border-left-color: var(--verde-claro);
+        }
+
+        .servicio-icon {
+            font-size: 2rem;
+            color: var(--verde-medio);
+            margin-bottom: 1rem;
+        }
+
+        /* Videos */
+        .video-section {
+            background-color: var(--blanco);
+            padding: 4rem 0;
+        }
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        .video-card {
+            background: var(--gris-claro);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .video-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .video-info h3 {
+            color: var(--verde-oscuro);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .video-info h3 i {
+            margin-right: 10px;
+            color: var(--verde-medio);
+        }
+        
+        .video-info p {
+            color: var(--texto-oscuro);
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .video-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--verde-medio);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transicion);
+            margin-top: auto;
+            align-self: flex-start;
+        }
+        
+        .video-btn:hover {
+            background-color: var(--verde-claro);
+            color: var(--verde-oscuro);
+            transform: translateY(-2px);
+        }
+        
+        .video-btn i {
+            margin-left: 5px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--verde-oscuro);
+            color: var(--blanco);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--blanco);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+            padding-left: 0;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transicion);
+        }
+
+        .footer-col a:hover {
+            color: var(--verde-claro);
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Botones de navegación */
+        .nav-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--verde-medio);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: var(--transicion);
+            border: none;
+        }
+
+        .nav-btn:hover {
+            background: var(--verde-claro);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn i {
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .video-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-buttons {
+                right: 15px;
+                bottom: 15px;
+            }
+            
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .objetivos-container, .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Pedagogía Integral</h1>
+            <p class="subtitle">Inclusión educativa para estudiantes con necesidades especiales</p>
+         
+        </div>
+    </header>
+
+    <!-- Qué es Pedagogía -->
+    <section id="pedagogia">
+        <div class="container">
+            <h2>Pedagogía Inclusiva</h2>
+            <div class="card">
+                <p>La pedagogía inclusiva es un enfoque educativo que busca garantizar el derecho a una educación de calidad para todos los estudiantes, especialmente aquellos con necesidades educativas especiales o discapacidades, a través de estrategias personalizadas y adaptaciones curriculares.</p>
+                
+                <p>Nuestro modelo de intervención se basa en:</p>
+                <ul>
+                    <li>Evaluación psicopedagógica integral</li>
+                    <li>Diseño de adaptaciones curriculares significativas</li>
+                    <li>Orientación a docentes y familias</li>
+                    <li>Seguimiento continuo del proceso educativo</li>
+                    <li>Promoción de entornos educativos inclusivos</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objetivos -->
+    <section id="objetivos" style="background-color: var(--blanco);">
+        <div class="container">
+            <h2>Nuestros Objetivos</h2>
+            
+            <h3>Objetivo General</h3>
+            <div class="card">
+                <p>Identificar e intervenir en las dificultades que se presentan en el proceso de enseñanza-aprendizaje de estudiantes con necesidades educativas especiales y discapacidades que se encuentran incluidos en unidades educativas, a través de orientaciones especializadas a maestros y padres de familia.</p>
+            </div>
+            
+            <h3>Objetivos Específicos</h3>
+            <div class="objetivos-container">
+                <div class="objetivo-card">
+                    <div class="objetivo-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Evaluación Psicopedagógica</h4>
+                    <p>Realizar evaluaciones completas de estudiantes para determinar su escolarización más adecuada y elaborar propuestas de adaptación curricular significativa.</p>
+                </div>
+                
+                <div class="objetivo-card">
+                    <div class="objetivo-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4>Orientación Docente</h4>
+                    <p>Brindar asesoramiento psicopedagógico a los docentes sobre estrategias de enseñanza-aprendizaje inclusivas.</p>
+                </div>
+                
+                <div class="objetivo-card">
+                    <div class="objetivo-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>Apoyo Familiar</h4>
+                    <p>Orientar a padres y madres sobre estrategias para mejorar el rendimiento escolar de sus hijos en el hogar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyección a 5 años -->
+    <section id="proyeccion">
+        <div class="container">
+            <h2>Proyección a 5 Años</h2>
+            <div class="card">
+                <div class="proyeccion-item">
+                    <div class="proyeccion-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div>
+                        <h4>Convenios Universitarios</h4>
+                        <p>Establecer convenios con universidades para que estudiantes de último año de Ciencias de la Educación realicen prácticas supervisadas en nuestra institución, contribuyendo a:</p>
+                        <ul>
+                            <li>Formación de nuevos profesionales en pedagogía inclusiva</li>
+                            <li>Ampliación de nuestra capacidad de atención</li>
+                            <li>Innovación en metodologías educativas</li>
+                            <li>Investigación en el campo de la educación especial</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="proyeccion-item">
+                    <div class="proyeccion-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div>
+                        <h4>Material Didáctico Especializado</h4>
+                        <p>Implementar recursos y materiales didácticos especializados para brindar mejor atención a estudiantes con necesidades educativas especiales, incluyendo:</p>
+                        <ul>
+                            <li>Materiales multisensoriales</li>
+                            <li>Tecnología asistiva</li>
+                            <li>Recursos para diferentes discapacidades</li>
+                            <li>Herramientas de evaluación adaptadas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="proyeccion-item">
+                    <div class="proyeccion-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div>
+                        <h4>Red de Apoyo Educativo</h4>
+                        <p>Crear una red de apoyo interinstitucional que conecte escuelas, profesionales y familias para compartir recursos, conocimientos y mejores prácticas en educación inclusiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" style="background-color: var(--blanco);">
+        <div class="container">
+            <h2>Nuestros Servicios</h2>
+            <div class="grid-2">
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Evaluación Psicopedagógica</h3>
+                    <p>Diagnóstico completo de necesidades educativas especiales y determinación del nivel de competencia curricular.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Adaptaciones Curriculares</h3>
+                    <p>Diseño e implementación de modificaciones al currículo regular para atender necesidades específicas.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <i class="fas fa-chalkboard"></i>
+                    </div>
+                    <h3>Asesoría Docente</h3>
+                    <p>Capacitación y acompañamiento a profesores en estrategias de inclusión educativa.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Orientación Familiar</h3>
+                    <p>Guía y apoyo a familias para fortalecer el proceso educativo en el hogar.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Inclusión Escolar</h3>
+                    <p>Acompañamiento en el proceso de integración de estudiantes a aulas regulares.</p>
+                </div>
+                
+                <div class="servicio-card">
+                    <div class="servicio-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Materiales Educativos</h3>
+                    <p>Elaboración y adaptación de recursos didácticos para diferentes necesidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos -->
+    <section class="video-section">
+        <div class="container">
+            <h2>Nuestra Metodología</h2>
+            <p>Conoce nuestro enfoque pedagógico a través de estos videos informativos</p>
+            
+            <div class="video-container">
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" title="Enfoque pedagógico inclusivo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-chalkboard-teacher"></i> Pedagogía Inclusiva</h3>
+                        <p>Descubre nuestro modelo de trabajo centrado en las necesidades individuales de cada estudiante.</p>
+                        <a href="#" class="video-btn">
+                            Ver video <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" title="Adaptaciones curriculares" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-book-open"></i> Adaptaciones Curriculares</h3>
+                        <p>Cómo personalizamos el currículo educativo para atender necesidades especiales.</p>
+                        <a href="#" class="video-btn">
+                            Ver video <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Testimonios de inclusión" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-heart"></i> Historias de Éxito</h3>
+                        <p>Experiencias reales de estudiantes que han logrado superar barreras educativas.</p>
+                        <a href="#" class="video-btn">
+                            Ver video <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Materiales didácticos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3><i class="fas fa-puzzle-piece"></i> Recursos Educativos</h3>
+                        <p>Materiales especializados que utilizamos para facilitar el aprendizaje.</p>
+                        <a href="#" class="video-btn">
+                            Ver video <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Botones de navegación flotantes -->
+    <div class="nav-buttons">
+        <button class="nav-btn" id="topBtn" title="Ir arriba">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button class="nav-btn" id="backBtn" title="Volver atrás">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+   
+    </div>
+
+    <script>
+        // Botón para ir arriba
+        const topBtn = document.getElementById('topBtn');
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Botón para ir atrás
+        const backBtn = document.getElementById('backBtn');
+        backBtn.addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Botón de WhatsApp
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        whatsappBtn.addEventListener('click', () => {
+            window.open('https://wa.me/1234567890', '_blank');
+        });
+
+        // Ajustar altura de videos
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoWrappers = document.querySelectorAll('.video-wrapper');
+            
+            function adjustVideoHeights() {
+                videoWrappers.forEach(wrapper => {
+                    const width = wrapper.offsetWidth;
+                    wrapper.style.height = (width * 0.5625) + 'px'; // 16:9 ratio
+                });
+            }
+            
+            adjustVideoHeights();
+            window.addEventListener('resize', adjustVideoHeights);
+        });
+    </script>
+</body>
+</html>

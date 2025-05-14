@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo Directivo - CEREFE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos generales mejorados */
+        :root {
+            --primary-color: #1a4b8c;
+            --secondary-color: #1977cc;
+            --accent-color: #e6f0fa;
+            --text-color: #333;
+            --light-text: #666;
+            --bg-color: #f9f9f9;
+            --white: #fff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-bg {
+            background-color: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 20px auto 0;
+            line-height: 1.8;
+        }
+
+        /* Botones de navegación */
+        .nav-buttons {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(25, 119, 204, 0.3);
+        }
+
+        .nav-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Estilos para el director */
+        .director-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .director-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            flex: 0 0 400px;
+            transition: var(--transition);
+        }
+
+        .director-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .director-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .director-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-tooltip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--white);
+            text-align: center;
+            padding: 15px;
+            opacity: 0;
+            transition: var(--transition);
+            font-size: 14px;
+        }
+
+        .director-image:hover .image-tooltip {
+            opacity: 1;
+        }
+
+        .director-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .director-name {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .director-title {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--accent-color);
+            border-radius: 30px;
+        }
+
+        .director-bio p {
+            margin-bottom: 20px;
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .director-qualifications {
+            margin-top: 40px;
+        }
+
+        .qualification-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            background: var(--accent-color);
+            padding: 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .qualification-item:hover {
+            transform: translateX(5px);
+        }
+
+        .qualification-icon {
+            background: var(--white);
+            color: var(--secondary-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .qualification-content {
+            flex: 1;
+        }
+
+        .qualification-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+
+        /* Estilos para el organigrama */
+        .org-advanced {
+            margin-top: 80px;
+        }
+
+        .org-advanced-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .org-advanced-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .org-advanced-header p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .org-hierarchy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .org-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin: 0 20px;
+        }
+
+        .node-content {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            width: 200px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .node-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .node-content.director {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+        }
+
+        .node-content.director .node-position,
+        .node-content.director .node-department {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .node-content.subdirector {
+            background: var(--accent-color);
+        }
+
+        .node-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .node-content:hover .node-image {
+            transform: scale(1.1);
+        }
+
+        .node-content.director .node-image {
+            border-color: var(--accent-color);
+        }
+
+        .node-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .node-position {
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .node-department {
+            font-size: 0.85rem;
+            color: var(--light-text);
+        }
+
+        .node-content.director .node-name {
+            font-size: 1.2rem;
+        }
+
+        .member-tooltip {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 280px;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            visibility: hidden;
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 10;
+            text-align: left;
+            border: 1px solid var(--accent-color);
+        }
+
+        .node-content:hover .member-tooltip {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        .member-tooltip h5 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .member-tooltip p {
+            margin: 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .member-tooltip strong {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .node-connector {
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--secondary-color), var(--accent-color));
+            margin: 15px 0;
+        }
+
+        /* Estilos para departamentos */
+        .org-departments {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .org-department {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .org-department:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .department-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .department-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .department-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            background: var(--white);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .department-header h3 {
+            margin: 15px 0 10px;
+            font-size: 1.5rem;
+        }
+
+        .department-header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .department-leader {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            border-bottom: 1px solid var(--accent-color);
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .department-leader:hover {
+            background: rgba(230, 240, 250, 0.3);
+        }
+
+        .leader-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 4px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .department-leader:hover .leader-image {
+            transform: scale(1.05);
+        }
+
+        .leader-info h4 {
+            margin: 0 0 5px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .leader-info p {
+            margin: 0;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        .card-details {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 25px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 10;
+            border-radius: 0 0 15px 15px;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .department-leader:hover .card-details {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-details h5 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        .card-details p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .department-team {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .team-member-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-radius: 10px;
+            transition: var(--transition);
+            cursor: pointer;
+            background: var(--white);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid transparent;
+        }
+
+        .team-member-card:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary-color);
+        }
+
+        .member-image-sm {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .team-member-card:hover .member-image-sm {
+            transform: scale(1.1);
+            border-color: var(--secondary-color);
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-info h5 {
+            margin: 0 0 5px;
+            font-size: 1rem;
+            color: var(--primary-color);
+        }
+
+        .member-info p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .member-specialty {
+            display: inline-block;
+            font-size: 0.8rem;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 3px 12px;
+            border-radius: 20px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .director-image {
+                flex: 0 0 350px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .director-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .qualification-item {
+                justify-content: center;
+                text-align: center;
+                flex-direction: column;
+            }
+
+            .qualification-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .org-level {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .org-node {
+                margin-bottom: 30px;
+            }
+            
+            .nav-buttons {
+                right: 20px;
+                bottom: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .director-name {
+                font-size: 1.8rem;
+            }
+            
+            .director-title {
+                font-size: 1.1rem;
+            }
+            
+            .org-departments {
+                grid-template-columns: 1fr;
+            }
+            
+            .node-content {
+                width: 180px;
+            }
+            
+            .member-tooltip {
+                width: 240px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: 50px 0;
+            }
+            
+            .director-image {
+                flex: 0 0 100%;
+            }
+            
+            .node-content {
+                width: 160px;
+                padding: 15px;
+            }
+            
+            .node-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .leader-image {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .member-image-sm {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .nav-buttons {
+                right: 15px;
+                bottom: 15px;
+            }
+            
+            .nav-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección de Director -->
+    <section id="director" class="section section-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestro Equipo Directivo</h2>
+                <p>Profesionales comprometidos con la excelencia en rehabilitación y educación especial</p>
+            </div>
+            
+            <!-- Director General -->
+            <div class="director-container">
+                <div class="director-image">
+                    <img src="images/Director_cerefito.jpg" alt="Dr. Ricardo Quiroga, Director General de CEREFE" width="400" height="400" loading="lazy">
+                    <div class="image-tooltip">Haz clic para más información</div>
+                </div>
+                
+                <div class="director-info">
+                    <h3 class="director-name">DR. RICARDO QUIROGA UGARTE</h3>
+                    <p class="director-title">Director General de CEREFE</p>
+                    
+                    <div class="director-bio">
+                        <p>El DR. Quiroga con 50 años de médico y 45 dedicado a la atención de las personas con discapacidad, ha sido Director de los principales centros de Rehabilitación de la ciudad de La Paz y El Alto. Instituto Nacional de adaptación Infantil en la ciudad de La Paz y Centro de Rehabilitación y educación especial de la ciudad de El Alto.</p>
+                        
+                        <p>Bajo su dirección, CEREFE ha experimentado un crecimiento significativo, expandiendo sus servicios y mejorando la calidad de atención a los pacientes. Su visión estratégica ha permitido la implementación de nuevas tecnologías y metodologías innovadoras en el campo de la rehabilitación.</p>
+                    </div>
+                    
+                    <div class="director-qualifications">
+                        <div class="qualification-item">
+                            <div class="qualification-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="qualification-content">
+                                <strong>Formación Académica:</strong> Médico Cirujano de la UMSA, Especialista en Pediatría, cursos breves en neurología, psiquiatría, educación especial.
+                            </div>
+                        </div>
+                        
+                        <div class="qualification-item">
+                            <div class="qualification-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="qualification-content">
+                                <strong>Reconocimientos:</strong> Varios: Abopane. Asociación Boliviana para el estudio científico de la deficiencia mental, alcaldías de La Paz y El Alto, UMSA. Universidad Católica.
+                            </div>
+                        </div>
+                        
+                        <div class="qualification-item">
+                            <div class="qualification-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="qualification-content">
+                                <strong>Experiencia:</strong> 45 años de Médico - Pediatra, 40 años en cargos directivos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Organigrama -->
+            <div class="org-advanced">
+                <div class="org-advanced-header">
+                    <h2>Estructura Organizacional</h2>
+                    <p>Nuestro equipo multidisciplinario organizado por áreas de especialización</p>
+                </div>
+
+                <!-- Diagrama jerárquico -->
+                <div class="org-hierarchy">
+                    <div class="org-level">
+                        <div class="org-node">
+                            <div class="node-content director" data-member="presidente">
+                                <img src="https://www.noticiasfides.com/images/news/2016/08/el-padre-sebastian-obermaier-conocido-por-su-carisma-y-su-servicio-a-los-mas-pobres-fallece-a-los-82-anos_368699.jpg" alt="Presidente de CEREFE" class="node-image director" width="100" height="100" loading="lazy">
+                                <h4 class="node-name">Padre Sebastián Obermaier</h4>
+                                <p class="node-position">Presidente</p>
+                                <p class="node-department">CEREFE</p>
+                                <div class="member-tooltip">
+                                    <h5>Padre Sebastián Obermaier</h5>
+                                    <p><strong>Cargo:</strong> Presidente Honorario</p>
+                                    <p><strong>Trayectoria:</strong> Fundador de la institución con más de 30 años de servicio</p>
+                                    <p><strong>Contacto:</strong> presidencia@cerefe.org</p>
+                                </div>
+                            </div>
+                            <div class="node-content director" data-member="vicepresidente">
+                                <img src="https://i0.wp.com/www.kenteringen.nl/wp-content/uploads/2022/08/H.-Dulce-Lopes-Pontes.jpg?ssl=1" alt="Vicepresidente de CEREFE" class="node-image director" width="100" height="100" loading="lazy">
+                                <h4 class="node-name">Hermana Dalba</h4>
+                                <p class="node-position">Vicepresidente</p>
+                                <p class="node-department">CEREFE</p>
+                                <div class="member-tooltip">
+                                    <h5>Hermana Dalba</h5>
+                                    <p><strong>Cargo:</strong> Vicepresidenta</p>
+                                    <p><strong>Trayectoria:</strong> 25 años en gestión de instituciones de salud</p>
+                                    <p><strong>Contacto:</strong> vicepresidencia@cerefe.org</p>
+                                </div>
+                            </div>
+                            <div class="node-content director" data-member="director-general">
+                                <img src="images/Director_cerefito.jpg" alt="Director General de CEREFE" class="node-image director" width="100" height="100" loading="lazy">
+                                <h4 class="node-name">Dr. Ricardo Quiroga Ugarte</h4>
+                                <p class="node-position">Director General</p>
+                                <p class="node-department">Dirección Ejecutiva</p>
+                                <div class="member-tooltip">
+                                    <h5>Dr. Ricardo Quiroga Ugarte</h5>
+                                    <p><strong>Cargo:</strong> Director General</p>
+                                    <p><strong>Especialidad:</strong> Pediatría y Rehabilitación</p>
+                                    <p><strong>Contacto:</strong> director@cerefe.org</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-medico">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe médico de CEREFE" class="node-image" width="90" height="90" loading="lazy">
+                                <h4 class="node-name">Dr. Milton Villca</h4>
+                                <p class="node-position">Jefe médico</p>
+                                <p class="node-department">Área Médica</p>
+                                <div class="member-tooltip">
+                                    <h5>Dr. Milton Villca</h5>
+                                    <p><strong>Especialidad:</strong> Pediatría</p>
+                                    <p><strong>Formación:</strong> UMSA, Postgrado en Neurología Infantil</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-psicologia">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe de psicología de CEREFE" class="node-image" width="90" height="90" loading="lazy">
+                                <h4 class="node-name">Lic. Wendy Coronel</h4>
+                                <p class="node-position">Jefe de Psicología</p>
+                                <p class="node-department">Área Psicológica</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Wendy Coronel</h5>
+                                    <p><strong>Especialidad:</strong> Psicología Clínica</p>
+                                    <p><strong>Formación:</strong> UMSA, Maestría en Neuropsicología</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 17:00</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="administrador">
+                                <img src="images/Administrador.jpeg" alt="Administrativo de CEREFE" class="node-image" width="90" height="90" loading="lazy">
+                                <h4 class="node-name">Lic. Carlos Challapa</h4>
+                                <p class="node-position">Administrativo</p>
+                                <p class="node-department">Área Administrativa</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Carlos Challapa</h5>
+                                    <p><strong>Especialidad:</strong> Administración de Empresas</p>
+                                    <p><strong>Formación:</strong> UMSA, Diplomado en Gestión de Salud</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-fonoaudiologia">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe de fonoaudiología de CEREFE" class="node-image" width="90" height="90" loading="lazy">
+                                <h4 class="node-name">Lic. Angela Flores</h4>
+                                <p class="node-position">Jefe de Fonoaudiología</p>
+                                <p class="node-department">Área Fonoaudiológica</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Angela Flores</h5>
+                                    <p><strong>Especialidad:</strong> Fonoaudiología Infantil</p>
+                                    <p><strong>Formación:</strong> UMSA, Especialización en Lenguaje</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 17:00</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-fisioterapia">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe de fisioterapia de CEREFE" class="node-image" width="90" height="90" loading="lazy">
+                                <h4 class="node-name">Lic. Otilia Condori</h4>
+                                <p class="node-position">Jefe de Fisioterapia</p>
+                                <p class="node-department">Área Fisioterapia</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Otilia Condori</h5>
+                                    <p><strong>Especialidad:</strong> Fisioterapia Neurológica</p>
+                                    <p><strong>Formación:</strong> UMSA, Especialización en Neurorehabilitación</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-node">
+                            <div class="node-content" data-member="coordinadora-general">
+                                <img src="images/Tamaracoordinadora.jpeg" alt="Coordinadora General de CEREFE" class="node-image" width="80" height="80" loading="lazy">
+                                <h4 class="node-name">Lic. Daniela Corani</h4>
+                                <p class="node-position">Coordinador General</p>
+                                <p class="node-department">Área Administrativa</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Daniela Corani</h5>
+                                    <p><strong>Especialidad:</strong> Coordinación General</p>
+                                    <p><strong>Formación:</strong> UMSA, Administración de Empresas</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content" data-member="odontologa">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Odontóloga de CEREFE" class="node-image" width="80" height="80" loading="lazy">
+                                <h4 class="node-name">Dra. Marivel</h4>
+                                <p class="node-position">Odontología</p>
+                                <p class="node-department">Área Médica</p>
+                                <div class="member-tooltip">
+                                    <h5>Dra. Marivel</h5>
+                                    <p><strong>Especialidad:</strong> Odontopediatría</p>
+                                    <p><strong>Formación:</strong> UMSA, Especialización en Odontología Infantil</p>
+                                    <p><strong>Horario:</strong> Martes y Jueves 9:00 - 15:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content" data-member="psicopedagoga">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicopedagoga de CEREFE" class="node-image" width="80" height="80" loading="lazy">
+                                <h4 class="node-name">Lic. Mirella</h4>
+                                <p class="node-position">Psicopedagoga</p>
+                                <p class="node-department">Área Psicológica</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Mirella</h5>
+                                    <p><strong>Especialidad:</strong> Psicopedagogía Infantil</p>
+                                    <p><strong>Formación:</strong> UMSA, Maestría en Dificultades de Aprendizaje</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 10:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Departamentos por servicios -->
+                <div class="org-departments">
+                    <!-- Departamento Médico -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <h3>Área Médica</h3>
+                            <p>Servicios clínicos y terapéuticos</p>
+                        </div>
+                        
+                        <div class="department-leader interactive-card" data-member="subdirector-medico">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe Médico de CEREFE" class="leader-image" width="90" height="90" loading="lazy">
+                            <div class="leader-info">
+                                <h4>Dr. Milton Villca</h4>
+                                <p>Jefe Médico</p>
+                            </div>
+                            <div class="card-details">
+                                <h5>Dr. Milton Villca</h5>
+                                <p><strong>Especialidad:</strong> Pediatría</p>
+                                <p><strong>Formación:</strong> UMSA, Postgrado en Neurología Infantil</p>
+                                <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                <p><strong>Contacto:</strong> jefemedico@cerefe.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card" data-member="fisiatra">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Médico Fisiatra de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Dr. Luis Rojas</h5>
+                                    <p>Médico Fisiatra</p>
+                                    <span class="member-specialty">Rehabilitación física</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="pediatra">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Pediatra Especialista de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Dra. Laura Gutiérrez</h5>
+                                    <p>Pediatra Especialista</p>
+                                    <span class="member-specialty">Desarrollo infantil</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="neurologo">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Neurólogo Infantil de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Dr. Javier Méndez</h5>
+                                    <p>Neurólogo Infantil</p>
+                                    <span class="member-specialty">Trastornos neurológicos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Departamento de Terapias -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3>Área de Terapias</h3>
+                            <p>Rehabilitación integral</p>
+                        </div>
+                        
+                        <div class="department-leader interactive-card" data-member="coordinadora-terapias">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora de Terapias de CEREFE" class="leader-image" width="90" height="90" loading="lazy">
+                            <div class="leader-info">
+                                <h4>Lic. Carla Vargas</h4>
+                                <p>Coordinadora de Terapias</p>
+                            </div>
+                            <div class="card-details">
+                                <h5>Lic. Carla Vargas</h5>
+                                <p><strong>Especialidad:</strong> Terapia Ocupacional</p>
+                                <p><strong>Formación:</strong> UMSA, Maestría en Rehabilitación</p>
+                                <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                <p><strong>Contacto:</strong> terapias@cerefe.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card" data-member="fisioterapeuta">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Fisioterapeuta de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Marcela Ríos</h5>
+                                    <p>Fisioterapeuta</p>
+                                    <span class="member-specialty">Neurorehabilitación</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="terapeuta-ocupacional">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Terapeuta Ocupacional de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Gabriela Torrez</h5>
+                                    <p>Terapeuta Ocupacional</p>
+                                    <span class="member-specialty">Integración sensorial</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="fonoaudiologa">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Fonoaudióloga de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Fernando Rojas</h5>
+                                    <p>Fonoaudiólogo</p>
+                                    <span class="member-specialty">Comunicación alternativa</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="psicologo">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicólogo Clínico de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Roberto Paz</h5>
+                                    <p>Psicólogo Clínico</p>
+                                    <span class="member-specialty">Terapia cognitivo-conductual</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Departamento Educativo -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Área Educativa</h3>
+                            <p>Programas de educación especial</p>
+                        </div>
+                        
+                        <div class="department-leader interactive-card" data-member="subdirector-academico">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Subdirector Académico de CEREFE" class="leader-image" width="90" height="90" loading="lazy">
+                            <div class="leader-info">
+                                <h4>Lic. Jorge Morales</h4>
+                                <p>Subdirector Académico</p>
+                            </div>
+                            <div class="card-details">
+                                <h5>Lic. Jorge Morales</h5>
+                                <p><strong>Especialidad:</strong> Educación Especial</p>
+                                <p><strong>Formación:</strong> UMSA, Maestría en Pedagogía</p>
+                                <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                <p><strong>Contacto:</strong> academico@cerefe.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card" data-member="pedagoga">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Pedagoga Especial de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Valeria Mendez</h5>
+                                    <p>Pedagoga Especial</p>
+                                    <span class="member-specialty">Diseño curricular</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="psicopedagoga">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicopedagoga de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Andrea Cabrera</h5>
+                                    <p>Psicopedagoga</p>
+                                    <span class="member-specialty">Dificultades de aprendizaje</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="educador">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Educador Especial de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Pedro Sánchez</h5>
+                                    <p>Educador Especial</p>
+                                    <span class="member-specialty">Autismo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Departamento Social -->
+                    <div class="org-department">
+                        <div class="department-header">
+                            <div class="department-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <h3>Área Social</h3>
+                            <p>Apoyo familiar e inclusión</p>
+                        </div>
+                        
+                        <div class="department-leader interactive-card" data-member="coordinadora-social">
+                            <img src="images/Licceliatrabajadorasocial.jpeg" alt="Coordinadora Social de CEREFE" class="leader-image" width="90" height="90" loading="lazy">
+                            <div class="leader-info">
+                                <h4>Lic. Celia Poma</h4>
+                                <p>Trabajo Social</p>
+                            </div>
+                            <div class="card-details">
+                                <h5>Lic. Celia Poma</h5>
+                                <p><strong>Especialidad:</strong> Trabajo Social</p>
+                                <p><strong>Formación:</strong> UMSA, Maestría en Intervención Social</p>
+                                <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                <p><strong>Contacto:</strong> social@cerefe.org</p>
+                            </div>
+                        </div>
+                        
+                        <div class="department-team">
+                            <div class="team-member-card" data-member="trabajadora-social">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Trabajadora Social de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Patricia Arce</h5>
+                                    <p>Trabajadora Social</p>
+                                    <span class="member-specialty">Inclusión social</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="orientador">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Orientador Familiar de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Mauricio Flores</h5>
+                                    <p>Orientador Familiar</p>
+                                    <span class="member-specialty">Apoyo a familias</span>
+                                </div>
+                            </div>
+                            
+                            <div class="team-member-card" data-member="especialista">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Especialista en Inclusión de CEREFE" class="member-image-sm" width="70" height="70" loading="lazy">
+                                <div class="member-info">
+                                    <h5>Lic. Sandra Vargas</h5>
+                                    <p>Especialista en Inclusión</p>
+                                    <span class="member-specialty">Accesibilidad</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Botones de navegación flotantes -->
+        <div class="nav-buttons">
+            <button class="nav-btn" id="backBtn" title="Volver atrás">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <button class="nav-btn" id="topBtn" title="Ir arriba">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </section>
+
+    <script>
+        // JavaScript para funcionalidad adicional
+        document.addEventListener('DOMContentLoaded', function() {
+            // Botón para ir arriba
+            const topBtn = document.getElementById('topBtn');
+            topBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Botón para volver atrás
+            const backBtn = document.getElementById('backBtn');
+            backBtn.addEventListener('click', () => {
+                window.history.back();
+            });
+            
+            // Mostrar/ocultar botón de ir arriba según scroll
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    topBtn.style.display = 'flex';
+                } else {
+                    topBtn.style.display = 'flex'; // Siempre visible
+                }
+            });
+            
+            // Expandir información al hacer clic en tarjetas
+            const cards = document.querySelectorAll('.interactive-card, .team-member-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Evitar que el clic se propague si hay elementos hijos clickeables
+                    e.stopPropagation();
+                    
+                    // Cerrar todas las tarjetas primero
+                    document.querySelectorAll('.card-details').forEach(detail => {
+                        detail.style.display = 'none';
+                    });
+                    
+                    // Mostrar solo el detalle de la tarjeta clickeada
+                    const details = this.querySelector('.card-details');
+                    if(details) {
+                        details.style.display = 'block';
+                    }
+                });
+            });
+            
+            // Cerrar detalles al hacer clic fuera
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.card-details').forEach(detail => {
+                    detail.style.display = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Equipo - Centro de Rehabilitación</title>
+    <style>
+        /* Estilos generales */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilos para la sección de liderazgo */
+        .leadership-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .underline {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            margin: 0 auto 25px;
+            border-radius: 2px;
+        }
+        .section-title p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Estilos para el botón */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            margin: 20px 0;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+            background: linear-gradient(135deg, #2980b9, #8e44ad);
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 1000px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideDown 0.4s;
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close:hover {
+            color: #e74c3c;
+        }
+
+        /* Estilos para el organigrama */
+        .org-advanced {
+            padding: 20px;
+        }
+        .org-advanced-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .org-advanced-header h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .org-advanced-header p {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .org-hierarchy {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .org-level {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        .org-node {
+            position: relative;
+            margin: 0 15px;
+            text-align: center;
+        }
+        .node-content {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 180px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+        .node-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .node-content.director {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-top: 4px solid #3498db;
+        }
+        .node-content.subdirector {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-top: 4px solid #9b59b6;
+        }
+        .node-image {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+        .node-image.director {
+            width: 80px;
+            height: 80px;
+            border: 4px solid white;
+        }
+        .node-name {
+            font-size: 1rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .node-position {
+            font-size: 0.85rem;
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        .node-department {
+            font-size: 0.75rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        .node-connector {
+            position: absolute;
+            height: 30px;
+            width: 2px;
+            background: #bdc3c7;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Tooltip de información */
+        .member-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+        .node-content:hover .member-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: calc(100% + 10px);
+        }
+        .member-tooltip h5 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .member-tooltip p {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        .member-tooltip p strong {
+            color: #2c3e50;
+        }
+
+        /* Líneas de conexión */
+        .org-level:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: #bdc3c7;
+            bottom: -30px;
+            left: 50%;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .org-level {
+                flex-direction: column;
+                align-items: center;
+            }
+            .org-node {
+                margin: 10px 0;
+            }
+            .node-connector {
+                display: none;
+            }
+            .org-level:not(:last-child)::after {
+                display: none;
+            }
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="leadership-section">
+            <div class="section-title">
+                <h2>Nuestro Equipo Directivo</h2>
+                <div class="underline"></div>
+                <p>Profesionales comprometidos con la excelencia en rehabilitación y educación especial</p>
+                
+                <!-- Botón que abre el modal -->
+                <button id="orgModalBtn" class="btn">Ver Organigrama Completo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal del Organigrama -->
+    <div id="orgModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <!-- Contenido del organigrama -->
+            <div class="org-advanced">
+                <div class="org-advanced-header">
+                    <h2>Estructura Organizacional</h2>
+                    <div class="underline"></div>
+                    <p>Nuestro equipo multidisciplinario organizado por áreas de especialización</p>
+                </div>
+
+                <!-- Diagrama jerárquico -->
+                <div class="org-hierarchy">
+                    <div class="org-level">
+                        <div class="org-node">
+                            <div class="node-content director" data-member="presidente">
+                                <img src="https://www.noticiasfides.com/images/news/2016/08/el-padre-sebastian-obermaier-conocido-por-su-carisma-y-su-servicio-a-los-mas-pobres-fallece-a-los-82-anos_368699.jpg" alt="Presidente de CEREFE" class="node-image director">
+                                <h4 class="node-name">Padre Sebastián Obermaier</h4>
+                                <p class="node-position">Presidente</p>
+                                <p class="node-department">CEREFE</p>
+                                <div class="member-tooltip">
+                                    <h5>Padre Sebastián Obermaier</h5>
+                                    <p><strong>Cargo:</strong> Presidente Honorario</p>
+                                    <p><strong>Trayectoria:</strong> Fundador de la institución con más de 30 años de servicio</p>
+                                    <p><strong>Contacto:</strong> presidencia@cerefe.org</p>
+                                </div>
+                            </div>
+                            <div class="node-content director" data-member="vicepresidente">
+                                <img src="https://i0.wp.com/www.kenteringen.nl/wp-content/uploads/2022/08/H.-Dulce-Lopes-Pontes.jpg?ssl=1" alt="Vicepresidente de CEREFE" class="node-image director">
+                                <h4 class="node-name">Hermana Dalba</h4>
+                                <p class="node-position">Vicepresidente</p>
+                                <p class="node-department">CEREFE</p>
+                                <div class="member-tooltip">
+                                    <h5>Hermana Dalba</h5>
+                                    <p><strong>Cargo:</strong> Vicepresidenta</p>
+                                    <p><strong>Trayectoria:</strong> 25 años en gestión de instituciones de salud</p>
+                                    <p><strong>Contacto:</strong> vicepresidencia@cerefe.org</p>
+                                </div>
+                            </div>
+                            <div class="node-content director" data-member="director-general">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Director General de CEREFE" class="node-image director">
+                                <h4 class="node-name">Dr. Ricardo Quiroga Ugarte</h4>
+                                <p class="node-position">Director General</p>
+                                <p class="node-department">Dirección Ejecutiva</p>
+                                <div class="member-tooltip">
+                                    <h5>Dr. Ricardo Quiroga Ugarte</h5>
+                                    <p><strong>Cargo:</strong> Director General</p>
+                                    <p><strong>Especialidad:</strong> Pediatría y Rehabilitación</p>
+                                    <p><strong>Contacto:</strong> director@cerefe.org</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-medico">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe médico de CEREFE" class="node-image">
+                                <h4 class="node-name">Dr. Milton Villca</h4>
+                                <p class="node-position">Jefe médico</p>
+                                <p class="node-department">Área Médica</p>
+                                <div class="member-tooltip">
+                                    <h5>Dr. Milton Villca</h5>
+                                    <p><strong>Especialidad:</strong> Pediatría</p>
+                                    <p><strong>Formación:</strong> UMSA, Postgrado en Neurología Infantil</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-psicologia">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe de psicología de CEREFE" class="node-image">
+                                <h4 class="node-name">Lic. Wendy Coronel</h4>
+                                <p class="node-position">Jefe de Psicología</p>
+                                <p class="node-department">Área Psicológica</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Wendy Coronel</h5>
+                                    <p><strong>Especialidad:</strong> Psicología Clínica</p>
+                                    <p><strong>Formación:</strong> UMSA, Maestría en Neuropsicología</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 17:00</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="administrador">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Administrativo de CEREFE" class="node-image">
+                                <h4 class="node-name">Lic. Carlos Challapa</h4>
+                                <p class="node-position">Administrativo</p>
+                                <p class="node-department">Área Administrativa</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Carlos Challapa</h5>
+                                    <p><strong>Especialidad:</strong> Administración de Empresas</p>
+                                    <p><strong>Formación:</strong> UMSA, Diplomado en Gestión de Salud</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-fonoaudiologia">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe de fonoaudiología de CEREFE" class="node-image">
+                                <h4 class="node-name">Lic. Angela Flores</h4>
+                                <p class="node-position">Jefe de Fonoaudiología</p>
+                                <p class="node-department">Área Fonoaudiológica</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Angela Flores</h5>
+                                    <p><strong>Especialidad:</strong> Fonoaudiología Infantil</p>
+                                    <p><strong>Formación:</strong> UMSA, Especialización en Lenguaje</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 9:00 - 17:00</p>
+                                </div>
+                            </div>
+                            <div class="node-connector"></div>
+                        </div>
+                        <div class="org-node">
+                            <div class="node-content subdirector" data-member="jefe-fisioterapia">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Jefe de fisioterapia de CEREFE" class="node-image">
+                                <h4 class="node-name">Lic. Otilia Condori</h4>
+                                <p class="node-position">Jefe de Fisioterapia</p>
+                                <p class="node-department">Área Fisioterapia</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Otilia Condori</h5>
+                                    <p><strong>Especialidad:</strong> Fisioterapia Neurológica</p>
+                                    <p><strong>Formación:</strong> UMSA, Especialización en Neurorehabilitación</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="org-level">
+                        <div class="org-node">
+                            <div class="node-content" data-member="coordinadora-general">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Coordinadora General de CEREFE" class="node-image">
+                                <h4 class="node-name">Lic. Daniela Corani</h4>
+                                <p class="node-position">Coordinador General</p>
+                                <p class="node-department">Área Administrativa</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Daniela Corani</h5>
+                                    <p><strong>Especialidad:</strong> Coordinación General</p>
+                                    <p><strong>Formación:</strong> UMSA, Administración de Empresas</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 8:00 - 16:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content" data-member="odontologa">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Odontóloga de CEREFE" class="node-image">
+                                <h4 class="node-name">Dra. Marivel</h4>
+                                <p class="node-position">Odontología</p>
+                                <p class="node-department">Área Médica</p>
+                                <div class="member-tooltip">
+                                    <h5>Dra. Marivel</h5>
+                                    <p><strong>Especialidad:</strong> Odontopediatría</p>
+                                    <p><strong>Formación:</strong> UMSA, Especialización en Odontología Infantil</p>
+                                    <p><strong>Horario:</strong> Martes y Jueves 9:00 - 15:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-node">
+                            <div class="node-content" data-member="psicopedagoga">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Psicopedagoga de CEREFE" class="node-image">
+                                <h4 class="node-name">Lic. Mirella</h4>
+                                <p class="node-position">Psicopedagoga</p>
+                                <p class="node-department">Área Psicológica</p>
+                                <div class="member-tooltip">
+                                    <h5>Lic. Mirella</h5>
+                                    <p><strong>Especialidad:</strong> Psicopedagogía Infantil</p>
+                                    <p><strong>Formación:</strong> UMSA, Maestría en Dificultades de Aprendizaje</p>
+                                    <p><strong>Horario:</strong> Lunes a Viernes 10:00 - 18:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script para controlar el modal
+        const modal = document.getElementById("orgModal");
+        const btn = document.getElementById("orgModalBtn");
+        const span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden"; // Evita scroll cuando el modal está abierto
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Restaura el scroll
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+        }
+    </script>
+</body>
+</html>
